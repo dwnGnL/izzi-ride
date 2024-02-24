@@ -1,0 +1,29 @@
+body {
+	--primary: #407bff;
+
+	--border-radius-small: 10px;
+	--border-radius-regular: 15px;
+	--border-radius-big: 20px;
+
+	margin: 0;
+	padding-top: 2.5vh;
+}
+
+body > div,
+main {
+	display: grid;
+	gap: 50px;
+}
+
+main {
+	height: 100vh;
+	background: rebeccapurple;
+}
+
+header,
+footer,
+main {
+	width: 90vw;
+	max-width: 1200px;
+	margin: auto;
+}

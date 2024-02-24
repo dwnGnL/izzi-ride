@@ -1,0 +1,34 @@
+.header_nav {
+	--color: #fff;
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: start;
+	align-items: center;
+	gap: 1.25em;
+
+}
+
+.navigation_button {
+	position: relative;
+	color: var(--color);
+	text-decoration: none;
+}
+
+.navigation_button::after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 0;
+	height: 0.1em;
+	background-color: var(--color);
+	transition: width 0.3s;
+}
+
+.navigation_button:hover::after {
+	width: 50%;
+}
+
+.navigation_button.active::after {
+	width: 100%;
+}

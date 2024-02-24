@@ -1,0 +1,8 @@
+.button {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	border-radius: var(--border-radius-small);
+	padding: 0.5em 2em;
+	box-sizing: border-box;
+}
