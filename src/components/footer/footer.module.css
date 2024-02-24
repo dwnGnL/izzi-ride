@@ -1,0 +1,123 @@
+.footer {
+	display: grid;
+	gap: 2.5em 0;
+	background-color: var(--secondary);
+	color: #fff;
+	font-size: 18px;
+	border-radius: var(--border-radius-big) var(--border-radius-big) 0 0;
+	padding: 3em 3em 0.75em 3em;
+	box-sizing: border-box;
+}
+
+.footer a {
+	color: inherit;
+}
+
+.footer ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.footer_logo {
+	width: 6em;
+	grid-area: logo;
+}
+
+.info_list {
+	display: grid;
+	grid-area: info;
+	gap: 0.75em;
+}
+
+.navigation {
+	display: grid;
+	grid-area: nav;
+	gap: 0.75em;
+}
+
+.social {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: max-content;
+	grid-area: social;
+	gap: 0.75em;
+}
+
+.bottom_part {
+	display: grid;
+	width: 100%;
+	grid-area: bottom_part;
+	gap: 0.2em 2.5em;
+	border-top: 1px solid #fff;
+	padding-top: 2.5em;
+}
+
+@media screen and (min-width: 1024px) {
+	.footer_logo {
+		font-size: 21px;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+	.footer {
+		font-size: 16px;
+	}
+
+	.footer_logo {
+		font-size: 16px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.footer {
+		grid-auto-columns: max-content;
+		grid-template-areas:
+			'logo . .'
+			'info nav social'
+			'bottom_part bottom_part bottom_part';
+		justify-content: space-between;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.footer {
+		grid-auto-columns: max-content;
+		grid-template-areas:
+			'logo .'
+			'info nav'
+			'social .'
+			'bottom_part bottom_part';
+		justify-content: space-between;
+		font-size: 15px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.footer {
+		width: 100%;
+		grid-template-areas:
+			'logo'
+			'nav'
+			'info'
+			'social'
+			'bottom_part';
+		grid-template-columns: 1fr;
+		justify-items: center;
+		font-size: 17px;
+		text-align: center;
+        padding-inline: 2em;
+		border-radius: 0;
+	}
+}
+
+@media screen and (min-width: 550px) {
+	.navigation {
+		align-content: space-between;
+	}
+
+    .bottom_part {
+		grid-auto-flow: column;
+		grid-auto-columns: max-content;
+	}
+}

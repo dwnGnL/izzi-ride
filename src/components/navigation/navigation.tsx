@@ -5,9 +5,9 @@ import { useRouter } from 'next/router'
 
 import Link from 'next/link'
 
-import styles from './menu.module.css'
+import styles from './navigation.module.css'
 
-const MainNavigation: FC<NavigationParams> = ({ navigationList, extraClass }) => {
+const Navigation: FC<NavigationParams> = ({ navigationList, extraClass }) => {
 	const router = useRouter()
 	const isActive = (linkHref: string) => (router.pathname === `/${linkHref}` ? styles.active : '')
 
@@ -19,6 +19,7 @@ const MainNavigation: FC<NavigationParams> = ({ navigationList, extraClass }) =>
 						href={navItem.href}
 						key={navItem.href}
 						title={navItem.title}
+						target={navItem.target}
 						className={`${styles.navigation_button} ${isActive(navItem.href)}`}
 					>
 						{navItem.title}
@@ -29,4 +30,4 @@ const MainNavigation: FC<NavigationParams> = ({ navigationList, extraClass }) =>
 	)
 }
 
-export default MainNavigation
+export default Navigation

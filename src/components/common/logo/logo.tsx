@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from '@public/logo.png'
+import logo from '@public/images/logo.png'
 
 import styles from './logo.module.css'
 
-const Logo = () => {
+const Logo = ({ extraClass }: { extraClass?: string }) => {
 	return (
-		<Link href='/' title='IZZI'>
-			<Image src={logo} alt='izzi logo' className={styles.logo} />
+		<Link href='/' title='IZZI' className={extraClass}>
+			<Image src={logo} alt='izzi logo' className={styles.logo} priority />
 		</Link>
 	)
 }

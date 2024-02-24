@@ -1,34 +1,15 @@
 'use client'
-import type { NavigationItem } from '@type/navigation.type'
-
 import { useState, useRef, useEffect } from 'react'
 import useDevice from '@hooks/use-device'
 
 import Logo from '@common/logo/logo'
-import MainNavigation from '@components/menu/menu'
+import Navigation from '@components/navigation/navigation'
 import LinkButton from '@common/link-button/link-button'
 import HamburgerMenu from '@components/hamburger-menu/hamburger-menu'
 
-import styles from './header.module.css'
+import { navigation } from './constant'
 
-const navigation: NavigationItem[] = [
-	{
-		title: 'About us',
-		href: 'about',
-	},
-	{
-		title: 'Features',
-		href: 'features',
-	},
-	{
-		title: 'Owners',
-		href: 'owners',
-	},
-	{
-		title: 'Contact us',
-		href: 'contact',
-	},
-]
+import styles from './header.module.css'
 
 const Header = () => {
 	const [borderRadius, setBorderRadius] = useState<number>()
@@ -63,7 +44,7 @@ const Header = () => {
 
 		let currentPosition = elem.getBoundingClientRect().top
 		let currentRadius = defaultRadius
-		
+
 		let percent = currentPosition / defaultPosition
 
 		setBorderRadius(currentRadius * percent)
@@ -84,7 +65,7 @@ const Header = () => {
 
 				{deviceType === 'desktop' && (
 					<>
-						<MainNavigation navigationList={navigation} />
+						<Navigation navigationList={navigation} />
 						<LinkButton title='Get it' href='/' extraClass={styles.header_btn} />
 					</>
 				)}
@@ -101,7 +82,7 @@ const Header = () => {
 					className={styles.menu_overlay}
 					style={{ paddingTop: `calc(${menuTopPadding}px + 1.5em)` }}
 				>
-					<MainNavigation navigationList={navigation} extraClass={styles.mobile_menu} />
+					<Navigation navigationList={navigation} extraClass={styles.mobile_menu} />
 				</div>
 			)}
 		</>
