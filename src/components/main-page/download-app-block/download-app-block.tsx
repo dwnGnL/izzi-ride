@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import LinkButton from '@common/link-button/link-button'
 
 import styles from './download-app-block.module.css'
 
@@ -16,9 +16,7 @@ const DownloadAppBlock = () => {
                 <br /> IZZI RIDE
             </h2>
 
-            <Link href='/' className={styles.download_btn} download='Download app'>
-                Download app
-            </Link>
+            <LinkButton href='/' title='Download app' extraClass={styles.download_btn} />
         </section>
     )
 }

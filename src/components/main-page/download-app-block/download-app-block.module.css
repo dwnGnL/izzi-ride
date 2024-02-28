@@ -1,44 +1,72 @@
 .section {
-    display: grid;
-    grid-auto-rows: max-content;
-    grid-gap: 2em;
+	--coefficient: 0.75;
+	display: grid;
+	grid-auto-rows: max-content;
+	grid-gap: 2em;
 }
 
 .image {
-    aspect-ratio: 1/0.7;
-    background-image: url(/logo.png);
-    border: 1px solid;
-    box-sizing: border-box;
+	position: relative;
+	aspect-ratio: 1 / var(--coefficient);
+	background: url(/images/usa-map.svg) center no-repeat;
+	background-size: contain;
+}
+
+.car {
+	position: absolute;
+    top: 28%;
+    right: 8%;
+    width: 76%;
+	aspect-ratio: 1/0.6;
+	background: url(/images/car.svg) center no-repeat;
+	background-size: cover;
+	opacity: 0;
+	animation: carAnimation 0.75s ease-out 0.5s forwards;
 }
 
 .download_btn {
-    display: inline-block;
-    justify-self: self-start;
-    background-color: var(--secondary);
-    color: #fff;
-    font-size: 1.5em;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: var(--border-radius-small);
-    padding: 0.5em 2em;
+	justify-self: self-start;
+	background-color: var(--secondary);
+	color: #fff;
+	font-size: 1.5em;
+	font-weight: 600;
 }
 
 @media screen and (min-width: 769px) {
-    .section {
-        height: calc(50em * 0.7);
-    }
+	.section {
+		height: calc(50em * var(--coefficient));
+	}
 
-    .image {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 50em;
-        z-index: -1;
+	.image {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 50em;
+		z-index: -1;
+	}
+
+    .car {
+        transform: translateX(55vw);
     }
 }
 
 @media screen and (max-width: 768px) {
-    .headline br:last-child {
-        display: none;
+	.headline br:last-child {
+		display: none;
+	}
+
+    .car {
+        transform: translateX(78vw);
     }
+}
+
+@keyframes carAnimation {
+	from {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }
