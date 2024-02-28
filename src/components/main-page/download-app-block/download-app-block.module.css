@@ -1,0 +1,44 @@
+.section {
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-gap: 2em;
+}
+
+.image {
+    aspect-ratio: 1/0.7;
+    background-image: url(/logo.png);
+    border: 1px solid;
+    box-sizing: border-box;
+}
+
+.download_btn {
+    display: inline-block;
+    justify-self: self-start;
+    background-color: var(--secondary);
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--border-radius-small);
+    padding: 0.5em 2em;
+}
+
+@media screen and (min-width: 769px) {
+    .section {
+        height: calc(50em * 0.7);
+    }
+
+    .image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50em;
+        z-index: -1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .headline br:last-child {
+        display: none;
+    }
+}

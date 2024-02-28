@@ -1,3 +1,11 @@
-export default function Home() {
-	return <div>Home page</div>
+import DownloadAppBlock from '@components/main-page/download-app-block/download-app-block'
+
+const Home = () => {
+    return (
+        <>
+            <DownloadAppBlock />
+        </>
+    )
 }
+
+export default Home
