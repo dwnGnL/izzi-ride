@@ -11,8 +11,8 @@ function useDevice(): DeviceType | undefined {
 	}, [])
 
 	function deviceSizeHandler(): DeviceType {
-		if (window.screen.width <= 425) return 'mobile'
-		if (window.screen.width > 768) return 'desktop'
+		if (window.innerWidth <= 425) return 'mobile'
+		if (window.innerWidth > 768) return 'desktop'
 		return 'tablet'
 	}
 	return deviceType
