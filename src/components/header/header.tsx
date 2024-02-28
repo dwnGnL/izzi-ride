@@ -46,9 +46,11 @@ const Header = () => {
 
 		borderRadiusHandler(headerElem)
 
+		window.addEventListener('resize', borderRadiusHandler.bind(null, headerElem))
 		document.addEventListener('scroll', borderRadiusHandler.bind(null, headerElem))
 
 		return () => {
+			window.removeEventListener('resize', borderRadiusHandler.bind(null, headerElem))
 			document.removeEventListener('scroll', borderRadiusHandler.bind(null, headerElem))
 		}
 	}, [header])
@@ -61,7 +63,6 @@ const Header = () => {
 
 		let currentPosition = elem.getBoundingClientRect().top
 		let currentRadius = defaultRadius
-
 		
 		let percent = currentPosition / defaultPosition
 
