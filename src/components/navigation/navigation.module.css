@@ -3,7 +3,7 @@
 	grid-auto-flow: column;
 	justify-content: start;
 	align-items: center;
-	gap: 1.25em;
+	grid-gap: 1.25em;
 
 }
 

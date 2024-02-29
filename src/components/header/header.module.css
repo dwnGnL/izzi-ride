@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: 6em 1fr max-content;
     align-items: center;
-    gap: 2em;
+    grid-gap: 2em;
     background-color: var(--primary);
     color: #fff;
     font-size: 1.3em;

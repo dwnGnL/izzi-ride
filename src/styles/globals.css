@@ -23,24 +23,26 @@ main {
 
 header,
 footer,
-main {
+section {
     width: 90vw;
     max-width: 1200px;
     margin: auto;
-    overflow-x: hidden;
 }
 
 section {
     position: relative;
+    overflow-x: hidden;
 }
 
 h1 {
     font-size: 4em;
+    line-height: 1.1;
 }
 
 h2 {
     font-size: 3em;
     font-weight: 600;
+    line-height: 1.1;
 }
 
 @media screen and (max-width: calc(1200px + 10vw)) {
@@ -52,6 +54,10 @@ h2 {
 @media screen and (max-width: 768px) {
     body {
         font-size: 2vw;
+    }
+
+    h1 {
+        font-size: 3em;
     }
 }
 
