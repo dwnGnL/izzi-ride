@@ -7,9 +7,9 @@ import Link from 'next/link'
 
 import styles from './navigation.module.css'
 
-const Navigation: FC<NavigationParams> = ({ navigationList, extraClass }) => {
+const Navigation: FC<NavigationParams> = ({ navigationList, extraClass, activeClass, callback }) => {
 	const router = useRouter()
-	const isActive = (linkHref: string) => (router.pathname === `/${linkHref}` ? styles.active : '')
+	const isActive = (linkHref: string) => (router.pathname === `/${linkHref}` ? activeClass || styles.active : '')
 
 	return (
 		<nav className={`${styles.header_nav} ${extraClass}`}>
@@ -21,6 +21,7 @@ const Navigation: FC<NavigationParams> = ({ navigationList, extraClass }) => {
 						title={navItem.title}
 						target={navItem.target}
 						className={`${styles.navigation_button} ${isActive(navItem.href)}`}
+						onClick={callback}
 					>
 						{navItem.title}
 					</Link>

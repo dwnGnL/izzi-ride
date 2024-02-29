@@ -1,13 +1,13 @@
 import type { FC } from 'react'
 
-import styles from './hamburger-menu.module.css'
+import styles from './hamburger-menu-icon.module.css'
 
 type HamburgerMenuOptions = {
 	isOpened: boolean
 	menuHandler: () => void
 }
 
-const HamburgerMenu: FC<HamburgerMenuOptions> = ({ isOpened, menuHandler }) => {
+const HamburgerMenuIcon: FC<HamburgerMenuOptions> = ({ isOpened, menuHandler }) => {
 	const burgerClassName = isOpened
 		? `${styles.hamburger_btn} ${styles.active}`
 		: styles.hamburger_btn
@@ -21,4 +21,4 @@ const HamburgerMenu: FC<HamburgerMenuOptions> = ({ isOpened, menuHandler }) => {
 	)
 }
 
-export default HamburgerMenu
+export default HamburgerMenuIcon

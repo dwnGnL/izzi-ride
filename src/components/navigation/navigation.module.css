@@ -1,5 +1,4 @@
 .header_nav {
-	--color: #fff;
 	display: grid;
 	grid-auto-flow: column;
 	justify-content: start;
@@ -10,7 +9,7 @@
 
 .navigation_button {
 	position: relative;
-	color: var(--color);
+	color: inherit;
 	text-decoration: none;
 }
 
@@ -21,7 +20,7 @@
 	left: 0;
 	width: 0;
 	height: 0.1em;
-	background-color: var(--color);
+	background-color: #fff;
 	transition: width 0.3s;
 }
 
