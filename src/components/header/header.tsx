@@ -80,7 +80,7 @@ const Header = () => {
 			{deviceType !== 'desktop' && isMenuOpened && (
 				<div
 					className={styles.menu_overlay}
-					style={{ paddingTop: `calc(${menuTopPadding}px + 1.5em)` }}
+					style={{ paddingTop: `calc(${menuTopPadding}px + 4em)` }}
 				>
 					<Navigation navigationList={navigation} extraClass={styles.mobile_menu} />
 				</div>

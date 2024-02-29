@@ -90,6 +90,8 @@
 		text-align: center;
         padding-inline: 2em;
 		border-radius: 0;
+		gap: 2em;
+		font-size: 1.75em;
 	}
 }
 

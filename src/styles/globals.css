@@ -15,10 +15,6 @@ body {
     padding-top: 2em;
 }
 
-body > div {
-    overflow-x: hidden;
-}
-
 body > div,
 main {
     display: grid;
@@ -31,6 +27,7 @@ main {
     width: 90vw;
     max-width: 1200px;
     margin: auto;
+    overflow-x: hidden;
 }
 
 section {
