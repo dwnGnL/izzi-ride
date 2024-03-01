@@ -7,9 +7,9 @@
 	display: grid;
 }
 
-.img {
+.media {
 	grid-area: img;
-	background-color: rebeccapurple;
+	background-color: #dce4f4;
 	border-radius: var(--border-radius-big);
 }
 
@@ -49,7 +49,7 @@
 			'. img';
 	}
 
-	.img {
+	.media {
 		aspect-ratio: 1/1.2;
 	}
 }
@@ -64,7 +64,7 @@
 		grid-gap: 2em;
 	}
 
-	.img {
+	.media {
 		aspect-ratio: 1/0.85;
 	}
 }

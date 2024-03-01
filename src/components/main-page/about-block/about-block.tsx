@@ -30,7 +30,7 @@ const AboutBlock = () => {
 const AboutItem: FC<About> = ({ tag, headline, copy }) => {
 	return (
 		<div className={styles.about}>
-			<div className={styles.img}></div>
+			<div className={styles.media}></div>
 			<div className={styles.tag}>{tag}</div>
 			<h1 className={styles.headline}>{headline}</h1>
 			<div className={styles.copy}>{copy}</div>
