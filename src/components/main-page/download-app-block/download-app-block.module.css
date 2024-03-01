@@ -30,6 +30,12 @@
 	color: #fff;
 	font-size: 1.5em;
 	font-weight: 600;
+    transition: all 0.3s;
+}
+
+.download_btn:hover {
+    background-color: var(--tertiary);
+	color: var(--secondary);
 }
 
 @media screen and (min-width: 769px) {

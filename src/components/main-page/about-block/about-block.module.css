@@ -9,16 +9,8 @@
 
 .media {
 	grid-area: img;
-	background-color: #dce4f4;
+	background-color: var(--tertiary);
 	border-radius: var(--border-radius-big);
-}
-
-.tag {
-	grid-area: tag;
-	justify-self: start;
-	border: 1px solid;
-	border-radius: 3em;
-	padding: 0.75em 1em;
 }
 
 .headline {
@@ -33,7 +25,6 @@
 @media screen and (min-width: 769px) {
 	.about {
 		grid-template-areas:
-			'img tag'
 			'img headline'
 			'img copy'
 			'img .';
@@ -43,7 +34,6 @@
 
 	.about:nth-child(even) {
 		grid-template-areas:
-			'tag img'
 			'headline img'
 			'copy img'
 			'. img';
@@ -52,12 +42,15 @@
 	.media {
 		aspect-ratio: 1/1.2;
 	}
+
+	.headline {
+		margin-top: 0.5em;
+	}
 }
 
 @media screen and (max-width: 768px) {
 	.about {
 		grid-template-areas:
-			'tag'
 			'img'
 			'headline'
 			'copy';

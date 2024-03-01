@@ -6,6 +6,7 @@
 body {
     --primary: #407bff;
     --secondary: #314064;
+    --tertiary: #dce4f4;
 
     --border-radius-small: 0.5em;
     --border-radius-regular: 1em;
@@ -22,7 +23,7 @@ main {
 }
 
 main {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 header,
@@ -41,6 +42,12 @@ h1 {
 
 h2 {
     font-size: 3em;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+h3 {
+    font-size: 2.5em;
     font-weight: 600;
     line-height: 1.1;
 }

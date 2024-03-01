@@ -3,8 +3,8 @@
     top: 0px;
     display: grid;
     grid-template-columns: 6em 1fr max-content;
-    align-items: center;
     grid-gap: 2em;
+    align-items: center;
     background-color: var(--primary);
     color: #fff;
     font-size: 1.3em;
@@ -20,6 +20,12 @@
     color: var(--primary);
     font-weight: 600;
     padding-inline: 3em;
+    transition: all 0.3s;
+}
+
+.header_btn:hover {
+    background-color: var(--tertiary);
+	color: var(--secondary);
 }
 
 @media screen and (max-width: 768px) {

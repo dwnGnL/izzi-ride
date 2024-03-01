@@ -44,6 +44,14 @@
 	grid-gap: 0.75em;
 }
 
+.social a {
+	transition: opacity 0.3s;
+}
+
+.social a:hover {
+	opacity: 0.6;
+}
+
 .bottom_part {
 	display: grid;
 	width: 100%;
