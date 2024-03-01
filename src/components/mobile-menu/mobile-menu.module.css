@@ -1,0 +1,41 @@
+body:has(.menu_overlay) {
+    overflow: hidden;
+}
+
+.menu_overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100lvh;
+    background-color: #fff;
+    padding-inline: 5vw;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.mobile_menu {
+    grid-auto-flow: row;
+    justify-content: initial;
+    gap: 0.75em;
+    color: #263238;
+    font-size: 2em;
+}
+
+.mobile_menu a {
+    border-radius: var(--border-radius-small);
+    padding: 0.5em 1em;
+    transition: background-color 0.3s;
+}
+
+.mobile_menu a.active {
+    background-color: rgba(64, 123, 255, 0.14);
+}
+
+.menu_placeholder {
+    display: grid;
+    grid-gap: 2em;
+    margin-top: 7vh;
+}
+
+.copy {
+    font-size: 1.2em;
+}
