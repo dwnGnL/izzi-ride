@@ -21,17 +21,17 @@ main {
     grid-gap: 4em;
 }
 
+main {
+    overflow-x: hidden;
+}
+
 header,
 footer,
 section {
+    position: relative;
     width: 90vw;
     max-width: 1200px;
     margin: auto;
-}
-
-section {
-    position: relative;
-    overflow-x: hidden;
 }
 
 h1 {
