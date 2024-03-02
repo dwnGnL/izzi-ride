@@ -17,9 +17,9 @@
     top: 28%;
     right: 8%;
     width: 76%;
+	height: auto;
 	aspect-ratio: 1/0.6;
-	background: url(/images/car.svg) center no-repeat;
-	background-size: cover;
+	object-fit: cover;
 	opacity: 0;
 	animation: carAnimation 0.75s ease-out 0.5s forwards;
 }
@@ -30,7 +30,7 @@
 	color: #fff;
 	font-size: 1.5em;
 	font-weight: 600;
-    transition: all 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .download_btn:hover {

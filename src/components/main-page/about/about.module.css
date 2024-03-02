@@ -1,6 +1,6 @@
 .about_section {
 	display: grid;
-	gap: 4em;
+	grid-gap: 4em;
 }
 
 .about {

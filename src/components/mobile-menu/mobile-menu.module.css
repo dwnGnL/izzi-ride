@@ -8,14 +8,13 @@ body:has(.menu_overlay) {
     height: 100lvh;
     background-color: #fff;
     padding-inline: 5vw;
-    box-sizing: border-box;
     z-index: 1;
 }
 
 .mobile_menu {
     grid-auto-flow: row;
     justify-content: initial;
-    gap: 0.75em;
+    grid-gap: 0.75em;
     color: #263238;
     font-size: 2em;
 }

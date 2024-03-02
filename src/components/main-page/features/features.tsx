@@ -11,7 +11,7 @@ export type Feature = {
 	copy: string
 }
 
-const FeaturesBlock = () => {
+const Features = () => {
 	return (
 		<section className={styles.coming_soon_section}>
 			<h3 className={styles.headline}>Coming soon</h3>
@@ -41,4 +41,4 @@ const Feature: FC<Feature> = ({ icon, title, copy }) => {
 	)
 }
 
-export default FeaturesBlock
+export default Features

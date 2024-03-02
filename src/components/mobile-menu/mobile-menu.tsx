@@ -1,5 +1,5 @@
 import Navigation from '@components/navigation/navigation'
-import AppStoreGooglePlay from '@common/app-store-google-play/app-store-google-play'
+import DownloadAtButtons from '@common/download-at-buttons/download-at-buttons'
 
 import { navigation } from '@components/header/constant'
 
@@ -10,7 +10,7 @@ const MobileMenu = ({ paddingTop, closeMenu }: { paddingTop: number; closeMenu: 
         <div className={styles.menu_overlay} style={{ paddingTop: `calc(${paddingTop}px + 1em)` }}>
             <Navigation
                 navigationList={navigation}
-                extraClass={styles.mobile_menu}
+                className={styles.mobile_menu}
                 activeClass={styles.active}
                 callback={closeMenu}
             />
@@ -31,7 +31,7 @@ const MenuPlaceholder = () => {
 
             <div className={styles.copy}>Get it and enjoy your trip</div>
 
-            <AppStoreGooglePlay type='dark' />
+            <DownloadAtButtons type='dark' />
         </div>
     )
 }

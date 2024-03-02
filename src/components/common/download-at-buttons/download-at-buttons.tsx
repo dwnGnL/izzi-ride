@@ -7,11 +7,11 @@ import AppStoreLight from '@public/images/app-store-light.svg'
 import GooglePlayDark from '@public/images/google-play-dark.svg'
 import GooglePlayLight from '@public/images/google-play-light.svg'
 
-import styles from './app-store-google-play.module.css'
+import styles from './download-at-buttons.module.css'
 
-const AppStoreGooglePlay = ({ type = 'light' }: { type?: 'dark' | 'light' }) => {
+const DownloadAtButtons = ({ type = 'light', className }: { type?: 'dark' | 'light', className?: string }) => {
     return (
-        <div className={styles.download_app}>
+        <div className={`${styles.download_app} ${className}`}>
             <Link href='/' title='App Store'>
                 <Image
                     src={type === 'light' ? AppStoreLight : AppStoreDark}
@@ -25,4 +25,4 @@ const AppStoreGooglePlay = ({ type = 'light' }: { type?: 'dark' | 'light' }) => 
     )
 }
 
-export default AppStoreGooglePlay
+export default DownloadAtButtons

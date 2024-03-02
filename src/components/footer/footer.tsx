@@ -10,7 +10,7 @@ import styles from './footer.module.css'
 const Footer = () => {
 	return (
 		<footer className={styles.footer}>
-			<Logo extraClass={styles.footer_logo} />
+			<Logo className={styles.footer_logo} />
 			<Info />
 			<Navigation />
 			<Social />

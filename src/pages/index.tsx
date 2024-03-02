@@ -1,13 +1,15 @@
-import DownloadAppBlock from '@components/main-page/download-app-block/download-app-block'
-import AboutBlock from '@components/main-page/about-block/about-block'
-import FeaturesBlock from '@components/main-page/features/features'
+import Introduction from '@components/main-page/introduction/introduction'
+import About from '@components/main-page/about/about'
+import Features from '@components/main-page/features/features'
+import DownloadAt from '@components/main-page/download-at/download-at'
 
 const Home = () => {
     return (
         <>
-            <DownloadAppBlock />
-            <AboutBlock />
-            <FeaturesBlock />
+            <Introduction />
+            <About />
+            <Features />
+            <DownloadAt />
         </>
     )
 }

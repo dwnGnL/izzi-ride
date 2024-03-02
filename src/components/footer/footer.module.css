@@ -6,7 +6,6 @@
 	font-size: 1.3em;
 	border-radius: var(--border-radius-big) var(--border-radius-big) 0 0;
 	padding: 3em 3em 0.75em 3em;
-	box-sizing: border-box;
 }
 
 .footer a {

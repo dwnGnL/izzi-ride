@@ -2,7 +2,7 @@ import type { HTMLAttributeAnchorTarget } from 'react'
 
 export type NavigationParams = {
 	navigationList: Array<NavigationItem>
-	extraClass?: string
+	className?: string
 	activeClass?: string
 	callback?: () => void
 }

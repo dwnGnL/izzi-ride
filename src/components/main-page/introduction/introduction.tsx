@@ -1,12 +1,18 @@
+import Image from 'next/image'
+
 import LinkButton from '@common/link-button/link-button'
 
-import styles from './download-app-block.module.css'
+import car from '@public/images/car.svg'
 
-const DownloadAppBlock = () => {
+import styles from './introduction.module.css'
+
+const Introduction = () => {
     return (
         <section className={styles.section}>
             <div className={styles.image}>
+                <Image src={car} alt='car' className={styles.car} />
                 <div className={styles.car}></div>
+
             </div>
 
             <h2 className={styles.headline}>
@@ -16,9 +22,9 @@ const DownloadAppBlock = () => {
                 <br /> IZZI RIDE
             </h2>
 
-            <LinkButton href='/' title='Download app' extraClass={styles.download_btn} />
+            <LinkButton href='/' title='Download app' className={styles.download_btn} />
         </section>
     )
 }
 
-export default DownloadAppBlock
+export default Introduction

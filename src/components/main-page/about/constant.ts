@@ -1,4 +1,4 @@
-import type { About } from './about-block'
+import type { About } from './about'
 
 export const aboutList: About[] = [
 	{

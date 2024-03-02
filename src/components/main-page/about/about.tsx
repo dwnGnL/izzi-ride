@@ -2,14 +2,14 @@ import type { FC } from 'react'
 
 import { aboutList } from './constant'
 
-import styles from './about-block.module.css'
+import styles from './about.module.css'
 
 export type About = {
 	headline: string
 	copy: string
 }
 
-const AboutBlock = () => {
+const About = () => {
 	return (
 		<section className={styles.about_section}>
 			{aboutList.map((about, index) => {
@@ -35,4 +35,4 @@ const AboutItem: FC<About> = ({ headline, copy }) => {
 	)
 }
 
-export default AboutBlock
+export default About

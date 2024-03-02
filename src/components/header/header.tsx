@@ -65,7 +65,7 @@ const Header = () => {
                 {deviceType === 'desktop' && (
                     <>
                         <Navigation navigationList={navigation} />
-                        <LinkButton title='Get it' href='/' extraClass={styles.header_btn} />
+                        <LinkButton title='Get it' href='/' className={styles.header_btn} />
                     </>
                 )}
 
