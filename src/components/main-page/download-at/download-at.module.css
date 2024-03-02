@@ -1,0 +1,77 @@
+.download_section {
+	background-color: var(--secondary);
+	color: #fff;
+	border-radius: var(--border-radius-regular);
+	overflow: hidden;
+}
+
+.download_section > div {
+	display: grid;
+	grid-gap: 0.5em;
+	font-size: 1.1em;
+}
+
+.headline {
+	line-height: 1;
+}
+
+.text {
+	font-size: 1.1em;
+}
+
+.image {
+	animation: phoneAnimation 0.75s forwards;
+}
+
+@media screen and (min-width: 769px) {
+	.download_section > div {
+		padding: 10em 4em;
+	}
+
+	.buttons {
+		margin-top: 4em;
+	}
+
+	.image {
+		position: absolute;
+		top: 1em;
+		right: 6em;
+		width: 19.5em;
+		height: auto;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.download_section > div {
+		padding: 2em 3em;
+	}
+
+	.buttons {
+		margin-top: 0.5em;
+	}
+
+	.image {
+		width: auto;
+		height: 30em;
+		justify-self: center;
+		margin-bottom: 2em;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.download_section > div {
+		font-size: 0.9em;
+	}
+}
+
+@keyframes phoneAnimation {
+	from {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
