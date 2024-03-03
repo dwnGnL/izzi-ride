@@ -53,7 +53,7 @@ const Social = () => {
 		<ul className={styles.social}>
 			{socials.map(social => (
 				<li key={social.title.toLowerCase()}>
-					<Link href={social.href} title={social.title} target={social.target}>
+					<Link href={social.href} title={social.title} target='_blank'>
 						<Image src={social.icon} alt={social.title} />
 					</Link>
 				</li>

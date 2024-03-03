@@ -9,20 +9,37 @@ import GooglePlayLight from '@public/images/google-play-light.svg'
 
 import styles from './download-at-buttons.module.css'
 
-const DownloadAtButtons = ({ type = 'light', className }: { type?: 'dark' | 'light', className?: string }) => {
-    return (
-        <div className={`${styles.download_app} ${className}`}>
-            <Link href='/' title='App Store'>
-                <Image
-                    src={type === 'light' ? AppStoreLight : AppStoreDark}
-                    alt='Download IZZI RIDE on the App Store'
-                />
-            </Link>
-            <Link href='/' title='Google Play'>
-                <Image src={type === 'light' ? GooglePlayLight : GooglePlayDark} alt='Get IZZI RIDE on Google Play' />
-            </Link>
-        </div>
-    )
+const DownloadAtButtons = ({
+	type = 'light',
+	className,
+}: {
+	type?: 'dark' | 'light'
+	className?: string
+}) => {
+	return (
+		<div className={`${styles.download_app} ${className}`}>
+			<Link
+				href='https://apps.apple.com/us/app/izzi-ride/id6449208978'
+				target='_blank'
+				title='App Store'
+			>
+				<Image
+					src={type === 'light' ? AppStoreLight : AppStoreDark}
+					alt='Download IZZI RIDE on the App Store'
+				/>
+			</Link>
+			<Link
+                href='/'
+                title='Google Play'
+                target='_blank'
+            >
+				<Image
+					src={type === 'light' ? GooglePlayLight : GooglePlayDark}
+					alt='Get IZZI RIDE on Google Play'
+				/>
+			</Link>
+		</div>
+	)
 }
 
 export default DownloadAtButtons

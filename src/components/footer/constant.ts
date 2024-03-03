@@ -39,25 +39,21 @@ export const socials = [
 	{
 		title: 'Instagram',
 		href: 'https://www.instagram.com/',
-		target: '_blank',
         icon: instagram,
 	},
 	{
 		title: 'Twitter',
 		href: 'https://twitter.com/',
-		target: '_blank',
         icon: twitter,
 	},
 	{
 		title: 'YouTube',
 		href: 'https://www.youtube.com/',
-		target: '_blank',
         icon: youtube,
 	},
 	{
 		title: 'TikTok',
 		href: 'https://www.tiktok.com/',
-		target: '_blank',
         icon: tiktok,
 	},
 ]
