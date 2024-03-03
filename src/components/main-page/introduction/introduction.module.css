@@ -64,6 +64,11 @@
     .car {
         transform: translateX(78vw);
     }
+
+	.download_btn {
+		width: 100%;
+		padding: 1em 2em;
+	}
 }
 
 @keyframes carAnimation {

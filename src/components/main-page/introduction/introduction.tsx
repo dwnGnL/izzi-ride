@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import LinkButton from '@common/link-button/link-button'
+import Button from '@common/button/button'
 
 import car from '@public/images/car.svg'
 
@@ -22,7 +22,7 @@ const Introduction = () => {
                 <br /> IZZI RIDE
             </h2>
 
-            <LinkButton href='/' title='Download app' className={styles.download_btn} />
+            <Button href='/' title='Download app' className={styles.download_btn} />
         </section>
     )
 }

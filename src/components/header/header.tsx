@@ -4,7 +4,7 @@ import useDevice from '@hooks/use-device'
 
 import Logo from '@common/logo/logo'
 import Navigation from '@components/navigation/navigation'
-import LinkButton from '@common/link-button/link-button'
+import Button from '@common/button/button'
 import HamburgerMenuIcon from '@components/hamburger-menu-icon/hamburger-menu-icon'
 import MobileMenu from '@components/mobile-menu/mobile-menu'
 
@@ -65,7 +65,7 @@ const Header = () => {
                 {deviceType === 'desktop' && (
                     <>
                         <Navigation navigationList={navigation} />
-                        <LinkButton title='Get it' href='/' className={styles.header_btn} />
+                        <Button title='Get it' href='/' className={styles.header_btn} />
                     </>
                 )}
 
