@@ -13,15 +13,18 @@ body {
     --border-radius-small: 0.5em;
     --border-radius-regular: 1em;
     --border-radius-big: 1.5em;
-
-    margin: 0;
-    padding-top: 2em;
 }
 
 body > div,
 main {
     display: grid;
     grid-gap: 4em;
+}
+
+body > div {
+    min-height: 100vh;
+    grid-template-rows: max-content 1fr max-content;
+    padding-top: 2em;
 }
 
 main {
