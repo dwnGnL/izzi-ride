@@ -36,7 +36,6 @@
 }
 
 .navigation a {
-	justify-self: start;
 	line-height: 1;
 	border-bottom: 1px solid;
 }
@@ -111,11 +110,19 @@
 		border-radius: 0;
         padding-inline: 2em;
 	}
+
+	.navigation {
+		justify-items: center;
+	}
 }
 
 @media screen and (min-width: 550px) {
 	.navigation {
 		align-content: space-between;
+	}
+
+	.navigation a {
+		justify-self: start;
 	}
 
     .bottom_part {
