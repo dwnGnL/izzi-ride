@@ -1,63 +1,134 @@
 .about_section {
-	display: grid;
-	grid-gap: 4em;
+    display: grid;
+    grid-gap: 4em;
 }
 
 .about {
-	display: grid;
+    display: grid;
 }
 
 .media {
-	grid-area: img;
-	background-color: var(--tertiary);
-	border-radius: var(--border-radius-big);
+    position: relative;
+    grid-area: img;
+    background-color: var(--tertiary);
+    border-radius: var(--border-radius-big);
+    overflow: hidden;
+}
+
+.media iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+.media .phone_overlay {
+    position: absolute;
+    top: 6em;
+    left: calc(50% - 23em / 2);
+    width: 23em;
+}
+
+.media .phone_overlay img {
+    width: 100%;
+    height: auto;
+}
+
+.media[data-title='Choose a route and time'] .phone_overlay::after {
+    content: '';
+    position: absolute;
+    top: 48.3%;
+    left: 8.6%;
+    width: 83%;
+    height: 8.8%;
+    background: url(/images/phone-direction-from-where.png) 18% 50% no-repeat;
+    background-size: cover;
+    border-radius: 0.65em;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: all 0.3s 0.5s;
+}
+
+.media[data-title='Choose a route and time'] .phone_overlay[style='opacity: 1; transform: none;']::after {
+    left: -2.5%;
+    width: 105%;
+    background: url(/images/phone-direction-from-tampa.png) 18% 50% no-repeat;
+    background-size: cover;
+    box-shadow: -0.25em 0.25em 0.5em rgba(0, 0, 0, 0.15);
+    transform: scale(1.01);
+}
+
+.media > * {
+    position: relative;
+    z-index: 1;
+}
+
+.media[data-title='Choose a route and time']::before,
+.media[data-title='Choose a route and time']::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.media[data-title='Choose a route and time']::before {
+    background: url(/images/big-star.png) 0 0 no-repeat;
+    background-size: 30%;
 }
 
 .headline {
-	grid-area: headline;
+    grid-area: headline;
 }
 
 .copy {
-	grid-area: copy;
-	font-size: 1.4em;
+    grid-area: copy;
+    font-size: 1.4em;
 }
 
 @media screen and (min-width: 769px) {
-	.about {
-		grid-template-areas:
-			'img headline'
-			'img copy'
-			'img .';
-		grid-template-columns: 1fr 1fr;
-		grid-gap: 3em 2em;
-	}
+    .about {
+        grid-template-areas:
+            'img headline'
+            'img copy'
+            'img .';
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 3em 2em;
+    }
 
-	.about:nth-child(even) {
-		grid-template-areas:
-			'headline img'
-			'copy img'
-			'. img';
-	}
+    .about:nth-child(even) {
+        grid-template-areas:
+            'headline img'
+            'copy img'
+            '. img';
+    }
 
-	.media {
-		aspect-ratio: 1/1.2;
-	}
+    .media {
+        aspect-ratio: 1/1.2;
+    }
 
-	.headline {
-		margin-top: 0.5em;
-	}
+    .media[data-title='Choose a route and time']::after {
+        background: url(/images/rings.png) 100% 100% no-repeat;
+        background-size: 85%;
+    }
+
+    .headline {
+        margin-top: 0.5em;
+    }
 }
 
 @media screen and (max-width: 768px) {
-	.about {
-		grid-template-areas:
-			'img'
-			'headline'
-			'copy';
-		grid-gap: 2em;
-	}
+    .about {
+        grid-template-areas:
+            'img'
+            'headline'
+            'copy';
+        grid-gap: 2em;
+    }
 
-	.media {
-		aspect-ratio: 1/0.85;
-	}
+    .media {
+        aspect-ratio: 1/0.85;
+    }
+
+    .media[data-title='Choose a route and time']::after {
+        background: url(/images/rings.png) 100% 250% no-repeat;
+        background-size: 85%;
+    }
 }

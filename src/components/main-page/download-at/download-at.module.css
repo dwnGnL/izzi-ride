@@ -1,8 +1,21 @@
 .download_section {
+	position: relative;
 	background-color: var(--secondary);
 	color: #fff;
 	border-radius: var(--border-radius-regular);
 	overflow: hidden;
+}
+
+.download_section > * {
+	position: relative;
+	z-index: 1;
+}
+
+.download_section::before,
+.download_section::after {
+	content: '';
+	position: absolute;
+	inset: 0;
 }
 
 .download_section > div {
@@ -19,11 +32,17 @@
 	font-size: 1.1em;
 }
 
-.image {
-	animation: phoneAnimation 0.75s forwards;
-}
-
 @media screen and (min-width: 769px) {
+	.download_section::before {
+		background: url(/images/download-at-bg_top.png) 0 0 no-repeat;
+		background-size: 100%;
+	}
+
+	.download_section::after {
+		background: url(/images/download-at-bg_bottom.png) 0 100% no-repeat;
+		background-size: 100%;
+	}
+
 	.download_section > div {
 		padding: 10em 4em;
 	}
@@ -42,6 +61,16 @@
 }
 
 @media screen and (max-width: 768px) {
+	.download_section::before {
+		background: url(/images/download-at-bg_top-mobile.png) 0 0 no-repeat;
+		background-size: 100%;
+	}
+
+	.download_section::after {
+		background: url(/images/download-at-bg_bottom-mobile.png) 0 65% no-repeat;
+		background-size: 100%;
+	}
+
 	.download_section > div {
 		padding: 2em 3em;
 	}
@@ -61,17 +90,5 @@
 @media screen and (max-width: 550px) {
 	.download_section > div {
 		font-size: 0.9em;
-	}
-}
-
-@keyframes phoneAnimation {
-	from {
-		opacity: 0;
-		transform: translateY(100%);
-	}
-
-	to {
-		opacity: 1;
-		transform: translateY(0);
 	}
 }

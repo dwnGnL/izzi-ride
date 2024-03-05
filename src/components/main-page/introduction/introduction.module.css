@@ -1,83 +1,62 @@
 .section {
-	--coefficient: 0.75;
-	display: grid;
-	grid-auto-rows: max-content;
-	grid-gap: 2em;
+    --coefficient: 0.75;
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-gap: 2em;
 }
 
 .image {
-	position: relative;
-	aspect-ratio: 1 / var(--coefficient);
-	background: url(/images/usa-map.svg) center no-repeat;
-	background-size: contain;
+    position: relative;
+    aspect-ratio: 1 / var(--coefficient);
+    background: url(/images/usa-map.svg) center no-repeat;
+    background-size: contain;
 }
 
 .car {
-	position: absolute;
+    position: absolute;
     top: 28%;
     right: 8%;
     width: 76%;
-	height: auto;
-	aspect-ratio: 1/0.6;
-	object-fit: cover;
-	opacity: 0;
-	animation: carAnimation 0.75s ease-out 0.5s forwards;
+    height: auto;
+    aspect-ratio: 1/0.6;
+    object-fit: cover;
 }
 
 .download_btn {
-	justify-self: self-start;
-	background-color: var(--secondary);
-	color: #fff;
-	font-size: 1.5em;
-	font-weight: 600;
+    justify-self: self-start;
+    background-color: var(--secondary);
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 600;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .download_btn:hover {
     background-color: var(--tertiary);
-	color: var(--secondary);
+    color: var(--secondary);
 }
 
 @media screen and (min-width: 769px) {
-	.section {
-		height: calc(50em * var(--coefficient));
-	}
+    .section {
+        height: calc(50em * var(--coefficient));
+    }
 
-	.image {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 50em;
-		z-index: -1;
-	}
-
-    .car {
-        transform: translateX(55vw);
+    .image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50em;
+        z-index: -1;
     }
 }
 
 @media screen and (max-width: 768px) {
-	.headline br:last-child {
-		display: none;
-	}
-
-    .car {
-        transform: translateX(78vw);
+    .headline br:last-child {
+        display: none;
     }
 
-	.download_btn {
-		width: 100%;
-		padding: 1em 2em;
-	}
-}
-
-@keyframes carAnimation {
-	from {
-		opacity: 0;
-		transform: translateX(100%);
-	}
-	to {
-		opacity: 1;
-		transform: translateX(0);
-	}
+    .download_btn {
+        width: 100%;
+        padding: 1em 2em;
+    }
 }

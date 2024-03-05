@@ -1,59 +1,60 @@
 .contact_section {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .form button {
-	background-color: var(--secondary);
-	color: #fff;
-	transition: background-color 0.3s, color 0.3s;
+    background-color: var(--secondary);
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .form button:hover {
-	background-color: #fff;
-	color: var(--primary);
+    background-color: #fff;
+    color: var(--primary);
 }
 
 .form_copy {
-	color: rgba(0, 0, 0, .45);
-	font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 0.8em;
 }
 
 .form_copy a {
-	color: inherit;
-	line-height: 1;
-	border-bottom: 1px solid;
+    color: inherit;
+    line-height: 1;
+    border-bottom: 1px solid;
 }
 
 @media screen and (min-width: 769px) {
-	.contact_section > div {
-		background-color: var(--tertiary);
-		border-radius: var(--border-radius-regular);
-		padding: 4em 5em 7em;
-	}
+    .contact_section > div {
+        background: url(/images/contact-us-bg.svg) 100% 100% no-repeat var(--tertiary);
+        background-size: auto 95%;
+        border-radius: var(--border-radius-regular);
+        padding: 4em 5em 7em;
+    }
 
-	.form {
-		justify-content: start;
-	}
+    .form {
+        justify-content: start;
+    }
 
-	.form input {
-		width: 30em;
-	}
+    .form input {
+        width: 30em;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .form > div {
-		background-color: var(--tertiary);
-		border-radius: var(--border-radius-regular);
-		padding: 4em;
-	}
+        background-color: var(--tertiary);
+        border-radius: var(--border-radius-regular);
+        padding: 4em;
+    }
 
     .form {
         font-size: 1.2em;
     }
 
-	.form input {
-		width: 100%;
-	}
+    .form input {
+        width: 100%;
+    }
 
     .form button {
         font-size: 1.5em;

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 import Form from '@common/form/form'
 
@@ -6,12 +7,30 @@ import { inputs } from './constant'
 
 import styles from './contact-us.module.css'
 
+const animation = {
+	hidden: {
+		opacity: 0,
+		y: 100,
+	},
+	visible: {
+		opacity: 1,
+		y: 0,
+	}
+}
+
 const ContactUs = () => {
 	return (
-		<section className={styles.contact_section}>
+		<motion.section
+			initial="hidden"
+			whileInView="visible"
+			viewport={{ amount: 0.4, once: true }}
+			variants={animation}
+			className={styles.contact_section}
+			data-title={'contact us'}
+		>
 			<div>
 				<Form
-					endpoint='https://jsonplaceholder.typicode.com/posts'
+					endpoint='http://ezride.pro/api/v1/client/complaint'
 					inputs={inputs}
 					buttonText='Send Message'
 					className={styles.form}
@@ -24,7 +43,7 @@ const ContactUs = () => {
 					</div>
 				</Form>
 			</div>
-		</section>
+		</motion.section>
 	)
 }
 

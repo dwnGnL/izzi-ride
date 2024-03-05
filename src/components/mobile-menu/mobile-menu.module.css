@@ -8,7 +8,7 @@ body:has(.menu_overlay) {
     height: 100lvh;
     background-color: #fff;
     padding-inline: 5vw;
-    z-index: 1;
+    z-index: 8;
 }
 
 .mobile_menu {
