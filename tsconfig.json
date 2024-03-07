@@ -16,7 +16,9 @@
       "@common/*": ["./src/components/common/*"],
       "@components/*": ["./src/components/*"],
       "@type/*": ["./src/types/*"],
+      "@hoc/*": ["./src/hoc/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@helpers/*": ["./src/helpers/*"],
       "@public/*": ["./public/*"],
       "@/*": ["./src/*"],
     }

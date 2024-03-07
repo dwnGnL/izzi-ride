@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import FadeInOnScroll from '@components/hoc/fade-in-on-scroll'
+import FadeInOnScroll from '@hoc/fade-in-on-scroll'
 import Form from '@common/form/form'
 
 import { inputs } from './constant'

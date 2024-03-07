@@ -2,7 +2,7 @@
 import type { FC } from 'react'
 
 import { useState, useRef, useEffect } from 'react'
-import FadeInOnScroll from '@components/hoc/fade-in-on-scroll'
+import FadeInOnScroll from '@hoc/fade-in-on-scroll'
 import Image from 'next/image'
 import useDevice from '@hooks/use-device'
 

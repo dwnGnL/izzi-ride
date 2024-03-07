@@ -5,13 +5,19 @@ import type { Url } from 'next/dist/shared/lib/router/router'
 
 import styles from './button.module.css'
 
-const Button: FC<ButtonType> = ({ children, href, type, title, className }) => {
+const Button: FC<ButtonType> = ({ children, href, type, title, className, callback }) => {
 	return href ? (
-		<Link href={href} title={title} target='_blank' className={`${styles.button} ${className}`}>
+		<Link
+			href={href}
+			title={title}
+			target='_blank'
+			className={`${styles.button} ${className}`}
+			onClick={callback}
+		>
 			{children || title}
 		</Link>
 	) : (
-		<button type={type} className={`${styles.button} ${className}`}>
+		<button type={type} className={`${styles.button} ${className}`} onClick={callback}>
 			{children || title}
 		</button>
 	)
@@ -23,6 +29,7 @@ type ButtonType = {
 	type?: ButtonHTMLAttributes<HTMLButtonElement>['type']
 	children?: ReactNode
 	className?: string
+	callback?: () => void
 }
 
 export default Button

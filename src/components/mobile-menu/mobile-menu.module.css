@@ -19,13 +19,13 @@ body:has(.menu_overlay) {
     font-size: 2em;
 }
 
-.mobile_menu a {
+.mobile_menu > * {
     border-radius: var(--border-radius-small);
     padding: 0.5em 1em;
     transition: background-color 0.3s;
 }
 
-.mobile_menu a.active {
+.mobile_menu > *.active {
     background-color: rgba(64, 123, 255, 0.14);
 }
 

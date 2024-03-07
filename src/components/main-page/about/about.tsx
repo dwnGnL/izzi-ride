@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 import Image from 'next/image'
-import FadeInOnScroll from '@components/hoc/fade-in-on-scroll'
+import FadeInOnScroll from '@hoc/fade-in-on-scroll'
 
 import phone from '@public/images/about-phone.png'
 

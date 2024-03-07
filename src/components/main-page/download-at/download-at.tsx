@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import FadeInOnScroll from '@components/hoc/fade-in-on-scroll'
+import FadeInOnScroll from '@hoc/fade-in-on-scroll'
 import DownloadAtButtons from '@common/download-at-buttons/download-at-buttons'
 
 import phones from '@public/images/download-at-phones.png'

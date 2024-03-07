@@ -1,21 +1,21 @@
 import type { FC } from 'react'
 import type { NavigationProps } from '@type/navigation.type'
 
-// import Link from 'next/link'
-import useFocusedSection from '@hooks/use-focused-section'
+import scrollTo from '@helpers/scrollTo'
+import useSectionProperties from '@hooks/use-section-properties'
 
 import styles from './navigation.module.css'
 
 const Navigation: FC<NavigationProps> = ({ navigationList, className, activeClass, callback }) => {
-    const [curSection, sections] = useFocusedSection()
+    const {curSectionName, sectionPositions} = useSectionProperties()
 
     const isActive = (linkTitle: string) => {
-        return linkTitle.toLocaleLowerCase() === curSection ? activeClass || styles.active : ''
+        return linkTitle.toLocaleLowerCase() === curSectionName ? activeClass || styles.active : ''
     }
 
     function NavBtnHandler(e: any) {
         const name = e.target.getAttribute('title').toLocaleLowerCase()
-        window.scrollTo({ top: sections[name].top, behavior: 'smooth' })
+        scrollTo(sectionPositions[name].top)
 
         if (callback) callback()
     }

@@ -15,19 +15,17 @@ body {
     --border-radius-big: 1.5em;
 }
 
-body > div,
-main {
-    display: grid;
-    grid-gap: 4em;
-}
-
 body > div {
+    display: grid;
     min-height: 100vh;
     grid-template-rows: max-content 1fr max-content;
+    grid-gap: 6em;
     padding-top: 2em;
 }
 
 main {
+    display: grid;
+    grid-gap: 4em;
     overflow: hidden;
 }
 
