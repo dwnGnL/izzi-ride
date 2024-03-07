@@ -8,6 +8,12 @@
 }
 
 .feature {
+	background-color: rgb(64, 123, 255, 0.35);
+	border-radius: var(--border-radius-regular);
+	overflow: hidden;
+}
+
+.feature li {
 	display: grid;
 	grid-template-areas:
 		'icon .'
@@ -18,9 +24,6 @@
 	grid-template-rows: 1fr max-content max-content 1fr;
 	grid-gap: 0.2em 1em;
     align-items: center;
-	background-color: rgb(64, 123, 255, 0.35);
-	border-radius: var(--border-radius-regular);
-	overflow: hidden;
 	padding: 2em;
 }
 

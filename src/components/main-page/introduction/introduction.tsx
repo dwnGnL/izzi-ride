@@ -21,7 +21,7 @@ const animation = {
 
 const Introduction = () => {
     return (
-        <section className={styles.section} data-title={'introduction'}>
+        <section className={styles.section} data-title='introduction'>
             <div className={styles.image}>
                 <AnimImage
                     initial='hidden'

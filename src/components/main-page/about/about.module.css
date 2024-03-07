@@ -16,9 +16,9 @@
 }
 
 .media iframe {
-	width: 100%;
-	height: 100%;
-	border: none;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .media .phone_overlay {
@@ -33,28 +33,21 @@
     height: auto;
 }
 
-.media[data-title='Choose a route and time'] .phone_overlay::after {
+.from_block {
     content: '';
     position: absolute;
     top: 48.3%;
     left: 8.6%;
     width: 83%;
     height: 8.8%;
-    background: url(/images/phone-direction-from-where.png) 18% 50% no-repeat;
+    background-image: url(/images/phone-direction-from-where.png);
+    background-repeat: no-repeat;
     background-size: cover;
+    background-position: 18% 50%;
     border-radius: 0.65em;
     overflow: hidden;
     box-sizing: border-box;
-    transition: all 0.3s 0.5s;
-}
-
-.media[data-title='Choose a route and time'] .phone_overlay[style='opacity: 1; transform: none;']::after {
-    left: -2.5%;
-    width: 105%;
-    background: url(/images/phone-direction-from-tampa.png) 18% 50% no-repeat;
-    background-size: cover;
-    box-shadow: -0.25em 0.25em 0.5em rgba(0, 0, 0, 0.15);
-    transform: scale(1.01);
+    transition: background-image 0.5s;
 }
 
 .media > * {

@@ -1,68 +1,56 @@
 import type { FC } from 'react'
-import { motion } from 'framer-motion'
 
 import Image from 'next/image'
-import { featureList } from './constant'
+import FadeInOnScroll from '@components/hoc/fade-in-on-scroll'
 
+import { featureList } from './constant'
 import styles from './features.module.css'
 
 export type Feature = {
-	icon: any
-	title: string
-	copy: string
-	index: number
+    icon: any
+    title: string
+    copy: string
 }
 
-const animation = {
-	hidden: {
-		opacity: 0,
-		y: 100,
-	},
-	visible: (custom: number) => ({
-		opacity: 1,
-		y: 0,
-		transition: {
-			delay: custom * 0.3
-		}
-	})
+type FeatureProps = Feature & {
+    index: number
 }
 
 const Features = () => {
-	return (
-		<motion.section
-			initial="hidden"
-			whileInView="visible"
-			variants={animation}
-			viewport={{ amount: 0.4, once: true }}
-			className={styles.coming_soon_section}
-			data-title={'features'}
-		>
-			<h3 className={styles.headline}>Coming soon</h3>
-			<ul className={styles.feature_list}>
-				{featureList.map((feature, index) => {
-					return (
-						<Feature
-							key={`feature-${index}`}
-							icon={feature.icon}
-							title={feature.title}
-							copy={feature.copy}
-							index={index}
-						/>
-					)
-				})}
-			</ul>
-		</motion.section>
-	)
+    return (
+        <section className={styles.coming_soon_section} data-title='features'>
+            <FadeInOnScroll>
+                <>
+                    <h3 className={styles.headline}>Coming soon</h3>
+                    <ul className={styles.feature_list}>
+                        {featureList.map((feature, index) => {
+                            return (
+                                <Feature
+                                    key={`feature-${index}`}
+                                    icon={feature.icon}
+                                    title={feature.title}
+                                    copy={feature.copy}
+                                    index={index}
+                                />
+                            )
+                        })}
+                    </ul>
+                </>
+            </FadeInOnScroll>
+        </section>
+    )
 }
 
-const Feature: FC<Feature> = ({ icon, title, copy, index }) => {
-	return (
-		<motion.li custom={index} variants={animation} className={styles.feature}>
-			<Image src={icon} alt={title} className={styles.icon} />
-			<div className={styles.title}>{title}</div>
-			<div className={styles.copy}>{copy}</div>
-		</motion.li>
-	)
+const Feature: FC<FeatureProps> = ({ icon, title, copy, index }) => {
+    return (
+		<FadeInOnScroll delay={index * 0.3} className={styles.feature}>
+			<li>
+				<Image src={icon} alt={title} className={styles.icon} />
+				<div className={styles.title}>{title}</div>
+				<div className={styles.copy}>{copy}</div>
+			</li>
+		</FadeInOnScroll>
+    )
 }
 
 export default Features

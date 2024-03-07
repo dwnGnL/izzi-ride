@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import Navigation from '@components/navigation/navigation'
 import DownloadAtButtons from '@common/download-at-buttons/download-at-buttons'
 
@@ -5,9 +6,14 @@ import { navigation } from '@components/header/constant'
 
 import styles from './mobile-menu.module.css'
 
-const MobileMenu = ({ paddingTop, closeMenu }: { paddingTop: number; closeMenu: () => void }) => {
+type Props = {
+    paddingTop: number
+    closeMenu: () => void
+}
+
+const MobileMenu = forwardRef<HTMLDivElement, Props>(({ paddingTop, closeMenu }, ref) => {
     return (
-        <div className={styles.menu_overlay} style={{ paddingTop: `calc(${paddingTop}px + 1em)` }}>
+        <div ref={ref} className={styles.menu_overlay} style={{ paddingTop: `calc(${paddingTop}px + 1em)` }}>
             <Navigation
                 navigationList={navigation}
                 className={styles.mobile_menu}
@@ -18,7 +24,7 @@ const MobileMenu = ({ paddingTop, closeMenu }: { paddingTop: number; closeMenu: 
             <MenuPlaceholder />
         </div>
     )
-}
+})
 
 const MenuPlaceholder = () => {
     return (

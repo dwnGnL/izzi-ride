@@ -1,5 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import useDevice from '@hooks/use-device'
 
 import Logo from '@common/logo/logo'
@@ -12,13 +13,24 @@ import { navigation } from './constant'
 
 import styles from './header.module.css'
 
+const AnimMobileMenu = motion(MobileMenu)
+
+const animation = {
+    hidden: {
+        opacity: 0,
+        x: '-100vh',
+    },
+    visible: {
+        opacity: 1,
+        x: '0vh',
+    },
+}
+
 const Header = () => {
     const [borderRadius, setBorderRadius] = useState<number>()
     const [menuTopPadding, setMenuTopPadding] = useState<number>(0)
     const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false)
-
     const deviceType = useDevice()
-
     const header = useRef<HTMLElement>(null)
 
     useEffect(() => {
@@ -73,8 +85,19 @@ const Header = () => {
                     <HamburgerMenuIcon isOpened={isMenuOpened} menuHandler={() => setIsMenuOpened(!isMenuOpened)} />
                 )}
             </header>
-
-            {deviceType !== 'desktop' && isMenuOpened && <MobileMenu paddingTop={menuTopPadding} closeMenu={() => setIsMenuOpened(false)} />}
+            <AnimatePresence>
+                {deviceType !== 'desktop' && isMenuOpened && (
+                    <AnimMobileMenu
+                        transition={{ ease: 'linear' }}
+                        initial='hidden'
+                        animate='visible'
+                        exit='hidden'
+                        variants={animation}
+                        paddingTop={menuTopPadding}
+                        closeMenu={() => setIsMenuOpened(false)}
+                    />
+                )}
+            </AnimatePresence>
         </>
     )
 }

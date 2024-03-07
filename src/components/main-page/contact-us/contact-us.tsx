@@ -1,34 +1,17 @@
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-
+import FadeInOnScroll from '@components/hoc/fade-in-on-scroll'
 import Form from '@common/form/form'
 
 import { inputs } from './constant'
-
 import styles from './contact-us.module.css'
-
-const animation = {
-	hidden: {
-		opacity: 0,
-		y: 100,
-	},
-	visible: {
-		opacity: 1,
-		y: 0,
-	}
-}
 
 const ContactUs = () => {
 	return (
-		<motion.section
-			initial="hidden"
-			whileInView="visible"
-			viewport={{ amount: 0.4, once: true }}
-			variants={animation}
+		<section
 			className={styles.contact_section}
-			data-title={'contact us'}
+			data-title='contact us'
 		>
-			<div>
+			<FadeInOnScroll>
 				<Form
 					endpoint='http://ezride.pro/api/v1/client/complaint'
 					inputs={inputs}
@@ -42,8 +25,8 @@ const ContactUs = () => {
 						and our default <Link href='/' title='Notification Settings'>Notification Settings</Link>.
 					</div>
 				</Form>
-			</div>
-		</motion.section>
+			</FadeInOnScroll>
+		</section>
 	)
 }
 

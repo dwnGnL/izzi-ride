@@ -1,34 +1,39 @@
 import type { FC } from 'react'
-import type { NavigationParams } from '@type/navigation.type'
+import type { NavigationProps } from '@type/navigation.type'
 
-import { useRouter } from 'next/router'
-
-import Link from 'next/link'
+// import Link from 'next/link'
+import useFocusedSection from '@hooks/use-focused-section'
 
 import styles from './navigation.module.css'
 
-const Navigation: FC<NavigationParams> = ({ navigationList, className, activeClass, callback }) => {
-	const router = useRouter()
-	const isActive = (linkHref: string) => (router.pathname === `/${linkHref}` ? activeClass || styles.active : '')
+const Navigation: FC<NavigationProps> = ({ navigationList, className, activeClass, callback }) => {
+    const [curSection, sections] = useFocusedSection()
 
-	return (
-		<nav className={`${styles.header_nav} ${className}`}>
-			{navigationList.map(navItem => {
-				return (
-					<Link
-						href={navItem.href}
-						key={navItem.href}
-						title={navItem.title}
-						target={navItem.target}
-						className={`${styles.navigation_button} ${isActive(navItem.href)}`}
-						onClick={callback}
-					>
-						{navItem.title}
-					</Link>
-				)
-			})}
-		</nav>
-	)
+    const isActive = (linkTitle: string) => {
+        return linkTitle.toLocaleLowerCase() === curSection ? activeClass || styles.active : ''
+    }
+
+    function NavBtnHandler(e: any) {
+        const name = e.target.getAttribute('title').toLocaleLowerCase()
+        window.scrollTo({ top: sections[name].top, behavior: 'smooth' })
+
+        if (callback) callback()
+    }
+
+    return (
+        <nav className={`${styles.header_nav} ${className}`}>
+            {navigationList.map(navItem => (
+                <div
+                    key={navItem.href}
+                    title={navItem.title}
+                    className={`${styles.navigation_button} ${isActive(navItem.title)}`}
+                    onClick={NavBtnHandler}
+                >
+                    {navItem.title}
+                </div>
+            ))}
+        </nav>
+    )
 }
 
 export default Navigation

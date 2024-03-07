@@ -3,18 +3,18 @@ import type { NavigationItem } from '@type/navigation.type'
 export const navigation: NavigationItem[] = [
 	{
 		title: 'About us',
-		href: 'about',
+		href: '#about',
 	},
 	{
 		title: 'Features',
-		href: 'features',
+		href: '#features',
 	},
 	{
 		title: 'Owners',
-		href: 'owners',
+		href: '#owners',
 	},
 	{
 		title: 'Contact us',
-		href: 'contact',
+		href: '#contact',
 	},
 ]

@@ -1,17 +1,14 @@
-.owners_section {
-	background-color: rgba(64, 123, 255, 0.35);
-	border-radius: var(--border-radius-regular);
-	overflow: hidden;
-	padding: 3em 2em 2em;
-}
-
 .owners_section > div {
 	display: grid;
 	grid-template-areas: 'headline arrows' 'slider slider';
 	grid-gap: 2.5em 0;
 	justify-content: space-between;
 	align-items: center;
+	background-color: rgba(64, 123, 255, 0.35);
     font-size: 0.9em;
+	border-radius: var(--border-radius-regular);
+	overflow: hidden;
+	padding: 3em 2em 2em;
 }
 
 .headline {
