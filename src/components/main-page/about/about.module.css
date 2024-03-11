@@ -40,13 +40,14 @@
     left: 8.6%;
     width: 83%;
     height: 8.8%;
-    background-image: url(/images/phone-direction-from-where.png);
+    background-image: url(/images/phone-direction-from-tampa.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 18% 50%;
     border-radius: 0.65em;
     overflow: hidden;
     box-sizing: border-box;
+    opacity: 0;
     transition: background-image 0.5s;
 }
 

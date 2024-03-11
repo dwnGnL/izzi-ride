@@ -8,7 +8,7 @@
 .image {
     position: relative;
     aspect-ratio: 1 / var(--coefficient);
-    background: url(/images/usa-map.svg) center no-repeat;
+    background: url(/images/usa-map.png) center no-repeat;
     background-size: contain;
 }
 
@@ -24,7 +24,7 @@
 
 .download_btn {
     justify-self: self-start;
-    background-color: var(--secondary);
+    background-color: var(--primary);
     color: #fff;
     font-size: 1.5em;
     font-weight: 600;

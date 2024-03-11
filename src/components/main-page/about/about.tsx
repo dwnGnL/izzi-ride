@@ -14,7 +14,7 @@ const fromBlockAnimation = {
         },
         left: '-2.5%',
         width: '105%',
-        backgroundImage: 'url(/images/phone-direction-from-tampa.png)',
+        opacity: 1,
     }),
 }
 
@@ -24,7 +24,7 @@ const About = () => {
             <FadeInOnScroll className={styles.about}>
                 <>
                     <div className={styles.media} data-title='Choose a route and time'>
-                        <FadeInOnScroll className={styles.phone_overlay} delay={0.5}>
+                        <FadeInOnScroll className={`${styles.phone_overlay} upAndDown`} delay={0.5}>
                             <>
                                 <Image src={phone} alt='Choose a route and time' />
                                 <motion.div
@@ -36,11 +36,13 @@ const About = () => {
                             </>
                         </FadeInOnScroll>
                     </div>
-                    <h1 className={styles.headline}>Choose a route and time</h1>
-                    <div className={styles.copy}>
+                    <FadeInOnScroll>
+                        <h1 className={styles.headline}>Choose a route and time</h1>
+                    </FadeInOnScroll>
+                    <FadeInOnScroll className={styles.copy}>
                         Our app is designed to make it easy and affordable for you to travel around the states. We have
                         developed a user-friendly interface for finding a driver or ride and communication
-                    </div>
+                    </FadeInOnScroll>
                 </>
             </FadeInOnScroll>
 
@@ -53,12 +55,14 @@ const About = () => {
                             allowFullScreen
                         ></iframe>
                     </div>
-                    <h1 className={styles.headline}>Why you should use IZZI RIDE?</h1>
-                    <div className={styles.copy}>
-                        With the app, you can personalize and customize your trip, paying less than for a regular taxi.
+                    <FadeInOnScroll>
+                        <h1 className={styles.headline}>Why you should use IZZI RIDE?</h1>
+                    </FadeInOnScroll>
+                    <FadeInOnScroll className={styles.copy}>
+                    With the app, you can personalize and customize your trip, paying less than for a regular taxi.
                         Also, soon the application will have a smart system for evaluating the driver and the ride, too,
                         so you can travel safely.
-                    </div>
+                    </FadeInOnScroll>
                 </>
             </FadeInOnScroll>
         </section>

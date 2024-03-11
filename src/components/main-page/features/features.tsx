@@ -3,6 +3,8 @@ import type { FC } from 'react'
 import Image from 'next/image'
 import FadeInOnScroll from '@hoc/fade-in-on-scroll'
 
+import useDevice from '@hooks/use-device'
+
 import { featureList } from './constant'
 import styles from './features.module.css'
 
@@ -42,8 +44,11 @@ const Features = () => {
 }
 
 const Feature: FC<FeatureProps> = ({ icon, title, copy, index }) => {
+    const device = useDevice()
+    const delay = device === 'desktop' ? index * 0.3 : 0
+
     return (
-		<FadeInOnScroll delay={index * 0.3} className={styles.feature}>
+		<FadeInOnScroll delay={delay} className={styles.feature}>
 			<li>
 				<Image src={icon} alt={title} className={styles.icon} />
 				<div className={styles.title}>{title}</div>

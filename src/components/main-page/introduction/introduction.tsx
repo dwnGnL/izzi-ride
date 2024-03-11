@@ -6,7 +6,7 @@ import Button from '@common/button/button'
 
 import scrollTo from '@helpers/scrollTo'
 
-import car from '@public/images/car.svg'
+import car from '@public/images/car.png'
 import styles from './introduction.module.css'
 
 const AnimImage = motion(Image)
@@ -37,6 +37,7 @@ const Introduction = () => {
 					whileInView='visible'
 					variants={animation}
 					viewport={{ once: true }}
+					transition={{ duration: 1 }}
 					src={car}
 					alt='car'
 					className={styles.car}
@@ -46,7 +47,7 @@ const Introduction = () => {
 			<h2 className={styles.headline}>
 				Do you often drive
 				<br /> to another state by car?
-				<br /> Then earn with
+				<br /> Then sage with
 				<br /> IZZI RIDE
 			</h2>
 

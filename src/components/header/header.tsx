@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useDevice from '@hooks/use-device'
+import useSectionProperties from '@hooks/use-section-properties'
 
 import Logo from '@common/logo/logo'
 import Navigation from '@components/navigation/navigation'
@@ -9,8 +10,9 @@ import Button from '@common/button/button'
 import HamburgerMenuIcon from '@components/hamburger-menu-icon/hamburger-menu-icon'
 import MobileMenu from '@components/mobile-menu/mobile-menu'
 
-import { navigation } from './constant'
+import scrollTo from '@helpers/scrollTo'
 
+import { navigation } from './constant'
 import styles from './header.module.css'
 
 const AnimMobileMenu = motion(MobileMenu)
@@ -32,6 +34,11 @@ const Header = () => {
     const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false)
     const deviceType = useDevice()
     const header = useRef<HTMLElement>(null)
+    const { sectionPositions } = useSectionProperties()
+
+	function scroll() {
+        scrollTo(sectionPositions['download at'].top)
+	}
 
     useEffect(() => {
         if (!header.current) return
@@ -77,7 +84,7 @@ const Header = () => {
                 {deviceType === 'desktop' && (
                     <>
                         <Navigation navigationList={navigation} />
-                        <Button title='Get it' href='/' className={styles.header_btn} />
+                        <Button title='Get it' className={styles.header_btn} callback={scroll} />
                     </>
                 )}
 

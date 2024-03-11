@@ -10,7 +10,7 @@ const DownloadAt = () => {
         <section className={styles.download_section} data-title='download at'>
             <FadeInOnScroll>
                 <>
-                    <FadeInOnScroll className={styles.image} delay={0.5}>
+                    <FadeInOnScroll className={`${styles.image} upAndDown`} delay={0.5}>
                         <Image src={phones} alt='Download IZZI RIDE' />
                     </FadeInOnScroll>
                     <h2 className={styles.headline}>Ready To Get Started?</h2>

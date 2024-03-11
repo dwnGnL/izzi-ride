@@ -15,9 +15,12 @@ const Form: FC<Form> = ({ endpoint, inputs, buttonText, className, children }) =
 			const response = await fetch(endpoint, {
 				method: 'POST',
 				body: JSON.stringify(body),
+				headers: {
+					'Content-Type': 'application/json',
+				},
 			})
 
-			if (!response.ok) throw new Error('ooops')
+			if (!response.ok) throw new Error('whoops')
 
 			const data = await response.json()
 
@@ -42,7 +45,7 @@ const Form: FC<Form> = ({ endpoint, inputs, buttonText, className, children }) =
 
 				{children && children}
 			</div>
-			
+
 			<Button title={buttonText} type='submit' className={styles.submit_btn} />
 		</form>
 	)
