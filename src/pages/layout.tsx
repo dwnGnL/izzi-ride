@@ -4,6 +4,7 @@ import Head from 'next/head'
 
 import Header from '@components/header/header'
 import Footer from '@components/footer/footer'
+import Loader from '@common/loader/loader'
 
 const Layout: FC<{ children: ReactElement }> = ({ children }) => {
 	return (
@@ -15,6 +16,8 @@ const Layout: FC<{ children: ReactElement }> = ({ children }) => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
+			<Loader />
+			
 			<Header />
 			<main>{children}</main>
 			<Footer />
