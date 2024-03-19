@@ -48,7 +48,7 @@ const Introduction = () => {
 				Do you often drive
 				<br /> to another state by car?
 				<br /> Then sage with
-				<br /> IZZI RIDE
+				<br /> iZZi RIDE
 			</h2>
 
 			<Button title='Download app' className={styles.download_btn} callback={scroll} />

@@ -65,7 +65,7 @@ const Social = () => {
 const BottomPart = () => {
 	return (
 		<div className={styles.bottom_part}>
-			<div>© 2024 IZZI RIDE</div>
+			<div>© 2024 iZZi RIDE</div>
 			<Link href='/' title='Privacy Policy'>
 				Privacy Policy
 			</Link>

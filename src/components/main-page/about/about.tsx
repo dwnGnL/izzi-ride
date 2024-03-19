@@ -6,6 +6,7 @@ import FadeInOnScroll from '@hoc/fade-in-on-scroll'
 import phone from '@public/images/about-phone.png'
 
 import styles from './about.module.css'
+import useDevice from '@hooks/use-device'
 
 const fromBlockAnimation = {
     to: (custom: number) => ({
@@ -18,7 +19,15 @@ const fromBlockAnimation = {
     }),
 }
 
+const videoFormats = {
+    horizontal: 'https://www.youtube.com/embed/RK_U9EwKoJo',
+    vertical: 'https://www.youtube.com/embed/ra6H9PdY00o',
+}
+
 const About = () => {
+    const device = useDevice()
+    const videoUrl = device === 'desktop' ? videoFormats.vertical : videoFormats.horizontal
+
     return (
         <section className={styles.about_section} data-title='about us'>
             <FadeInOnScroll className={styles.about}>
@@ -48,18 +57,18 @@ const About = () => {
 
             <FadeInOnScroll className={styles.about}>
                 <>
-                    <div className={styles.media} data-title='Why you should use IZZI RIDE?'>
+                    <div className={`${styles.media} ${styles.video}`} data-title='Why you should use iZZi RIDE?'>
                         <iframe
-                            src='https://www.youtube.com/embed/tZcg6dyiW7E?si=is6dbmK1A1XTpGdO&rel=0'
-                            title='Why you should use IZZI RIDE?'
+                            src={`${videoUrl}?si=is6dbmK1A1XTpGdO&rel=0`}
+                            title='Why you should use iZZi RIDE?'
                             allowFullScreen
                         ></iframe>
                     </div>
                     <FadeInOnScroll>
-                        <h1 className={styles.headline}>Why you should use IZZI RIDE?</h1>
+                        <h1 className={styles.headline}>Why you should use iZZi RIDE?</h1>
                     </FadeInOnScroll>
                     <FadeInOnScroll className={styles.copy}>
-                    With the app, you can personalize and customize your trip, paying less than for a regular taxi.
+                        With the app, you can personalize and customize your trip, paying less than for a regular taxi.
                         Also, soon the application will have a smart system for evaluating the driver and the ride, too,
                         so you can travel safely.
                     </FadeInOnScroll>

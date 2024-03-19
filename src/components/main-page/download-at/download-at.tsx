@@ -11,7 +11,7 @@ const DownloadAt = () => {
             <FadeInOnScroll>
                 <>
                     <FadeInOnScroll className={`${styles.image} upAndDown`} delay={0.5}>
-                        <Image src={phones} alt='Download IZZI RIDE' />
+                        <Image src={phones} alt='Download iZZi RIDE' />
                     </FadeInOnScroll>
                     <h2 className={styles.headline}>Ready To Get Started?</h2>
                     <div className={styles.text}>Get it and enjoy your trip</div>

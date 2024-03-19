@@ -103,6 +103,10 @@
         background-size: 85%;
     }
 
+    /* .media.video {
+        aspect-ratio: 9/16;
+    } */
+
     .headline {
         margin-top: 0.5em;
     }
@@ -124,5 +128,9 @@
     .media[data-title='Choose a route and time']::after {
         background: url(/images/rings.png) 100% 250% no-repeat;
         background-size: 85%;
+    }
+
+    .media.video {
+        aspect-ratio: 16/9;
     }
 }

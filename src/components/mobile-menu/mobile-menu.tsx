@@ -32,7 +32,7 @@ const MenuPlaceholder = () => {
             <h2>
                 Do you often drive
                 <br /> to another state by car?
-                <br /> Then earn with IZZI RIDE
+                <br /> Then earn with iZZi RIDE
             </h2>
 
             <div className={styles.copy}>Get it and enjoy your trip</div>

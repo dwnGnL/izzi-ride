@@ -25,7 +25,7 @@ const DownloadAtButtons = ({
 			>
 				<Image
 					src={type === 'light' ? AppStoreLight : AppStoreDark}
-					alt='Download IZZI RIDE on the App Store'
+					alt='Download iZZi RIDE on the App Store'
 				/>
 			</Link>
 			<Link
@@ -35,7 +35,7 @@ const DownloadAtButtons = ({
             >
 				<Image
 					src={type === 'light' ? GooglePlayLight : GooglePlayDark}
-					alt='Get IZZI RIDE on Google Play'
+					alt='Get iZZi RIDE on Google Play'
 				/>
 			</Link>
 		</div>

@@ -55,7 +55,7 @@ h3 {
 	line-height: 1.1;
 }
 
-.upAndDown {
+.upAndDown[style='opacity: 1; transform: translateY(0vh) translateZ(0px);'] {
 	animation: upAndDown 2s ease-in-out alternate infinite;
 }
 
@@ -83,9 +83,9 @@ h3 {
 
 @keyframes upAndDown {
 	from {
-		transform: translateY(0.25em);
+		transform: translateY(0em);
 	}
 	to {
-		transform: translateY(-0.25em);
+		transform: translateY(0.5em);
 	}
 }

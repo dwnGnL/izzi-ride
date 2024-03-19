@@ -6,7 +6,7 @@ import styles from './logo.module.css'
 
 const Logo = ({ className, callback }: { className?: string; callback?: () => void }) => {
     return (
-        <Link href='/' title='IZZI' className={className} onClick={callback}>
+        <Link href='/' title='iZZi' className={className} onClick={callback}>
             <Image src={logo} alt='izzi logo' className={styles.logo} priority />
         </Link>
     )
