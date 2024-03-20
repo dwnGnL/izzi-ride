@@ -99,7 +99,7 @@
     }
 
 	.slider_inner {
-		grid-auto-columns: var(--slide-width);
+		grid-auto-columns: calc(90vw - 4em);
 	}
 
 	.slide {

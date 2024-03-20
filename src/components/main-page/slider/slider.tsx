@@ -32,10 +32,6 @@ const Slider: FC = () => {
     useEffect(() => {
         if (!sliderRef.current || !sliderWrapperRef.current) return
 
-        if (device && device !== 'desktop') {
-            sliderRef.current.style.gridAutoColumns = sliderWrapperRef.current.offsetWidth + 'px'
-        }
-
         const gap: number = parseInt(window.getComputedStyle(sliderRef.current).gap)
         const sliderWidth = sliderRef.current.offsetWidth
         const slideWidth = slidesRef.current[0].offsetWidth

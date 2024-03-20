@@ -7,6 +7,7 @@
 	display: grid;
 	grid-gap: 0.5em;
 	font-size: 1.1em;
+	z-index: 1;
 }
 
 .download_section > div::before,
