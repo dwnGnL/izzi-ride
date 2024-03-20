@@ -13,7 +13,7 @@ const Loader = () => {
 		return () => {
 			window.removeEventListener('load', loadingHandler)
 		}
-	}, [loading])
+	}, [])
 
 	return !loading ? (
 		<div className='loader-wrapper'>
