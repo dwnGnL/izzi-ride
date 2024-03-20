@@ -8,11 +8,13 @@ import tiktok from '@public/icons/tiktok-icon.svg'
 export const infoList = [
 	{
 		title: 'Email',
-		value: 'info@izziride.com',
+		value: 'support@izziride.com',
+		type: 'mailto:'
 	},
 	{
 		title: 'Phone',
 		value: '555-567-8901',
+		type: 'tel:'
 	},
 	{
 		title: 'Address',
