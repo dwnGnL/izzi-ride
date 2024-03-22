@@ -1,6 +1,7 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useRouter } from 'next/router'
 import useDevice from '@hooks/use-device'
 import useSectionProperties from '@hooks/use-section-properties'
 
@@ -15,9 +16,9 @@ import scrollTo from '@helpers/scrollTo'
 import { navigation } from './constant'
 import styles from './header.module.css'
 
-const AnimMobileMenu = motion(MobileMenu)
+const MobileMenuMotion = motion(MobileMenu)
 
-const animation = {
+const mobileMenuAnimation = {
     hidden: {
         opacity: 0,
         x: '-100vh',
@@ -32,46 +33,83 @@ const Header = () => {
     const [borderRadius, setBorderRadius] = useState<number>()
     const [menuTopPadding, setMenuTopPadding] = useState<number>(0)
     const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false)
+
+    const router = useRouter()
     const deviceType = useDevice()
-    const header = useRef<HTMLElement>(null)
     const { sectionPositions } = useSectionProperties()
 
-	function scroll() {
+    const header = useRef<HTMLElement>(null)
+    const headerDefaultPosition = useRef(0)
+
+    function scroll() {
         scrollTo(sectionPositions['download at'].top)
-	}
+    }
+
+    function menuToggle() {
+        if (!header.current) return
+
+        setIsMenuOpened(!isMenuOpened)
+        setMenuTopPadding(
+            header.current.getBoundingClientRect().bottom + headerDefaultPosition.current / 2,
+        )
+    }
+
+    function borderRadiusHandler(elem: HTMLElement) {
+        const defaultRadius = Number(
+            window.getComputedStyle(elem).borderRadius.replace(/px/g, '').split(' ').at(-1),
+        )
+
+        const currentPosition = elem.getBoundingClientRect().top
+        const currentRadius = defaultRadius
+
+        const percent = currentPosition / headerDefaultPosition.current
+
+        setBorderRadius(currentRadius * percent)
+    }
+
+    const scrollHandler = useCallback(
+        (elem: HTMLElement) => {
+            if (!sectionPositions.main) return
+
+            if (window.scrollY > sectionPositions.main.bottom) {
+                elem.classList.add(styles.show)
+            }
+
+            if (window.scrollY <= headerDefaultPosition.current) {
+                elem.classList.remove(styles.show)
+            }
+        },
+        [sectionPositions],
+    )
 
     useEffect(() => {
         if (!header.current) return
 
-        let headerElem = header.current
+        const headerElem = header.current
+        headerDefaultPosition.current = headerElem.offsetTop
 
-        borderRadiusHandler(headerElem)
+        const headerHandler =
+            router.pathname === '/'
+                ? scrollHandler.bind(null, headerElem)
+                : borderRadiusHandler.bind(null, headerElem)
 
-        window.addEventListener('resize', borderRadiusHandler.bind(null, headerElem))
-        document.addEventListener('scroll', borderRadiusHandler.bind(null, headerElem))
+        if (router.pathname === '/') {
+            headerElem.classList.add(styles.home_page)
+        } else {
+            borderRadiusHandler(headerElem)
+        }
+
+        document.addEventListener('scroll', headerHandler)
 
         return () => {
-            window.removeEventListener('resize', borderRadiusHandler.bind(null, headerElem))
-            document.removeEventListener('scroll', borderRadiusHandler.bind(null, headerElem))
+            document.removeEventListener('scroll', headerHandler)
         }
-    }, [header])
-
-    function borderRadiusHandler(elem: HTMLElement) {
-        let defaultPosition = elem.offsetTop
-        let defaultRadius = Number(window.getComputedStyle(elem).borderRadius.replace(/px/g, '').split(' ').at(-1))
-
-        let currentPosition = elem.getBoundingClientRect().top
-        let currentRadius = defaultRadius
-
-        let percent = currentPosition / defaultPosition
-
-        setBorderRadius(currentRadius * percent)
-        setMenuTopPadding(elem.getBoundingClientRect().bottom)
-    }
+    }, [header, router, sectionPositions, scrollHandler])
 
     return (
         <>
             <header
+                data-title={deviceType}
                 ref={header}
                 style={{
                     borderTopLeftRadius: `${borderRadius}px`,
@@ -89,17 +127,17 @@ const Header = () => {
                 )}
 
                 {deviceType && deviceType !== 'desktop' && (
-                    <HamburgerMenuIcon isOpened={isMenuOpened} menuHandler={() => setIsMenuOpened(!isMenuOpened)} />
+                    <HamburgerMenuIcon isOpened={isMenuOpened} menuHandler={menuToggle} />
                 )}
             </header>
             <AnimatePresence>
                 {deviceType !== 'desktop' && isMenuOpened && (
-                    <AnimMobileMenu
+                    <MobileMenuMotion
                         transition={{ ease: 'linear' }}
                         initial='hidden'
                         animate='visible'
                         exit='hidden'
-                        variants={animation}
+                        variants={mobileMenuAnimation}
                         paddingTop={menuTopPadding}
                         closeMenu={() => setIsMenuOpened(false)}
                     />

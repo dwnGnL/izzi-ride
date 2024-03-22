@@ -9,9 +9,36 @@
     color: #fff;
     font-size: 1.3em;
     border-radius: var(--border-radius-regular);
-    margin: auto;
+    margin: 2em auto 0;
     padding: 0.25em 1em;
     z-index: 9;
+}
+
+.header.home_page {
+    position: absolute;
+    top: 2em;
+    left: 50%;
+    margin: unset;
+    transform: translateX(-50%);
+    transition: border-radius 0.5s;
+}
+
+.header.show {
+    position: fixed;
+    top: 0;
+    transform: translate(-50%, -100%);
+    animation: showHeader .5s ease-out forwards;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+@keyframes showHeader {
+    from {
+        transform: translate(-50%, -100%);
+    }
+    to {
+        transform: translate(-50%, 0);
+    }
 }
 
 .header_btn {
@@ -24,7 +51,7 @@
 
 .header_btn:hover {
     background-color: var(--tertiary);
-	color: var(--secondary);
+    color: var(--secondary);
 }
 
 @media screen and (max-width: 768px) {
