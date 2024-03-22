@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import AppStoreDark from '@public/images/app-store-dark.svg'
-import AppStoreLight from '@public/images/app-store-light.svg'
+import AppStoreDark from '@public/images/common/app-store-dark.svg'
+import AppStoreLight from '@public/images/common/app-store-light.svg'
 
-import GooglePlayDark from '@public/images/google-play-dark.svg'
-import GooglePlayLight from '@public/images/google-play-light.svg'
+import GooglePlayDark from '@public/images/common/google-play-dark.svg'
+import GooglePlayLight from '@public/images/common/google-play-light.svg'
 
 import styles from './download-at-buttons.module.css'
 
