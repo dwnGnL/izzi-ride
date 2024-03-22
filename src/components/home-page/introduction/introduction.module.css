@@ -5,10 +5,14 @@
     grid-gap: 2em;
 }
 
+.section > div {
+    display: contents;
+}
+
 .image {
     position: relative;
     aspect-ratio: 1 / var(--coefficient);
-    background: url(/images/usa-map.png) center no-repeat;
+    background: url(/images/home-page/usa-map.png) center no-repeat;
     background-size: contain;
 }
 

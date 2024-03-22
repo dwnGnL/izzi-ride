@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import FadeInOnScroll from '@hoc/fade-in-on-scroll'
 
-import phone from '@public/images/about-phone.png'
+import phone from '@public/images/home-page/about-phone.png'
 
 import styles from './about.module.css'
 import useDevice from '@hooks/use-device'

@@ -40,7 +40,7 @@
     left: 8.6%;
     width: 83%;
     height: 8.8%;
-    background-image: url(/images/phone-direction-from-tampa.png);
+    background-image: url(/images/home-page/phone-direction-from-tampa.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 18% 50%;
@@ -64,7 +64,7 @@
 }
 
 .media[data-title='Choose a route and time']::before {
-    background: url(/images/big-star.png) 0 0 no-repeat;
+    background: url(/images/home-page/big-star.png) 0 0 no-repeat;
     background-size: 30%;
 }
 
@@ -99,7 +99,7 @@
     }
 
     .media[data-title='Choose a route and time']::after {
-        background: url(/images/rings.png) 100% 100% no-repeat;
+        background: url(/images/home-page/rings.png) 100% 100% no-repeat;
         background-size: 85%;
     }
 
@@ -126,7 +126,7 @@
     }
 
     .media[data-title='Choose a route and time']::after {
-        background: url(/images/rings.png) 100% 250% no-repeat;
+        background: url(/images/home-page/rings.png) 100% 250% no-repeat;
         background-size: 85%;
     }
 

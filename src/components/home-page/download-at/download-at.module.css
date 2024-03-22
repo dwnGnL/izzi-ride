@@ -28,12 +28,12 @@
 
 @media screen and (min-width: 769px) {
 	.download_section > div::before {
-		background: url(/images/download-at-bg_top.png) 0 0 no-repeat;
+		background: url(/images/home-page/download-at-bg_top.png) 0 0 no-repeat;
 		background-size: 100%;
 	}
 
 	.download_section > div::after {
-		background: url(/images/download-at-bg_bottom.png) 0 100% no-repeat;
+		background: url(/images/home-page/download-at-bg_bottom.png) 0 100% no-repeat;
 		background-size: 100%;
 	}
 
@@ -61,12 +61,12 @@
 
 @media screen and (max-width: 768px) {
 	.download_section > div::before {
-		background: url(/images/download-at-bg_top-mobile.png) 0 0 no-repeat;
+		background: url(/images/home-page/download-at-bg_top-mobile.png) 0 0 no-repeat;
 		background-size: 100%;
 	}
 
 	.download_section > div::after {
-		background: url(/images/download-at-bg_bottom-mobile.png) 0 65% no-repeat;
+		background: url(/images/home-page/download-at-bg_bottom-mobile.png) 0 65% no-repeat;
 		background-size: 100%;
 	}
 
