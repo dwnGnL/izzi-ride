@@ -26,7 +26,7 @@ const About = () => {
                     </div>
                 </div>
 
-                <h1 className={styles.headline}>Choose a route and time</h1>
+                <h2 className={styles.headline}>Choose a route and time</h2>
 
                 <div className={styles.copy}>
                     Our app is designed to make it easy and affordable for you to travel around the
@@ -47,7 +47,7 @@ const About = () => {
                     ></iframe>
                 </div>
 
-                <h1 className={styles.headline}>Why you should use iZZi RIDE?</h1>
+                <h2 className={styles.headline}>Why you should use iZZi RIDE?</h2>
 
                 <div className={styles.copy}>
                     With the app, you can personalize and customize your trip, paying less than for

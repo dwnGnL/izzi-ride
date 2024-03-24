@@ -65,7 +65,7 @@ const Slider: FC = () => {
     return (
         <section className={styles.owners_section} data-title='owners'>
             <AnimBlock>
-                <h1 className={styles.headline}>Application Creation History</h1>
+                <h2 className={styles.headline}>Application Creation History</h2>
                 <div className={styles.arrows}>
                     <div className={`${styles.slider_arrow} ${styles.prev}`} onClick={prevSlide}></div>
                     <div className={`${styles.slider_arrow} ${styles.next}`} onClick={nextSlide}></div>

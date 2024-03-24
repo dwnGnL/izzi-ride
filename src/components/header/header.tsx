@@ -118,7 +118,7 @@ const Header = () => {
                     borderTopLeftRadius: `${borderRadius}px`,
                     borderTopRightRadius: `${borderRadius}px`,
                 }}
-                className={`${styles.header}`}
+                className={`${styles.header} ${isMenuOpened ? styles.menu_opened : ''}`}
             >
                 <Logo callback={() => setIsMenuOpened(false)} />
 

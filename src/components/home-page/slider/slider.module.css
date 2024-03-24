@@ -1,6 +1,7 @@
 .owners_section > div {
 	display: grid;
 	grid-template-areas: 'headline arrows' 'slider slider';
+	grid-template-columns: 42em 1fr;
 	grid-gap: 2.5em 0;
 	justify-content: space-between;
 	align-items: center;
@@ -84,9 +85,9 @@
 }
 
 @media screen and (min-width: 769px) {
-    .owners_section > div {
+    /* .owners_section > div {
         grid-template-columns: 42em 1fr;
-    }
+    } */
 
     .slider_inner {
         grid-auto-columns: 48em;
@@ -94,9 +95,9 @@
 }
 
 @media screen and (max-width: 768px) {
-    .owners_section > div {
+    /* .owners_section > div {
         grid-template-columns: 32em 1fr;
-    }
+    } */
 
 	.slider_inner {
 		grid-auto-columns: calc(90vw - 4em);

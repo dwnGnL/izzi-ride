@@ -9,9 +9,13 @@
     color: #fff;
     font-size: 1.3em;
     border-radius: var(--border-radius-regular);
-    margin: 2em auto 0;
+    margin: 1em auto 0;
     padding: 0.25em 1em;
     z-index: 9;
+}
+
+.header.menu_opened {
+    background-color: var(--primary);
 }
 
 .header.show {
@@ -21,6 +25,7 @@
     animation: showHeader .5s ease-out forwards;
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
+    background-color: var(--primary);
 }
 
 @keyframes showHeader {

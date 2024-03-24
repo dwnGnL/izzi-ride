@@ -29,11 +29,11 @@ const MobileMenu = forwardRef<HTMLDivElement, Props>(({ paddingTop, closeMenu },
 const MenuPlaceholder = () => {
     return (
         <div className={styles.menu_placeholder}>
-            <h2>
+            <h1>
                 Do you often drive
                 <br /> to another state by car?
                 <br /> Then earn with iZZi RIDE
-            </h2>
+            </h1>
 
             <div className={styles.copy}>Get it and enjoy your trip</div>
 

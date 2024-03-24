@@ -28,12 +28,12 @@ const Introduction = () => {
 					/>
 				</div>
 
-				<h2 className={styles.headline}>
+				<h1 className={styles.headline}>
 					Do you often drive
 					<br /> to another state by car?
 					<br /> Then sage with
 					<br /> iZZi RIDE
-				</h2>
+				</h1>
 
 				<Button title='Download app' className={styles.download_btn} callback={scroll} />
 			</AnimBlock>
