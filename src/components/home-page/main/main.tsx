@@ -1,6 +1,8 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
+import DownloadAtButtons from '@common/download-at-buttons/download-at-buttons'
+
 import styles from './main.module.css'
 
 type LineData = {
@@ -16,6 +18,15 @@ const Main = () => {
                 <Lines direction={-1} />
                 <Lines direction={1} />
             </div>
+            <div className={styles.inner}>
+                <h1 className={styles.headline}>
+                    Do you often drive to
+                    <br /> another state by car?
+                    <br /> Then sage with iZZi RIDE
+                </h1>
+
+                <DownloadAtButtons type='light' />
+            </div>
         </section>
     )
 }
@@ -27,13 +38,13 @@ const Lines = ({ direction }: { direction: 1 | -1 }) => {
     const lineData = useRef<LineData[]>([])
 
     useEffect(() => {
-		const copies = [
-			'Find your onw route',
-			'Trip, enjoy and successes',
-			'Choose a route and time',
-			'Find your onw route',
-			'Trip, enjoy and successes',
-		]
+        const copies = [
+            'Find your onw route',
+            'Trip, enjoy and successes',
+            'Choose a route and time',
+            'Find your onw route',
+            'Trip, enjoy and successes',
+        ]
 
         anim.current = requestAnimationFrame(() => {
             moving()
@@ -53,7 +64,7 @@ const Lines = ({ direction }: { direction: 1 | -1 }) => {
                     : 0
                 const lineWidth = (lineRef.current?.clientWidth || 0) + lineGap
 
-                return size >= lineWidth ? 0 : (size += 1)
+                return size >= lineWidth ? 0 : (size += 0.25)
             })
 
             anim.current = requestAnimationFrame(() => {

@@ -1,8 +1,8 @@
 .section {
 	width: 100%;
 	max-width: none;
-    font-size: 2em;
 	overflow: hidden;
+	margin-bottom: 5em;
 }
 
 .section::after {
@@ -19,6 +19,7 @@
 	display: grid;
     width: 100%;
 	grid-gap: 0.5em;
+    font-size: 2vw;
 	transform: translate(-50%, -50%) rotate(-10deg);
 }
 
@@ -71,15 +72,31 @@
 	font-weight: 600;
 }
 
+.inner {
+	position: absolute;
+	inset: 3em 0 0;
+	display: grid;
+	justify-items: center;
+	align-content: center;
+	gap: 2em;
+	color: #fff;
+	text-align: center;
+	z-index: 1;
+}
+
 @media screen and (min-width: 769px) {
     .section {
-        height: 80vh;
+        height: 100vh;
     }
+
+	.inner {
+		font-size: 1.5em;
+	}
 }
 
 @media screen and (max-width: 768px) {
     .section {
-        height: 50vh;
+        height: 70vh;
     }
 }
 

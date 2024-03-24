@@ -1,5 +1,4 @@
 import Main from '@components/home-page/main/main'
-import Introduction from '@components/home-page/introduction/introduction'
 import About from '@components/home-page/about/about'
 import Features from '@components/home-page/features/features'
 import Slider from '@components/home-page/slider/slider'
@@ -10,7 +9,6 @@ const Home = () => {
     return (
         <main data-page='home'>
             <Main />
-            <Introduction />
             <About />
             <Features />
             <Slider />
