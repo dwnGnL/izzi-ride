@@ -21,14 +21,15 @@
     border: none;
 }
 
-.media .phone_overlay {
+.phone_overlay {
     position: absolute;
     top: 6em;
     left: calc(50% - 23em / 2);
     width: 23em;
+    opacity: 0;
 }
 
-.media .phone_overlay img {
+.phone_overlay img {
     width: 100%;
     height: auto;
 }
@@ -48,7 +49,6 @@
     overflow: hidden;
     box-sizing: border-box;
     opacity: 0;
-    transition: background-image 0.5s;
 }
 
 .media > * {
@@ -70,11 +70,38 @@
 
 .headline {
     grid-area: headline;
+    opacity: 0;
 }
 
 .copy {
+    opacity: 0;
     grid-area: copy;
     font-size: 1.4em;
+}
+
+/* in view */
+.in_view .phone_overlay {
+    animation: fadeIn 1s ease-out 1.25s forwards, upAndDown 2s ease-in-out 2.25s alternate infinite;
+}
+
+.in_view .from_block {
+    animation: fromAnim 0.2s ease-in 3s forwards;
+}
+
+.in_view:has(.phone_overlay) .headline {
+    animation: fadeIn 1s ease-out 1.5s forwards;
+}
+
+.in_view:has(.phone_overlay) .copy {
+    animation: fadeIn 1s ease-out 1.75s forwards;
+}
+
+.in_view .headline {
+    animation: fadeIn 1s ease-out 1.25s forwards;
+}
+
+.in_view .copy {
+    animation: fadeIn 1s ease-out 1.5s forwards;
 }
 
 @media screen and (min-width: 769px) {
@@ -103,10 +130,6 @@
         background-size: 85%;
     }
 
-    /* .media.video {
-        aspect-ratio: 9/16;
-    } */
-
     .headline {
         margin-top: 0.5em;
     }
@@ -132,5 +155,38 @@
 
     .media.video {
         aspect-ratio: 16/9;
+    }
+}
+
+@keyframes fromAnim {
+    from {
+        left: 8.6%;
+        width: 83%;
+        opacity: 0;
+    }
+    to {
+        left: -2.5%;
+        width: 105%;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5vh);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes upAndDown {
+    from {
+        transform: translateY(0em);
+    }
+    to {
+        transform: translateY(0.5em);
     }
 }

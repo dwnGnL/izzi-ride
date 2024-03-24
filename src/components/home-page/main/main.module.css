@@ -59,7 +59,11 @@
 }
 
 .image {
-	background-color: rebeccapurple;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 100%;
+	background-origin: content-box;
+	padding: 0.5em 0.5em 0;
 }
 
 .copy {

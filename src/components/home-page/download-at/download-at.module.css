@@ -1,98 +1,117 @@
 .download_section > div {
-	position: relative;
-	background-color: var(--secondary);
-	color: #fff;
-	border-radius: var(--border-radius-regular);
-	overflow: hidden;
-	display: grid;
-	grid-gap: 0.5em;
-	font-size: 1.1em;
-	z-index: 1;
+    position: relative;
+    display: grid;
+    grid-gap: 0.5em;
+    background-color: var(--secondary);
+    color: #fff;
+    font-size: 1.1em;
+    border-radius: var(--border-radius-regular);
+    overflow: hidden;
+    z-index: 1;
 }
 
 .download_section > div::before,
 .download_section > div::after {
-	content: '';
-	position: absolute;
-	inset: 0;
-	z-index: -1;
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.image {
+    opacity: 0;
 }
 
 .headline {
-	line-height: 1;
+    line-height: 1;
 }
 
 .text {
-	font-size: 1.1em;
+    font-size: 1.1em;
+}
+
+/* in view */
+.in_view .image {
+    animation: fadeIn 1s ease-out 1.25s forwards, upAndDown 2s ease-in-out 2.25s alternate infinite;
 }
 
 @media screen and (min-width: 769px) {
-	.download_section > div::before {
-		background: url(/images/home-page/download-at-bg_top.png) 0 0 no-repeat;
-		background-size: 100%;
-	}
+    .download_section > div::before {
+        background: url(/images/home-page/download-at-bg_top.png) 0 0 no-repeat;
+        background-size: 100%;
+    }
 
-	.download_section > div::after {
-		background: url(/images/home-page/download-at-bg_bottom.png) 0 100% no-repeat;
-		background-size: 100%;
-	}
+    .download_section > div::after {
+        background: url(/images/home-page/download-at-bg_bottom.png) 0 100% no-repeat;
+        background-size: 100%;
+    }
 
-	.download_section > div {
-		padding: 10em 4em;
-	}
+    .download_section > div {
+        padding: 10em 4em;
+    }
 
-	.buttons {
-		margin-top: 4em;
-	}
+    .buttons {
+        margin-top: 4em;
+    }
 
-	.image {
-		position: absolute;
-		top: 0.75em;
-		right: 6em;
-		width: 19.5em;
-		height: auto;
-	}
-
-	.image > img {
-		width: 100%;
-		height: auto;
-	}
+    .image {
+        position: absolute;
+        top: 0.75em;
+        right: 6em;
+        width: 19.5em;
+        height: auto;
+    }
 }
 
 @media screen and (max-width: 768px) {
-	.download_section > div::before {
-		background: url(/images/home-page/download-at-bg_top-mobile.png) 0 0 no-repeat;
-		background-size: 100%;
-	}
+    .download_section > div::before {
+        background: url(/images/home-page/download-at-bg_top-mobile.png) 0 0 no-repeat;
+        background-size: 100%;
+    }
 
-	.download_section > div::after {
-		background: url(/images/home-page/download-at-bg_bottom-mobile.png) 0 65% no-repeat;
-		background-size: 100%;
-	}
+    .download_section > div::after {
+        background: url(/images/home-page/download-at-bg_bottom-mobile.png) 0 65% no-repeat;
+        background-size: 100%;
+    }
 
-	.download_section > div {
-		padding: 2em 3em;
-	}
+    .download_section > div {
+        padding: 2em 3em;
+    }
 
-	.buttons {
-		margin-top: 0.5em;
-	}
+    .buttons {
+        margin-top: 0.5em;
+    }
 
-	.image {
-		width: auto;
-		height: 30em;
-		justify-self: center;
-		margin-bottom: 2em;
-	}
-
-	.image > img {
-		width: auto;
-		height: 100%;
-	}
+    .image {
+        width: auto;
+        height: 30em;
+        justify-self: center;
+        margin-bottom: 2em;
+    }
 }
 
 @media screen and (max-width: 550px) {
-	.download_section > div {
-		font-size: 0.9em;
-	}
+    .download_section > div {
+        font-size: 0.9em;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5vh);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes upAndDown {
+    from {
+        transform: translateY(0em);
+    }
+    to {
+        transform: translateY(0.5em);
+    }
 }

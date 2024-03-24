@@ -8,7 +8,7 @@ import ContactUs from '@components/home-page/contact-us/contact-us'
 
 const Home = () => {
     return (
-        <>
+        <main data-page='home'>
             <Main />
             <Introduction />
             <About />
@@ -16,7 +16,7 @@ const Home = () => {
             <Slider />
             <DownloadAt />
             <ContactUs />
-        </>
+        </main>
     )
 }
 

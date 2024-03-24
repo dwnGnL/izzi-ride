@@ -1,30 +1,17 @@
-import useSectionProperties from '@hooks/use-section-properties'
-import FadeInOnScroll from '@hoc/fade-in-on-scroll'
+'use client'
+import useSectionsPosition from '@hooks/use-sections-position'
+import AnimBlock from '@hoc/animated-block/animated-block'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import Button from '@common/button/button'
 
-import scrollTo from '@helpers/scrollTo'
+import scrollTo from '@helpers/scroll-to'
 
 import car from '@public/images/home-page/car.png'
 import styles from './introduction.module.css'
 
-const AnimImage = motion(Image)
-
-const animation = {
-	hidden: {
-		opacity: 0,
-		x: 200,
-	},
-	visible: {
-		opacity: 1,
-		x: 0,
-	},
-}
-
 const Introduction = () => {
-	const { sectionPositions } = useSectionProperties()
+	const sectionPositions = useSectionsPosition()
 
 	function scroll() {
         scrollTo(sectionPositions['download at'].top)
@@ -32,14 +19,9 @@ const Introduction = () => {
 
 	return (
 		<section className={styles.section} data-title='introduction'>
-			<FadeInOnScroll>
+			<AnimBlock inViewExtraClass={styles.in_view}>
 				<div className={styles.image}>
-					<AnimImage
-						initial='hidden'
-						whileInView='visible'
-						variants={animation}
-						viewport={{ once: true }}
-						transition={{ duration: 1, delay: 1 }}
+					<Image
 						src={car}
 						alt='car'
 						className={styles.car}
@@ -54,7 +36,7 @@ const Introduction = () => {
 				</h2>
 
 				<Button title='Download app' className={styles.download_btn} callback={scroll} />
-			</FadeInOnScroll>
+			</AnimBlock>
 		</section>
 	)
 }

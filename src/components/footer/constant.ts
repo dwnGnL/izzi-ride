@@ -6,56 +6,57 @@ import instagram from '@public/icons/instagram-icon.svg'
 import tiktok from '@public/icons/tiktok-icon.svg'
 
 export const infoList = [
-	{
-		title: 'Email',
-		value: 'support@izziride.com',
-		type: 'mailto:'
-	},
-	{
-		title: 'Phone',
-		value: '555-567-8901',
-		type: 'tel:'
-	},
-	{
-		title: 'Address',
-		value: '1234 Main St<br /> Moonstone City, Stardust State 12345',
-	},
+    {
+        title: 'Email',
+        value: 'support@izziride.com',
+        type: 'mailto:',
+    },
+    {
+        title: 'Phone',
+        value: '555-567-8901',
+        type: 'tel:',
+    },
+    {
+        title: 'Address',
+        value: '1234 Main St<br /> Moonstone City, Stardust State 12345',
+    },
 ]
 
 export const navigation: NavigationItem[] = [
-	{
-		title: 'About us',
-		href: 'about',
-	},
-	{
-		title: 'Services',
-		href: 'services',
-	},
-	{
-		title: 'Use Cases',
-		href: 'use_cases',
-	},
+    {
+        title: 'About us',
+        href: 'about us',
+        scroll: true,
+    },
+    {
+        title: 'Services',
+        href: '/',
+    },
+    {
+        title: 'Use Cases',
+        href: '/',
+    },
 ]
 
 export const socials = [
-	{
-		title: 'Instagram',
-		href: 'https://www.instagram.com/',
+    {
+        title: 'Instagram',
+        href: 'https://www.instagram.com/',
         icon: instagram,
-	},
-	{
-		title: 'Twitter',
-		href: 'https://twitter.com/',
+    },
+    {
+        title: 'Twitter',
+        href: 'https://twitter.com/',
         icon: twitter,
-	},
-	{
-		title: 'YouTube',
-		href: 'https://www.youtube.com/',
+    },
+    {
+        title: 'YouTube',
+        href: 'https://www.youtube.com/',
         icon: youtube,
-	},
-	{
-		title: 'TikTok',
-		href: 'https://www.tiktok.com/',
+    },
+    {
+        title: 'TikTok',
+        href: 'https://www.tiktok.com/',
         icon: tiktok,
-	},
+    },
 ]

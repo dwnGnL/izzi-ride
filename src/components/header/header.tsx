@@ -1,9 +1,11 @@
 'use client'
 import { useState, useRef, useEffect, useCallback } from 'react'
+
 import { motion, AnimatePresence } from 'framer-motion'
-import { useRouter } from 'next/router'
+
+import { usePathname } from 'next/navigation'
 import useDevice from '@hooks/use-device'
-import useSectionProperties from '@hooks/use-section-properties'
+import useSectionsPosition from '@hooks/use-sections-position'
 
 import Logo from '@common/logo/logo'
 import Navigation from '@components/navigation/navigation'
@@ -11,7 +13,7 @@ import Button from '@common/button/button'
 import HamburgerMenuIcon from '@components/hamburger-menu-icon/hamburger-menu-icon'
 import MobileMenu from '@components/mobile-menu/mobile-menu'
 
-import scrollTo from '@helpers/scrollTo'
+import scrollTo from '@helpers/scroll-to'
 
 import { navigation } from './constant'
 import styles from './header.module.css'
@@ -34,9 +36,9 @@ const Header = () => {
     const [menuTopPadding, setMenuTopPadding] = useState<number>(0)
     const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false)
 
-    const router = useRouter()
+    const path = usePathname()
     const deviceType = useDevice()
-    const { sectionPositions } = useSectionProperties()
+    const sectionPositions = useSectionsPosition()
 
     const header = useRef<HTMLElement>(null)
     const headerDefaultPosition = useRef(0)
@@ -89,13 +91,15 @@ const Header = () => {
         headerDefaultPosition.current = headerElem.offsetTop
 
         const headerHandler =
-            router.pathname === '/'
+            path === '/'
                 ? scrollHandler.bind(null, headerElem)
                 : borderRadiusHandler.bind(null, headerElem)
 
-        if (router.pathname === '/') {
+        if (path === '/') {
             headerElem.classList.add(styles.home_page)
         } else {
+            headerElem.classList.remove(styles.home_page)
+            headerElem.classList.remove(styles.show)
             borderRadiusHandler(headerElem)
         }
 
@@ -104,12 +108,11 @@ const Header = () => {
         return () => {
             document.removeEventListener('scroll', headerHandler)
         }
-    }, [header, router, sectionPositions, scrollHandler])
+    }, [header, path, sectionPositions, scrollHandler])
 
     return (
         <>
             <header
-                data-title={deviceType}
                 ref={header}
                 style={{
                     borderTopLeftRadius: `${borderRadius}px`,

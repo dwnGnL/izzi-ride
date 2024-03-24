@@ -1,3 +1,4 @@
+'use client'
 import type { DeviceType } from '@type/menu.type'
 
 import { useState, useEffect } from 'react'

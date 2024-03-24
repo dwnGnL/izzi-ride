@@ -1,12 +1,11 @@
 .section {
     --coefficient: 0.75;
-    display: grid;
-    grid-auto-rows: max-content;
-    grid-gap: 2em;
 }
 
 .section > div {
-    display: contents;
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-gap: 2em;
 }
 
 .image {
@@ -24,6 +23,8 @@
     height: auto;
     aspect-ratio: 1/0.6;
     object-fit: cover;
+    opacity: 0;
+    transform: translateX(50vw);
 }
 
 .download_btn {
@@ -38,6 +39,11 @@
 .download_btn:hover {
     background-color: var(--tertiary);
     color: var(--secondary);
+}
+
+/* in view */
+.in_view .car {
+    animation: fadeInCar 0.3s ease-in-out 1.5s forwards;
 }
 
 @media screen and (min-width: 769px) {
@@ -62,5 +68,16 @@
     .download_btn {
         width: 100%;
         padding: 1em 2em;
+    }
+}
+
+@keyframes fadeInCar {
+    from {
+        opacity: 0;
+        transform: translateX(50vw);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }

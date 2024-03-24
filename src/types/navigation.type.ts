@@ -11,4 +11,5 @@ export type NavigationItem = {
     title: string
     href: string
     target?: HTMLAttributeAnchorTarget
+    scroll?: boolean
 }

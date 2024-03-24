@@ -113,7 +113,7 @@
 }
 
 @media screen and (max-width: 550px) {
-    .owners_section > div {
+    .owners_section {
 		font-size: 0.75em;
 	}
 }

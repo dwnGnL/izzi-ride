@@ -2,7 +2,8 @@
 import type { FC } from 'react'
 
 import { useState, useRef, useEffect } from 'react'
-import FadeInOnScroll from '@hoc/fade-in-on-scroll'
+import AnimSection from '@common/animated-section'
+import AnimBlock from '@hoc/animated-block/animated-block'
 import Image from 'next/image'
 import useDevice from '@hooks/use-device'
 
@@ -64,34 +65,32 @@ const Slider: FC = () => {
 
     return (
         <section className={styles.owners_section} data-title='owners'>
-            <FadeInOnScroll>
-                <>
-                    <h1 className={styles.headline}>Application Creation History</h1>
-                    <div className={styles.arrows}>
-                        <div className={`${styles.slider_arrow} ${styles.prev}`} onClick={prevSlide}></div>
-                        <div className={`${styles.slider_arrow} ${styles.next}`} onClick={nextSlide}></div>
+            <AnimBlock>
+                <h1 className={styles.headline}>Application Creation History</h1>
+                <div className={styles.arrows}>
+                    <div className={`${styles.slider_arrow} ${styles.prev}`} onClick={prevSlide}></div>
+                    <div className={`${styles.slider_arrow} ${styles.next}`} onClick={nextSlide}></div>
+                </div>
+                <div ref={sliderWrapperRef} className={styles.slider}>
+                    <div
+                        ref={sliderRef}
+                        className={`${styles.slider_inner} ${currSlide >= 2 ? styles.lastSlide : ''}`}
+                        style={{ transform: `translateX(-${slidePosition}px)` }}
+                    >
+                        {owners.map((owner, index) => (
+                            <Slide
+                                key={owner.name}
+                                image={owner.image}
+                                name={owner.name}
+                                position={owner.position}
+                                about={owner.about}
+                                slidesRef={slidesRef.current}
+                                index={index}
+                            />
+                        ))}
                     </div>
-                    <div ref={sliderWrapperRef} className={styles.slider}>
-                        <div
-                            ref={sliderRef}
-                            className={`${styles.slider_inner} ${currSlide >= 2 ? styles.lastSlide : ''}`}
-                            style={{ transform: `translateX(-${slidePosition}px)` }}
-                        >
-                            {owners.map((owner, index) => (
-                                <Slide
-                                    key={owner.name}
-                                    image={owner.image}
-                                    name={owner.name}
-                                    position={owner.position}
-                                    about={owner.about}
-                                    slidesRef={slidesRef.current}
-                                    index={index}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </>
-            </FadeInOnScroll>
+                </div>
+            </AnimBlock>
         </section>
     )
 }

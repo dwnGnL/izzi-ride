@@ -1,5 +1,6 @@
+'use client'
 import Link from 'next/link'
-import FadeInOnScroll from '@hoc/fade-in-on-scroll'
+import AnimBlock from '@hoc/animated-block/animated-block'
 import Form from '@common/form/form'
 
 import { inputs } from './constant'
@@ -11,7 +12,7 @@ const ContactUs = () => {
 			className={styles.contact_section}
 			data-title='contact us'
 		>
-			<FadeInOnScroll>
+			<AnimBlock>
 				<Form
 					endpoint='http://ezride.pro/api/v1/client/complaint'
 					inputs={inputs}
@@ -25,7 +26,7 @@ const ContactUs = () => {
 						and our default <Link href='/' title='Notification Settings'>Notification Settings</Link>.
 					</div>
 				</Form>
-			</FadeInOnScroll>
+			</AnimBlock>
 		</section>
 	)
 }

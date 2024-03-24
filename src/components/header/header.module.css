@@ -14,22 +14,13 @@
     z-index: 9;
 }
 
-.header.home_page {
-    position: absolute;
-    top: 2em;
-    left: 50%;
-    margin: unset;
-    transform: translateX(-50%);
-    transition: border-radius 0.5s;
-}
-
 .header.show {
     position: fixed;
     top: 0;
     transform: translate(-50%, -100%);
     animation: showHeader .5s ease-out forwards;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
 
 @keyframes showHeader {

@@ -44,9 +44,10 @@
 	grid-area: nav;
 }
 
-.navigation a {
+.navigation > * {
 	line-height: 1;
 	border-bottom: 1px solid;
+	cursor: pointer;
 }
 
 .social {
@@ -130,7 +131,7 @@
 		align-content: space-between;
 	}
 
-	.navigation a {
+	.navigation > * {
 		justify-self: start;
 	}
 

@@ -1,93 +1,126 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
-import useDevice from '@hooks/use-device'
-
 import styles from './main.module.css'
 
-const Main = () => {
-	const device = useDevice()
+type LineData = {
+    image: string
+    copy: string
+}
 
-	return (
-		<section className={styles.section} data-title='main'>
-			<div className={styles.lines_wrapper}>
-				<Lines direction={1} />
-				<Lines direction={-1} />
-				<Lines direction={1} />
-				{device === 'desktop' && <Lines direction={-1} />}
-			</div>
-		</section>
-	)
+const Main = () => {
+    return (
+        <section className={styles.section} data-title='main'>
+            <div className={styles.lines_wrapper}>
+                <Lines direction={1} />
+                <Lines direction={-1} />
+                <Lines direction={1} />
+            </div>
+        </section>
+    )
 }
 
 const Lines = ({ direction }: { direction: 1 | -1 }) => {
-	const lineRef = useRef<HTMLDivElement>(null)
-	const anim = useRef<number>()
-	const [moveSize, setMoveSize] = useState(0)
+    const lineRef = useRef<HTMLDivElement>(null)
+    const anim = useRef<number>()
+    const [moveSize, setMoveSize] = useState(0)
+    const lineData = useRef<LineData[]>([])
 
-	useEffect(() => {
-		anim.current = requestAnimationFrame(() => {
-			moving()
-		})
+    useEffect(() => {
+		const copies = [
+			'Find your onw route',
+			'Trip, enjoy and successes',
+			'Choose a route and time',
+			'Find your onw route',
+			'Trip, enjoy and successes',
+		]
 
-		function moving() {
-			setMoveSize(size => {
-				const lineGap = lineRef.current
-					? parseInt(window.getComputedStyle(lineRef.current).gap)
-					: 0
-				const lineWidth = (lineRef.current?.clientWidth || 0) + lineGap
+        anim.current = requestAnimationFrame(() => {
+            moving()
+        })
 
-				return size >= lineWidth ? 0 : (size += 1)
-			})
+        lineData.current = getArrayWithRandom({ length: 5, maxNumber: 11 }).map<LineData>(
+            (image, index) => ({
+                image: image.toString(),
+                copy: copies[index],
+            }),
+        )
 
-			anim.current = requestAnimationFrame(() => {
-				moving()
-			})
-		}
-	}, [])
+        function moving() {
+            setMoveSize(size => {
+                const lineGap = lineRef.current
+                    ? parseInt(window.getComputedStyle(lineRef.current).gap)
+                    : 0
+                const lineWidth = (lineRef.current?.clientWidth || 0) + lineGap
 
-	return (
-		<div className={styles.line}>
-			<ul
-				className={styles.line_list}
-				style={{ transform: `translateX(${moveSize * direction}px)` }}
-			>
-				<div className={styles.list_block}>
-					<Item copy='Find your onw route' />
-					<Item copy='Trip, enjoy and successes' />
-					<Item copy='Choose a route and time' />
-					<Item copy='Find your onw route' />
-					<Item copy='Trip, enjoy and successes' />
-					<Item copy='Choose a route and time' />
-				</div>
-				<div ref={lineRef} className={styles.list_block}>
-					<Item copy='Find your onw route' />
-					<Item copy='Trip, enjoy and successes' />
-					<Item copy='Choose a route and time' />
-					<Item copy='Find your onw route' />
-					<Item copy='Trip, enjoy and successes' />
-					<Item copy='Choose a route and time' />
-				</div>
-				<div className={styles.list_block}>
-					<Item copy='Find your onw route' />
-					<Item copy='Trip, enjoy and successes' />
-					<Item copy='Choose a route and time' />
-					<Item copy='Find your onw route' />
-					<Item copy='Trip, enjoy and successes' />
-					<Item copy='Choose a route and time' />
-				</div>
-			</ul>
-		</div>
-	)
+                return size >= lineWidth ? 0 : (size += 1)
+            })
+
+            anim.current = requestAnimationFrame(() => {
+                moving()
+            })
+        }
+    }, [])
+
+    return (
+        <div className={styles.line}>
+            <ul
+                className={styles.line_list}
+                style={{ transform: `translateX(${moveSize * direction}px)` }}
+            >
+                <div className={styles.list_block}>
+                    {lineData.current.map(item => (
+                        <Item image={item.image} copy={item.copy} key={`item-${item.image}`} />
+                    ))}
+                </div>
+                <div ref={lineRef} className={styles.list_block}>
+                    {lineData.current.map(item => (
+                        <Item image={item.image} copy={item.copy} key={`item-${item.image}`} />
+                    ))}
+                </div>
+                <div className={styles.list_block}>
+                    {lineData.current.map(item => (
+                        <Item image={item.image} copy={item.copy} key={`item-${item.image}`} />
+                    ))}
+                </div>
+            </ul>
+        </div>
+    )
 }
 
-const Item = ({ copy }: { copy: string }) => {
-	return (
-		<li className={styles.item}>
-			<div className={styles.image}></div>
-			<div className={styles.copy}>{copy}</div>
-		</li>
-	)
+const Item = ({ image, copy }: LineData) => {
+    return (
+        <li className={styles.item}>
+            <div
+                className={styles.image}
+                style={{ backgroundImage: `url(/images/home-page/main-component/${image}.png)` }}
+            ></div>
+            <div className={styles.copy}>{copy}</div>
+        </li>
+    )
+}
+
+function getArrayWithRandom({ length, maxNumber }: { length: number; maxNumber: number }) {
+    let arr: number[] = []
+
+    for (let i = 0; i < maxNumber; i++) {
+        arr.push(i)
+    }
+
+    shuffleArray(arr)
+
+    return arr.slice(0, length)
+}
+
+function shuffleArray<T>(arr: T[]) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1))
+        let temp = arr[i]
+        arr[i] = arr[j]
+        arr[j] = temp
+    }
+
+    return arr
 }
 
 export default Main

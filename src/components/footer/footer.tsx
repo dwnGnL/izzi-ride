@@ -1,10 +1,12 @@
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
 
 import Logo from '@common/logo/logo'
+import useSectionsPosition from '@hooks/use-sections-position'
+import scrollTo from '@helpers/scroll-to'
 
 import { infoList, navigation, socials } from './constant'
-
 import styles from './footer.module.css'
 
 const Footer = () => {
@@ -39,13 +41,33 @@ const Info = () => {
 }
 
 const Navigation = () => {
+    const sectionPositions = useSectionsPosition()
+
+    function scroll(section: string) {
+        scrollTo(sectionPositions[section].top)
+    }
+
     return (
         <nav className={styles.navigation}>
-            {navigation.map(navigationItem => (
-                <Link href={navigationItem.href} title={navigationItem.title} key={navigationItem.title.toLowerCase()}>
-                    {navigationItem.title}
-                </Link>
-            ))}
+            {navigation.map(navigationItem =>
+                navigationItem.scroll ? (
+                    <span
+                        title={navigationItem.title}
+                        onClick={() => scroll(navigationItem.href)}
+                        key={navigationItem.title.toLowerCase()}
+                    >
+                        {navigationItem.title}
+                    </span>
+                ) : (
+                    <Link
+                        href={navigationItem.href}
+                        title={navigationItem.title}
+                        key={navigationItem.title.toLowerCase()}
+                    >
+                        {navigationItem.title}
+                    </Link>
+                ),
+            )}
         </nav>
     )
 }
