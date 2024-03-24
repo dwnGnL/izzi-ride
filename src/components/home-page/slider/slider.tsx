@@ -2,7 +2,6 @@
 import type { FC } from 'react'
 
 import { useState, useRef, useEffect } from 'react'
-import AnimSection from '@common/animated-section'
 import AnimBlock from '@hoc/animated-block/animated-block'
 import Image from 'next/image'
 import useDevice from '@hooks/use-device'
