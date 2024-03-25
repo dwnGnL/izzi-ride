@@ -6,6 +6,7 @@ import AnimBlock from '@hoc/animated-block/animated-block'
 import Image from 'next/image'
 import useDevice from '@hooks/use-device'
 
+import { OWNERS } from '@constants/section'
 import { owners } from './constant'
 import styles from './slider.module.css'
 
@@ -63,7 +64,7 @@ const Slider: FC = () => {
     }
 
     return (
-        <section className={styles.owners_section} data-title='owners'>
+        <section className={styles.owners_section} data-title={OWNERS}>
             <AnimBlock>
                 <h2 className={styles.headline}>Application Creation History</h2>
                 <div className={styles.arrows}>

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import DownloadAtButtons from '@common/download-at-buttons/download-at-buttons'
 
+import { MAIN } from '@constants/section'
 import styles from './main.module.css'
 
 type LineData = {
@@ -12,7 +13,7 @@ type LineData = {
 
 const Main = () => {
     return (
-        <section className={styles.section} data-title='main'>
+        <section className={styles.section} data-title={MAIN}>
             <div className={styles.lines_wrapper}>
                 <Lines direction={1} />
                 <Lines direction={-1} />

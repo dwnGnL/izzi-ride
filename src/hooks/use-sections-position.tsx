@@ -15,7 +15,7 @@ export default function useSectionsPosition() {
         const data: SectionPosition = {}
 
         sections.forEach(section => {
-            const sectionName = section.getAttribute('data-title')?.toLowerCase()
+            const sectionName = section.getAttribute('data-title')
 
             if (!sectionName) return
 

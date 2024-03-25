@@ -53,7 +53,7 @@ const Navigation = () => {
                 navigationItem.scroll ? (
                     <span
                         title={navigationItem.title}
-                        onClick={() => scroll(navigationItem.href)}
+                        onClick={() => scroll(navigationItem.title)}
                         key={navigationItem.title.toLowerCase()}
                     >
                         {navigationItem.title}

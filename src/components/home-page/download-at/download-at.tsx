@@ -2,12 +2,13 @@ import Image from 'next/image'
 import AnimBlock from '@hoc/animated-block/animated-block'
 import DownloadAtButtons from '@common/download-at-buttons/download-at-buttons'
 
+import { DOWNLOAD_AT } from '@constants/section'
 import phones from '@public/images/home-page/download-at-phones.png'
 import styles from './download-at.module.css'
 
 const DownloadAt = () => {
     return (
-        <section className={styles.download_section} data-title='download at'>
+        <section className={styles.download_section} data-title={DOWNLOAD_AT}>
             <AnimBlock inViewExtraClass={styles.in_view}>
                 <Image src={phones} alt='Download iZZi RIDE' className={styles.image} />
                 <h2 className={styles.headline}>Ready To Get Started?</h2>

@@ -3,15 +3,13 @@ import Link from 'next/link'
 import AnimBlock from '@hoc/animated-block/animated-block'
 import Form from '@common/form/form'
 
+import { CONTACT_US } from '@constants/section'
 import { inputs } from './constant'
 import styles from './contact-us.module.css'
 
 const ContactUs = () => {
 	return (
-		<section
-			className={styles.contact_section}
-			data-title='contact us'
-		>
+		<section className={styles.contact_section} data-title={CONTACT_US}>
 			<AnimBlock>
 				<Form
 					endpoint='http://ezride.pro/api/v1/client/complaint'

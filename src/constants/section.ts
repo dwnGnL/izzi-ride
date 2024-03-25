@@ -1,0 +1,7 @@
+export const ABOUT = 'About us'
+export const CONTACT_US = 'Contact us'
+export const DOWNLOAD_AT = 'Download at'
+export const FEATURES = 'Features'
+export const INTRODUCTION = 'Introduction'
+export const MAIN = 'Main'
+export const OWNERS = 'Owners'

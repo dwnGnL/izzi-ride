@@ -13,7 +13,7 @@ type Props = {
 
 const MobileMenu = forwardRef<HTMLDivElement, Props>(({ paddingTop, closeMenu }, ref) => {
     return (
-        <div ref={ref} className={styles.menu_overlay} style={{ paddingTop: `calc(${paddingTop}px + 1em)` }}>
+        <div ref={ref} className={styles.menu_overlay} style={{ paddingTop: `${paddingTop}px` }}>
             <Navigation
                 navigationList={navigation}
                 className={styles.mobile_menu}

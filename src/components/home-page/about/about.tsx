@@ -2,10 +2,11 @@
 import Image from 'next/image'
 import AnimBlock from '@hoc/animated-block/animated-block'
 
-import phone from '@public/images/home-page/about-phone.png'
-
-import styles from './about.module.css'
 import useDevice from '@hooks/use-device'
+
+import { ABOUT } from '@constants/section'
+import phone from '@public/images/home-page/about-phone.png'
+import styles from './about.module.css'
 
 const videoFormats = {
     horizontal: 'https://www.youtube.com/embed/RK_U9EwKoJo',
@@ -17,7 +18,7 @@ const About = () => {
     const videoUrl = device === 'desktop' ? videoFormats.vertical : videoFormats.horizontal
 
     return (
-        <section className={styles.about_section} data-title='about us'>
+        <section className={styles.about_section} data-title={ABOUT}>
             <AnimBlock className={styles.about} inViewExtraClass={styles.in_view}>
                 <div className={styles.media} data-title='Choose a route and time'>
                     <div className={styles.phone_overlay}>

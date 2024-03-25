@@ -1,5 +1,8 @@
 import type { NavigationItem } from '@type/navigation.type'
 
+import { ABOUT } from '@constants/section'
+import * as data from '@constants/footer'
+
 import twitter from '@public/icons/twitter-icon.svg'
 import youtube from '@public/icons/youtube-icon.svg'
 import instagram from '@public/icons/instagram-icon.svg'
@@ -8,55 +11,55 @@ import tiktok from '@public/icons/tiktok-icon.svg'
 export const infoList = [
     {
         title: 'Email',
-        value: 'support@izziride.com',
+        value: data.EMAIL,
         type: 'mailto:',
     },
     {
         title: 'Phone',
-        value: '555-567-8901',
+        value: data.PHONE,
         type: 'tel:',
     },
     {
         title: 'Address',
-        value: '1234 Main St<br /> Moonstone City, Stardust State 12345',
+        value: data.ADDRESS,
     },
 ]
 
 export const navigation: NavigationItem[] = [
     {
-        title: 'About us',
-        href: 'about us',
+        title: ABOUT,
+        href: '',
         scroll: true,
     },
     {
         title: 'Services',
-        href: '/',
+        href: '',
     },
     {
         title: 'Use Cases',
-        href: '/',
+        href: '',
     },
 ]
 
 export const socials = [
     {
         title: 'Instagram',
-        href: 'https://www.instagram.com/',
+        href: data.INSTAGRAM_URL,
         icon: instagram,
     },
     {
         title: 'Twitter',
-        href: 'https://twitter.com/',
+        href: data.TWITTER_URL,
         icon: twitter,
     },
     {
         title: 'YouTube',
-        href: 'https://www.youtube.com/',
+        href: data.YOUTUBE_URL,
         icon: youtube,
     },
     {
         title: 'TikTok',
-        href: 'https://www.tiktok.com/',
+        href: data.TIKTOK_URL,
         icon: tiktok,
     },
 ]
