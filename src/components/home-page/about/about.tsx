@@ -9,8 +9,8 @@ import phone from '@public/images/home-page/about-phone.png'
 import styles from './about.module.css'
 
 const videoFormats = {
-    horizontal: 'https://www.youtube.com/embed/RK_U9EwKoJo',
-    vertical: 'https://www.youtube.com/embed/ra6H9PdY00o',
+    horizontal: 'https://www.youtube-nocookie.com/embed/RK_U9EwKoJo',
+    vertical: 'https://www.youtube-nocookie.com/embed/ra6H9PdY00o',
 }
 
 const About = () => {
