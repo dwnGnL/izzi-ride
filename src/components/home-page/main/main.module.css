@@ -27,12 +27,12 @@
 	height: 10em;
 }
 
-.line_list {
+.line_list_wrapper {
 	position: absolute;
 	height: 100%;
 }
 
-.list_block {
+.line_list {
 	display: grid;
 	height: 100%;
 	grid-auto-flow: column;
@@ -41,12 +41,12 @@
 	white-space: nowrap;
 }
 
-.list_block:nth-child(1) {
+.line_list:nth-child(1) {
 	position: absolute;
 	top: 0;
 	left: calc(-100% - 0.5em);
 }
-.list_block:nth-child(3) {
+.line_list:nth-child(3) {
 	position: absolute;
 	top: 0;
 	left: calc(100% + 0.5em);

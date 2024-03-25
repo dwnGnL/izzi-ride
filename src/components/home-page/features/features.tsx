@@ -37,13 +37,13 @@ const Features = () => {
 
 const Feature: FC<Feature> = ({ icon, title, copy }) => {
     return (
-        <AnimBlock className={styles.feature}>
-            <li>
+        <li className={styles.feature}>
+            <AnimBlock className={styles.feature_inner}>
                 <Image src={icon} alt={title} className={styles.icon} />
                 <div className={styles.title}>{title}</div>
                 <div className={styles.copy}>{copy}</div>
-            </li>
-        </AnimBlock>
+            </AnimBlock>
+        </li>
     )
 }
 

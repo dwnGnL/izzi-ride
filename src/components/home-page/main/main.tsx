@@ -33,7 +33,7 @@ const Main = () => {
 }
 
 const Lines = ({ direction }: { direction: 1 | -1 }) => {
-    const lineRef = useRef<HTMLDivElement>(null)
+    const lineRef = useRef<HTMLUListElement>(null)
     const anim = useRef<number>()
     const [moveSize, setMoveSize] = useState(0)
     const lineData = useRef<LineData[]>([])
@@ -76,26 +76,26 @@ const Lines = ({ direction }: { direction: 1 | -1 }) => {
 
     return (
         <div className={styles.line}>
-            <ul
-                className={styles.line_list}
+            <div
+                className={styles.line_list_wrapper}
                 style={{ transform: `translateX(${moveSize * direction}px)` }}
             >
-                <div className={styles.list_block}>
+                <ul className={styles.line_list}>
                     {lineData.current.map(item => (
                         <Item image={item.image} copy={item.copy} key={`item-${item.image}`} />
                     ))}
-                </div>
-                <div ref={lineRef} className={styles.list_block}>
+                </ul>
+                <ul ref={lineRef} className={styles.line_list}>
                     {lineData.current.map(item => (
                         <Item image={item.image} copy={item.copy} key={`item-${item.image}`} />
                     ))}
-                </div>
-                <div className={styles.list_block}>
+                </ul>
+                <ul className={styles.line_list}>
                     {lineData.current.map(item => (
                         <Item image={item.image} copy={item.copy} key={`item-${item.image}`} />
                     ))}
-                </div>
-            </ul>
+                </ul>
+            </div>
         </div>
     )
 }
