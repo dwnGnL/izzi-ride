@@ -36,7 +36,7 @@ const Header = () => {
     const [menuTopPadding, setMenuTopPadding] = useState<number>(0)
     const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false)
 
-    const path = usePathname()
+    const pathname = usePathname()
     const deviceType = useDevice()
     const sectionPositions = useSectionsPosition()
 
@@ -50,23 +50,23 @@ const Header = () => {
     function menuToggle() {
         if (!header.current) return
 
-        setIsMenuOpened(!isMenuOpened)
+        setIsMenuOpened(prevMenuState => {
+            const action = prevMenuState ? 'remove' : 'add'
+            header.current?.classList[action](styles.menu_opened)
+            return !prevMenuState
+        })
+
         setMenuTopPadding(
             header.current.getBoundingClientRect().bottom + headerDefaultPosition.current / 2,
         )
     }
 
     function borderRadiusHandler(elem: HTMLElement) {
-        const defaultRadius = Number(
-            window.getComputedStyle(elem).borderRadius.replace(/px/g, '').split(' ').at(-1),
-        )
-
+        const defaultRadius = parseInt(window.getComputedStyle(elem).borderBottomRightRadius)
         const currentPosition = elem.getBoundingClientRect().top
-        const currentRadius = defaultRadius
-
         const percent = currentPosition / headerDefaultPosition.current
 
-        setBorderRadius(currentRadius * percent)
+        setBorderRadius(defaultRadius * percent)
     }
 
     const scrollHandler = useCallback(
@@ -87,38 +87,30 @@ const Header = () => {
     useEffect(() => {
         if (!header.current) return
 
-        const headerElem = header.current
-        headerDefaultPosition.current = headerElem.offsetTop
+        headerDefaultPosition.current =
+            parseInt(window.getComputedStyle(header.current).marginTop) ||
+            parseInt(window.getComputedStyle(header.current).top)
 
         const headerHandler =
-            path === '/'
-                ? scrollHandler.bind(null, headerElem)
-                : borderRadiusHandler.bind(null, headerElem)
+            pathname === '/'
+                ? scrollHandler.bind(null, header.current)
+                : borderRadiusHandler.bind(null, header.current)
 
-        if (path === '/') {
-            headerElem.classList.add(styles.home_page)
-        } else {
-            headerElem.classList.remove(styles.home_page)
-            headerElem.classList.remove(styles.show)
-            borderRadiusHandler(headerElem)
-        }
+        if (pathname !== '/') borderRadiusHandler(header.current)
 
         document.addEventListener('scroll', headerHandler)
-
-        return () => {
-            document.removeEventListener('scroll', headerHandler)
-        }
-    }, [header, path, sectionPositions, scrollHandler])
+        return () => document.removeEventListener('scroll', headerHandler)
+    }, [header, pathname, scrollHandler])
 
     return (
         <>
             <header
                 ref={header}
-                style={{
+                style={!isNaN(Number(borderRadius)) ? {
                     borderTopLeftRadius: `${borderRadius}px`,
                     borderTopRightRadius: `${borderRadius}px`,
-                }}
-                className={`${styles.header} ${isMenuOpened ? styles.menu_opened : ''}`}
+                } : undefined}
+                className={styles.header}
             >
                 <Logo callback={() => setIsMenuOpened(false)} />
 

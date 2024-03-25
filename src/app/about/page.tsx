@@ -1,6 +1,6 @@
 const AboutUs = () => {
     return (
-        <main>
+        <main style={{ height: '150vh' }}>
             <div>about us page</div>
         </main>
     )

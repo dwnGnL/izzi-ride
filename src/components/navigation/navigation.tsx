@@ -31,10 +31,7 @@ const Navigation: FC<NavigationProps> = ({ navigationList, className, activeClas
 
     useEffect(() => {
         window.addEventListener('scroll', getFocusedSection)
-
-        return () => {
-            window.removeEventListener('scroll', getFocusedSection)
-        }
+        return () => window.removeEventListener('scroll', getFocusedSection)
     }, [getFocusedSection])
 
     function NavBtnHandler(e: any) {

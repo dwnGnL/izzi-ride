@@ -1,31 +1,32 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 type SectionPosition = {
     [key: string]: { top: number; bottom: number }
 }
 
-function useSectionsPosition() {
-    const sectionPositions = useRef<SectionPosition>({})
+export default function useSectionsPosition() {
+    const [sectionPositions, setSectionPositions] = useState<SectionPosition>({})
+    const pathname = usePathname()
 
     useEffect(() => {
-        if (Object.keys(sectionPositions.current).length === 0) {
-            const sections = document.querySelectorAll('section[data-title]')
+        const sections = document.querySelectorAll('section[data-title]')
+        const data: SectionPosition = {}
 
-            sections.forEach(section => {
-                const sectionName = section.getAttribute('data-title')?.toLowerCase()
+        sections.forEach(section => {
+            const sectionName = section.getAttribute('data-title')?.toLowerCase()
 
-                if (!sectionName) return
+            if (!sectionName) return
 
-                sectionPositions.current[sectionName] = {
-                    top: Math.round(section.getBoundingClientRect().top + window.scrollY),
-                    bottom: Math.round(section.getBoundingClientRect().bottom + window.scrollY),
-                }
-            })
-        }
-    }, [])
+            data[sectionName] = {
+                top: Math.round(section.getBoundingClientRect().top + window.scrollY),
+                bottom: Math.round(section.getBoundingClientRect().bottom + window.scrollY),
+            }
+        })
 
-    return sectionPositions.current
+        setSectionPositions(data)
+    }, [pathname])
+
+    return sectionPositions
 }
-
-export default useSectionsPosition
