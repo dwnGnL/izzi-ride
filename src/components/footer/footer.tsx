@@ -50,15 +50,7 @@ const Navigation = () => {
     return (
         <nav className={styles.navigation}>
             {navigation.map(navigationItem =>
-                navigationItem.scroll ? (
-                    <span
-                        title={navigationItem.title}
-                        onClick={() => scroll(navigationItem.title)}
-                        key={navigationItem.title.toLowerCase()}
-                    >
-                        {navigationItem.title}
-                    </span>
-                ) : (
+                navigationItem.href ? (
                     <Link
                         href={navigationItem.href}
                         title={navigationItem.title}
@@ -66,6 +58,14 @@ const Navigation = () => {
                     >
                         {navigationItem.title}
                     </Link>
+                ) : (
+                    <span
+                        title={navigationItem.title}
+                        onClick={() => scroll(navigationItem.title)}
+                        key={navigationItem.title.toLowerCase()}
+                    >
+                        {navigationItem.title}
+                    </span>
                 ),
             )}
         </nav>

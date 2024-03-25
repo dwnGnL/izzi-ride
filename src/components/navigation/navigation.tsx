@@ -1,5 +1,6 @@
 import type { FC } from 'react'
 import type { NavigationProps } from '@type/navigation.type'
+import type { Url } from 'next/dist/shared/lib/router/router'
 
 import { useCallback, useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
@@ -15,7 +16,7 @@ const Navigation: FC<NavigationProps> = ({ navigationList, className, activeClas
     const sectionPositions = useSectionsPosition()
     const pathname = usePathname()
 
-    const isActive = ({title, href}: {title: string, href?: string}) => {
+    const isActive = ({title, href}: {title: string, href?: Url}) => {
         if (href) return href === pathname ? activeClass || styles.active : ''
         return title === activeMenuItem ? activeClass || styles.active : ''
     }
@@ -57,7 +58,7 @@ const Navigation: FC<NavigationProps> = ({ navigationList, className, activeClas
                         target={navItem.target}
                         title={navItem.title}
                         className={`${styles.navigation_button} ${isActive(navItem)}`}
-                        key={navItem.href}
+                        key={`nav-${navItem.href}`}
                         onClick={NavBtnHandler}
                     >
                         {navItem.title}

@@ -1,3 +1,4 @@
+import type { Url } from 'next/dist/shared/lib/router/router'
 import type { HTMLAttributeAnchorTarget, MutableRefObject } from 'react'
 
 export type NavigationProps = {
@@ -9,7 +10,6 @@ export type NavigationProps = {
 
 export type NavigationItem = {
     title: string
-    href?: string
+    href?: Url
     target?: HTMLAttributeAnchorTarget
-    scroll?: boolean
 }

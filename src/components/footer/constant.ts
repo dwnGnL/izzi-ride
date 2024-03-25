@@ -28,8 +28,6 @@ export const infoList = [
 export const navigation: NavigationItem[] = [
     {
         title: ABOUT,
-        href: '',
-        scroll: true,
     },
     {
         title: 'Services',
