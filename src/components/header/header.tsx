@@ -15,6 +15,7 @@ import MobileMenu from '@components/mobile-menu/mobile-menu'
 
 import scrollTo from '@helpers/scroll-to'
 
+import { MAIN, DOWNLOAD_AT } from '@constants/section'
 import { navigation } from './constant'
 import styles from './header.module.css'
 
@@ -44,7 +45,7 @@ const Header = () => {
     const headerDefaultPosition = useRef(0)
 
     function scroll() {
-        scrollTo(sectionPositions['download at'].top)
+        scrollTo(sectionPositions[DOWNLOAD_AT].top)
     }
 
     function menuToggle() {
@@ -57,7 +58,7 @@ const Header = () => {
         })
 
         setMenuTopPadding(
-            header.current.getBoundingClientRect().bottom + headerDefaultPosition.current / 2,
+            header.current.getBoundingClientRect().bottom + headerDefaultPosition.current,
         )
     }
 
@@ -71,9 +72,9 @@ const Header = () => {
 
     const scrollHandler = useCallback(
         (elem: HTMLElement) => {
-            if (!sectionPositions.main) return
+            if (!sectionPositions[MAIN]) return
 
-            if (window.scrollY > sectionPositions.main.bottom) {
+            if (window.scrollY > sectionPositions[MAIN].bottom) {
                 elem.classList.add(styles.show)
             }
 
@@ -96,7 +97,11 @@ const Header = () => {
                 ? scrollHandler.bind(null, header.current)
                 : borderRadiusHandler.bind(null, header.current)
 
-        if (pathname !== '/') borderRadiusHandler(header.current)
+        if (pathname == '/') {
+            scrollHandler(header.current)
+        } else {
+            borderRadiusHandler(header.current)
+        }
 
         document.addEventListener('scroll', headerHandler)
         return () => document.removeEventListener('scroll', headerHandler)
