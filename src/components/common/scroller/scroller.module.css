@@ -30,7 +30,16 @@ body > .scroller_line {
     position: absolute;
     width: 100%;
     height: 20%;
-    min-height: 60px;
     background-color: var(--secondary);
     border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    body > .scroller_line {
+        width: 1vw;
+    }
+
+    .overlay .scroller_line {
+        width: 0.5vw;
+    }
 }
