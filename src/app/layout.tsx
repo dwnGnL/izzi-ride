@@ -5,6 +5,8 @@ import './globals.css'
 import Header from '@components/header/header'
 import Footer from '@components/footer/footer'
 
+import Scroller from '@common/scroller/scroller'
+
 const clashDisplayFont = localFont({
     src: [
         {
@@ -53,9 +55,11 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <body className={clashDisplayFont.className}>
-                <Header />
-                {children}
-                <Footer />
+                <Scroller addOverlayTag={false}>
+                    <Header />
+                    {children}
+                    <Footer />
+                </Scroller>
             </body>
         </html>
     )

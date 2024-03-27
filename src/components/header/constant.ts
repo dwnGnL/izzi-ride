@@ -1,5 +1,5 @@
 import type { NavigationItem } from '@type/navigation.type'
-import { ABOUT, FEATURES, OWNERS, CONTACT_US } from '@constants/section'
+import { ABOUT, FEATURES, FOUNDER, CONTACT_US } from '@constants/section'
 
 export const navigation: NavigationItem[] = [
     {
@@ -9,7 +9,7 @@ export const navigation: NavigationItem[] = [
         title: FEATURES,
     },
     {
-        title: OWNERS,
+        title: FOUNDER,
     },
     {
         title: CONTACT_US,

@@ -14,7 +14,7 @@ export const featureList: Feature[] = [
 	{
 		icon: chat,
 		title: 'Safely trip',
-		copy: 'The application is very safe for traveling, because we will have the ability to evaluate the driver and the fellow traveler, so you can travel with comfort',
+		copy: 'Safety of App is our priority and we do our best to keep it safe for drivers and riders. Every time after the trip ends, drivers and riders will have the ability to rate each other and write a review about their experience. Our rating system is designed to measure the quality on the iZZi RIDE platform and keep it safe for all members.',
 	},
 	{
 		icon: trip,

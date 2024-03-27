@@ -26,13 +26,11 @@ const About = () => {
                         <div className={styles.from_block}></div>
                     </div>
                 </div>
-
                 <h2 className={styles.headline}>Choose a route and time</h2>
-
                 <div className={styles.copy}>
                     Our app is designed to make it easy and affordable for you to travel around the
-                    states. We have developed a user-friendly interface for finding a driver or ride
-                    and communication
+                    cities and states. We have developed a user-friendly interface for finding and
+                    connecting drivers and ridemates and communication between them thru the app.
                 </div>
             </AnimBlock>
 
@@ -52,8 +50,12 @@ const About = () => {
 
                 <div className={styles.copy}>
                     With the app, you can personalize and customize your trip, paying less than for
-                    a regular taxi. Also, soon the application will have a smart system for
-                    evaluating the driver and the ride, too, so you can travel safely.
+                    a regular taxi as a passenger or save on gas and tolls by sharing the costs
+                    with your ridemates as a driver on your own car. Soon the application will have
+                    a smart system for evaluating the drivers and ridemates thru the app. Both sides
+                    can share their experience with others and rate their trip on the app. It will
+                    give others more information before booking a ride and keep their travel more
+                    safe and comfortable.
                 </div>
             </AnimBlock>
         </section>

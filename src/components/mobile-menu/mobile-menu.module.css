@@ -13,8 +13,8 @@ body:has(.menu_overlay) {
 
 .mobile_menu {
     grid-auto-flow: row;
-    justify-content: initial;
     grid-gap: 0.75em;
+    justify-content: initial;
     color: #263238;
     font-size: 2em;
 }
@@ -37,4 +37,10 @@ body:has(.menu_overlay) {
 
 .copy {
     font-size: 1.2em;
+}
+
+@media screen and (max-width: 550px) {
+    .menu_placeholder h1 {
+        font-size: 2.5em;
+    }
 }
