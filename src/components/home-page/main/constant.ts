@@ -13,45 +13,53 @@ import img_9 from '@public/images/home-page/main-component/9.png'
 import img_10 from '@public/images/home-page/main-component/10.png'
 import img_11 from '@public/images/home-page/main-component/11.png'
 
-export const MainComponentData: LineItemData[] = [
+export const MainComponentData: LineItemData<[]>[] = [
     {
-        copy: 'Save on your trip',
-        image: [img_1, img_9],
+        image: img_0,
+        copy: ['Between cities and states'],
     },
     {
-        copy: 'Find a ride',
-        image: [img_2, img_3, img_4],
+        image: img_1,
+        copy: ['Save on your trip', 'Between cities and states', 'Choose your ridemates'],
     },
     {
-        copy: 'Give a ride',
-        image: [img_8, img_11],
+        image: img_2,
+        copy: ['Find a ride', 'Easy to use'],
     },
     {
-        copy: 'Between cities and states',
-        image: [img_0, img_1, img_6, img_9],
+        image: img_3,
+        copy: ['Find a ride', 'Easy to use', 'Communicate thru the app'],
     },
     {
-        copy: 'Easy to use',
-        image: [img_2, img_3, img_8, img_10, img_11],
+        image: img_4,
+        copy: ['Find a ride', 'Communicate thru the app'],
     },
     {
-        copy: 'Communicate thru the app',
-        image: [img_3, img_4],
+        image: img_5,
+        copy: ['Choose your ridemates'],
     },
     {
-        copy: 'Choose your own route',
-        image: [img_10],
+        image: img_6,
+        copy: ['Between cities and states'],
     },
     {
-        copy: 'Choose a comfortable time',
-        image: [img_8, img_10, img_11],
+        image: img_7,
+        copy: ['Choose your ridemates', 'With affordable prices'],
     },
     {
-        copy: 'Choose your ridemates',
-        image: [img_1, img_5, img_7],
+        image: img_8,
+        copy: ['Give a ride', 'Easy to use', 'Choose a comfortable time'],
     },
     {
-        copy: 'With affordable prices',
-        image: [img_10, img_7],
+        image: img_9,
+        copy: ['Save on your trip', 'Between cities and states'],
+    },
+    {
+        image: img_10,
+        copy: ['Easy to use', 'Choose your own route', 'Choose a comfortable time', 'With affordable prices'],
+    },
+    {
+        image: img_11,
+        copy: ['Give a ride', 'Easy to use', 'Choose a comfortable time'],
     },
 ]
