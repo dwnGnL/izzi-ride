@@ -11,12 +11,13 @@
 .scroller_line {
     border-radius: 10px;
     overflow: hidden;
+    z-index: 1;
 }
 
 body > .scroller_line {
     position: fixed;
     inset: 1vw 1vw 1vw auto;
-    width: 10px;
+    width: 8px;
     background-color: var(--tertiary);
     opacity: 0;
     transform: translateX(3vw);
