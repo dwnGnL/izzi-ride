@@ -18,6 +18,9 @@ body > .scroller_line {
     inset: 1vw 1vw 1vw auto;
     width: 10px;
     background-color: var(--tertiary);
+    opacity: 0;
+    transform: translateX(3vw);
+    animation: fadeInScroller 1s ease-in 0.5s forwards;
 }
 
 .overlay .scroller_line {
@@ -29,7 +32,6 @@ body > .scroller_line {
 .scroller_bar {
     position: absolute;
     width: 100%;
-    height: 20%;
     background-color: var(--secondary);
     border-radius: 10px;
 }
@@ -41,5 +43,16 @@ body > .scroller_line {
 
     .overlay .scroller_line {
         width: 0.5vw;
+    }
+}
+
+@keyframes fadeInScroller {
+    from {
+        opacity: 0;
+        transform: translateX(3vw);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
