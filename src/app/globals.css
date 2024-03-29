@@ -9,6 +9,7 @@ body {
     --primary: #407bff;
     --secondary: #314064;
     --tertiary: #dce4f4;
+    --darkGrey: #414141;
 
     --border-radius-small: 0.5em;
     --border-radius-regular: 1em;
@@ -22,6 +23,7 @@ body {
     grid-gap: 6em;
     overflow-x: hidden;
     padding-top: 1em;
+    color: var(--darkGrey);
 }
 
 body:has(main[data-page='home']) {
