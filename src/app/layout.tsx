@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 
-import Header from '@components/header/header'
-import Footer from '@components/footer/footer'
+import dynamic from 'next/dynamic'
 
+import Footer from '@components/footer/footer'
 import Scroller from '@common/scroller/scroller'
+
+const Header = dynamic(() => import('@components/header/header'), { ssr: false })
 
 const clashDisplayFont = localFont({
     src: [

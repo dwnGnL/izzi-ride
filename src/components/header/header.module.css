@@ -2,6 +2,7 @@
     position: sticky;
     top: 0px;
     display: grid;
+    height: 3.5em;
     grid-template-columns: 6em 1fr max-content;
     grid-gap: 2em;
     align-items: center;
@@ -9,7 +10,6 @@
     color: #fff;
     font-size: 1.3em;
     border-radius: var(--border-radius-regular);
-    margin: 1em auto 0;
     padding: 0.25em 1em;
     z-index: 9;
 }
@@ -21,11 +21,11 @@
 .header.show {
     position: fixed;
     top: 0;
+    background-color: var(--primary);
     transform: translate(-50%, -100%);
     animation: showHeader .5s ease-out forwards;
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
-    background-color: var(--primary);
 }
 
 @keyframes showHeader {

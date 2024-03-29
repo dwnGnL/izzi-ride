@@ -16,13 +16,18 @@ body {
 
     display: grid;
     min-height: 100vh;
+    grid-template-areas: 'header' 'main' 'footer';
     grid-template-rows: max-content 1fr max-content;
+    grid-template-rows: 3.5em 1fr max-content;
     grid-gap: 6em;
     overflow-x: hidden;
+    padding-top: 1em;
 }
 
 body:has(main[data-page='home']) {
+    grid-template-areas: 'main' 'footer';
     grid-template-rows: 1fr max-content;
+    padding-top: 0;
 }
 
 body:has(main[data-page='home']) header {
@@ -35,10 +40,19 @@ body:has(main[data-page='home']) header {
     transition: border-radius 0.5s, background-color 0.5s;
 }
 
+header {
+    grid-area: header;
+}
+
 main {
     display: grid;
     grid-gap: 4em;
+    grid-area: main;
     overflow: hidden;
+}
+
+footer {
+    grid-area: footer;
 }
 
 header,
