@@ -114,28 +114,6 @@
 
     .headline {
         margin-top: 0.5em;
-        opacity: 0;
-    }
-
-    .copy {
-        opacity: 0;
-    }
-
-    /* in view */
-    .in_view:has(.phone_overlay) .headline {
-        animation: fadeIn 1s ease-out 1.5s forwards;
-    }
-
-    .in_view:has(.phone_overlay) .copy {
-        animation: fadeIn 1s ease-out 1.75s forwards;
-    }
-
-    .in_view .headline {
-        animation: fadeIn 1s ease-out 1.25s forwards;
-    }
-
-    .in_view .copy {
-        animation: fadeIn 1s ease-out 1.5s forwards;
     }
 }
 
