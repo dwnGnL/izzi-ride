@@ -1,7 +1,8 @@
 'use client'
 import type { StaticImageData } from 'next/image'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import getDeviceType from '@helpers/get-device-type'
 
 import Image from 'next/image'
 import DownloadAtButtons from '@common/download-at-buttons/download-at-buttons'
@@ -18,10 +19,11 @@ export type LineItemData<T = string> = {
 
 const Main = () => {
     const [lines, setLines] = useState<LineItemData[][]>([])
-    const linesLength = 3
-
+    
     useEffect(() => {
+        const linesLength = getDeviceType() === 'desktop' ? 6 : 3
         const arr: LineItemData[][] = []
+
         for (let i = 0; i < linesLength; i++) {
             arr.push(getShuffledData(7))
         }
@@ -56,6 +58,9 @@ const Lines = ({ data, direction }: { data: LineItemData[], direction: 1 | -1 })
     const lineRef = useRef<HTMLUListElement>(null)
     const anim = useRef<number>()
     const [moveSize, setMoveSize] = useState(0)
+    const device = useMemo(() => getDeviceType(), [])
+    const axis = device === 'desktop' ? 'Y' : 'X'
+    const sizeProperty = device === 'desktop' ? 'clientHeight' : 'clientWidth'
 
     useEffect(() => {
         anim.current = requestAnimationFrame(() => {
@@ -64,8 +69,10 @@ const Lines = ({ data, direction }: { data: LineItemData[], direction: 1 | -1 })
 
         function moving() {
             setMoveSize(size => {
-                const lineGap = lineRef.current ? parseInt(window.getComputedStyle(lineRef.current).gap) : 0
-                const lineWidth = (lineRef.current?.clientWidth || 0) + lineGap
+                if (!lineRef.current) return 0
+
+                const lineGap = parseInt(window.getComputedStyle(lineRef.current).gap)
+                const lineWidth = lineRef.current[sizeProperty] + lineGap
 
                 return size >= lineWidth ? 0 : (size += 0.25)
             })
@@ -74,11 +81,11 @@ const Lines = ({ data, direction }: { data: LineItemData[], direction: 1 | -1 })
                 moving()
             })
         }
-    }, [])
+    }, [sizeProperty])
 
     return (
         <div className={styles.line}>
-            <div className={styles.line_list_wrapper} style={{ transform: `translateX(${moveSize * direction}px)` }}>
+            <div className={styles.line_list_wrapper} style={{ transform: `translate${axis}(${moveSize * direction}px)` }}>
                 <ul className={styles.line_list}>
                     {data.map((item, index) => (
                         <Item image={item.image} copy={item.copy} key={`item-${item.copy}-${item.image}-${index}`} />
