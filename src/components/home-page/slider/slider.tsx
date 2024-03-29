@@ -5,7 +5,6 @@ import { useState, useRef, useEffect } from 'react'
 import Scroller from '@common/scroller/scroller'
 import AnimBlock from '@hoc/animated-block/animated-block'
 import Image from 'next/image'
-import useDevice from '@hooks/use-device'
 
 import { FOUNDER } from '@constants/section'
 import { owners } from './constant'
@@ -29,7 +28,6 @@ const Slider: FC = () => {
     const sliderWrapperRef = useRef<HTMLDivElement>(null)
     const sliderRef = useRef<HTMLDivElement>(null)
     const slidesRef = useRef<HTMLDivElement[]>([])
-    const device = useDevice()
 
     useEffect(() => {
         if (!sliderRef.current || !sliderWrapperRef.current) return
@@ -42,7 +40,7 @@ const Slider: FC = () => {
 
         slidesRef.current[currSlide].classList.add(styles.active)
         setSlidePosition(currPosition >= maxWidth ? maxWidth : currPosition)
-    }, [currSlide, device])
+    }, [currSlide])
 
     function nextSlide() {
         const activeSlide = checkIndex(currSlide + 1)

@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import AnimBlock from '@hoc/animated-block/animated-block'
 
-import useDevice from '@hooks/use-device'
+import getDeviceType from '@helpers/get-device-type'
 
 import { ABOUT } from '@constants/section'
 import phone from '@public/images/home-page/about-phone.png'
@@ -14,8 +14,7 @@ const videoFormats = {
 }
 
 const About = () => {
-    const device = useDevice()
-    const videoUrl = device === 'desktop' ? videoFormats.vertical : videoFormats.horizontal
+    const videoUrl = getDeviceType() === 'desktop' ? videoFormats.vertical : videoFormats.horizontal
 
     return (
         <section className={styles.about_section} data-title={ABOUT}>

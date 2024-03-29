@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { usePathname } from 'next/navigation'
-import useDevice from '@hooks/use-device'
+import getDeviceType from '@helpers/get-device-type'
 import useSectionsPosition from '@hooks/use-sections-position'
 
 import Logo from '@common/logo/logo'
@@ -38,7 +38,7 @@ const Header = () => {
     const [isMenuOpened, setIsMenuOpened] = useState<boolean>(false)
 
     const pathname = usePathname()
-    const deviceType = useDevice()
+    const deviceType = getDeviceType()
     const sectionPositions = useSectionsPosition()
 
     const header = useRef<HTMLElement>(null)
