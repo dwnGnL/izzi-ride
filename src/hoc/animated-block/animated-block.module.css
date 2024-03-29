@@ -6,13 +6,39 @@
     animation: inViewComponent 1s ease-out forwards;
 }
 
-@keyframes inViewComponent {
+/* @keyframes inViewComponent {
     from {
         opacity: 0;
         transform: translateY(5vh);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
+    }
+} */
+
+@media screen and (min-width: 769px) {
+    @keyframes inViewComponent {
+        from {
+            opacity: 0;
+            transform: translateY(5vh);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    @keyframes inViewComponent {
+        from {
+            opacity: 0;
+            transform: translateX(-70vh);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 }
