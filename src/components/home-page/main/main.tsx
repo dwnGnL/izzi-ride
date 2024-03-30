@@ -1,7 +1,7 @@
 'use client'
 import type { StaticImageData } from 'next/image'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import getDeviceType from '@helpers/get-device-type'
 
 import Image from 'next/image'
@@ -19,7 +19,7 @@ export type LineItemData<T = string> = {
 
 const Main = () => {
     const [lines, setLines] = useState<LineItemData[][]>([])
-    
+
     useEffect(() => {
         const linesLength = getDeviceType() === 'desktop' ? 6 : 3
         const arr: LineItemData[][] = []
@@ -35,7 +35,7 @@ const Main = () => {
         <section className={styles.section} data-title={MAIN}>
             <div className={styles.lines_wrapper}>
                 {lines.map((line, index) => (
-                    <Lines direction={index % 2 ? -1 : 1} data={line} key={`line-${index}`} />
+                    <Lines data={line} key={`line-${index}`} />
                 ))}
             </div>
 
@@ -54,44 +54,16 @@ const Content = () => {
     )
 }
 
-const Lines = ({ data, direction }: { data: LineItemData[], direction: 1 | -1 }) => {
-    const lineRef = useRef<HTMLUListElement>(null)
-    const anim = useRef<number>()
-    const [moveSize, setMoveSize] = useState(0)
-    const device = useMemo(() => getDeviceType(), [])
-    const axis = device === 'desktop' ? 'Y' : 'X'
-    const sizeProperty = device === 'desktop' ? 'clientHeight' : 'clientWidth'
-
-    useEffect(() => {
-        anim.current = requestAnimationFrame(() => {
-            moving()
-        })
-
-        function moving() {
-            setMoveSize(size => {
-                if (!lineRef.current) return 0
-
-                const lineGap = parseInt(window.getComputedStyle(lineRef.current).gap)
-                const lineWidth = lineRef.current[sizeProperty] + lineGap
-
-                return size >= lineWidth ? 0 : (size += 0.25)
-            })
-
-            anim.current = requestAnimationFrame(() => {
-                moving()
-            })
-        }
-    }, [sizeProperty])
-
+const Lines = ({ data }: { data: LineItemData[] }) => {
     return (
         <div className={styles.line}>
-            <div className={styles.line_list_wrapper} style={{ transform: `translate${axis}(${moveSize * direction}px)` }}>
+            <div className={styles.line_list_wrapper}>
                 <ul className={styles.line_list}>
                     {data.map((item, index) => (
                         <Item image={item.image} copy={item.copy} key={`item-${item.copy}-${item.image}-${index}`} />
                     ))}
                 </ul>
-                <ul ref={lineRef} className={styles.line_list}>
+                <ul className={styles.line_list}>
                     {data.map((item, index) => (
                         <Item image={item.image} copy={item.copy} key={`item-${item.copy}-${item.image}-${index}`} />
                     ))}
@@ -113,18 +85,6 @@ const Item = ({ image, copy }: LineItemData) => {
             <div className={styles.copy}>{copy}</div>
         </li>
     )
-}
-
-function getArrayWithRandom({ length, maxNumber }: { length: number; maxNumber: number }) {
-    let arr: number[] = []
-
-    for (let i = 0; i < maxNumber; i++) {
-        arr.push(i)
-    }
-
-    shuffleArray(arr)
-
-    return arr.slice(0, length)
 }
 
 function getShuffledData(length: number) {

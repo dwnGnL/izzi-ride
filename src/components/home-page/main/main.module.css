@@ -45,19 +45,20 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    padding: 0.25em;
 }
 
 .copy {
     position: absolute;
     inset: 0;
     display: grid;
+    place-items: center;
     background-color: rgb(49, 64, 100, 0.5);
     color: #fff;
     font-weight: 600;
     text-align: center;
     text-shadow: 0 0 0.3em var(--secondary);
     padding: 0.25em;
-    place-items: center;
 }
 
 .content {
@@ -84,6 +85,10 @@
     }
 
     /* direction */
+    .line {
+        width: 10em;
+    }
+
     .lines_wrapper {
         height: 100%;
         grid-auto-flow: column;
@@ -94,13 +99,19 @@
         width: 100%;
     }
 
-    .line {
-        width: 10em;
+    .line:nth-child(even) .line_list_wrapper {
+        --direction: 1;
     }
 
     .line_list {
+        --direction: -1;
         grid-auto-flow: row;
         grid-auto-rows: 14em;
+        animation: movingY 60s linear infinite;
+    }
+
+    .line:nth-child(even) .line_list {
+        --direction: 1;
     }
 
     .line_list:nth-child(1) {
@@ -121,6 +132,10 @@
     }
 
     /* direction */
+    .line {
+        height: 10em;
+    }
+
     .lines_wrapper {
         width: 100%;
         font-size: 2.5vh;
@@ -130,13 +145,15 @@
         height: 100%;
     }
 
-    .line {
-        height: 10em;
-    }
-
     .line_list {
+        --direction: -1;
         grid-auto-flow: column;
         grid-auto-columns: 8em;
+        animation: movingX 40s linear infinite;
+    }
+
+    .line:nth-child(even) .line_list {
+        --direction: 1;
     }
 
     .line_list:nth-child(1) {
@@ -152,5 +169,24 @@
 @media screen and (max-width: 550px) {
     .content {
         font-size: 0.75em;
+    }
+}
+
+
+@keyframes movingX {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc((100% + 0.5em) * var(--direction)));
+    }
+}
+
+@keyframes movingY {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(calc((100% + 0.5em) * var(--direction)));
     }
 }
