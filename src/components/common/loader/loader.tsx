@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from 'react'
 import styles from './loader.module.css'
 
@@ -11,7 +12,7 @@ const Loader = () => {
 
         window.addEventListener('load', loadingHandler)
         return () => window.removeEventListener('load', loadingHandler)
-    }, [])
+    }, [window])
 
     return !loading ? (
         <div className={styles.loader_wrapper}>
