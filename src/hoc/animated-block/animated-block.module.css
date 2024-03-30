@@ -6,16 +6,14 @@
     animation: inViewComponent 1s ease-out forwards;
 }
 
-/* @keyframes inViewComponent {
-    from {
-        opacity: 0;
-        transform: translateY(5vh);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-} */
+section:nth-child(even) > .in_view {
+    --direction: 1;
+}
+
+section[data-title="About us"] > .in_view:nth-child(1),
+section:nth-child(odd) > .in_view {
+    --direction: -1;
+}
 
 @media screen and (min-width: 769px) {
     @keyframes inViewComponent {
@@ -34,7 +32,7 @@
     @keyframes inViewComponent {
         from {
             opacity: 0;
-            transform: translateX(-70vh);
+            transform: translateX(calc(-70vh * var(--direction)));
         }
         to {
             opacity: 1;
