@@ -39,7 +39,7 @@ body > .scroller_line {
 
 @media screen and (max-width: 768px) {
     body > .scroller_line {
-        width: 1vw;
+        display: none;
     }
 
     .overlay .scroller_line {

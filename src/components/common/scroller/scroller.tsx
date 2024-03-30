@@ -75,7 +75,7 @@ const Scroller = ({ addOverlayTag = true, children }: Scroller) => {
         <>
             {children}
             {scrollable && (
-                <div ref={scrollerBarLine} className={styles.scroller_line}>
+                <div ref={scrollerBarLine} className={`${styles.scroller_line} scroller-line`}>
                     <div
                         ref={scrollerBarRef}
                         className={styles.scroller_bar}
