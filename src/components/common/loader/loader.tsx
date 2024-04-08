@@ -6,13 +6,8 @@ const Loader = () => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        function loadingHandler() {
             setLoading(true)
-        }
-
-        window.addEventListener('load', loadingHandler)
-        return () => window.removeEventListener('load', loadingHandler)
-    }, [window])
+    }, [])
 
     return !loading ? (
         <div className={styles.loader_wrapper}>
