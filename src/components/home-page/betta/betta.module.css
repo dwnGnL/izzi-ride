@@ -1,0 +1,64 @@
+.betta {
+    display: grid;
+    background-color: var(--tertiary);
+    border-radius: var(--border-radius-regular);
+    overflow: hidden;
+}
+
+.copy {
+    font-weight: 500;
+}
+
+.btn {
+    background-color: #fff;
+    color: var(--primary);
+    font-weight: 600;
+    padding-inline: 1.5em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+@media screen and (min-width: 769px) {
+    .betta {
+        grid-template-columns: 6em 1fr max-content;
+        justify-items: center;
+        align-items: center;
+        padding: 1em 2em;
+    }
+
+    .copy {
+        font-size: 1.4em;
+    }
+
+    .btn {
+        font-size: 1.3em;
+    }
+
+    .copy br {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .betta {
+        grid-template-rows: 3em max-content max-content;
+        justify-items: start;
+        gap: 2em;
+        padding: 4em 3em;
+    }
+
+    .copy {
+        font-size: 2em;
+    }
+
+    .btn {
+        font-size: 1.8em;
+    }
+}
+
+@media screen and (max-width: 550px) {
+}
