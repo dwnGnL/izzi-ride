@@ -1,5 +1,4 @@
 'use client'
-// import Image from 'next/image'
 import useSectionsPosition from '@hooks/use-sections-position'
 import AnimBlock from '@hoc/animated-block/animated-block'
 
