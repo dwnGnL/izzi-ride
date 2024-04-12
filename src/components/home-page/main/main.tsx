@@ -21,7 +21,7 @@ const Main = () => {
     const [lines, setLines] = useState<LineItemData[][]>([])
 
     useEffect(() => {
-        const linesLength = getDeviceType() === 'desktop' ? 6 : 3
+        const linesLength = getDeviceType() === 'desktop' ? 4 : 3
         const arr: LineItemData[][] = []
 
         for (let i = 0; i < linesLength; i++) {
