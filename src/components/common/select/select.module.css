@@ -1,5 +1,25 @@
+.select_wrapper {
+    position: relative;
+}
+
 .select {
 	cursor: pointer;
+}
+
+.arrow {
+    position: absolute;
+    top: calc(50% - 0.5em);
+    right: 2em;
+    width: 1em;
+    height: 1em;
+    background: url(/images/common/select-arrow.svg) center no-repeat;
+    background-size: contain;
+    pointer-events: none;
+    transition: transform 0.3s;
+}
+
+.arrow.active {
+    transform: scale3d(1, -1, 1);
 }
 
 .options {
@@ -19,11 +39,11 @@
 }
 
 .option {
-	padding: 0.5em 1em;
-	cursor: pointer;
     background-color: rgb(64, 123, 255, 0.25);
     color: var(--secondary);
     border-radius: var(--border-radius-small);
+	padding: 0.5em 1em;
+	cursor: pointer;
     transition: all 0.3s;
 }
 

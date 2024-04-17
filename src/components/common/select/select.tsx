@@ -34,16 +34,19 @@ const Select: FC<Input> = ({ type, name, required, options = [] }) => {
 
     return (
         <>
-            <input
-                type={type}
-                name={name}
-                required={required}
-                className={styles.select}
-                onFocus={focus}
-                onBlur={blur}
-                value={value}
-                readOnly
-            />
+            <div className={styles.select_wrapper}>
+                <input
+                    type={type}
+                    name={name}
+                    required={required}
+                    className={styles.select}
+                    onFocus={focus}
+                    onBlur={blur}
+                    value={value}
+                    readOnly
+                />
+                <div className={`${styles.arrow} ${opened ? styles.active : ''}`}></div>
+            </div>
             <AnimatePresence>
                 {opened && (
                     <motion.div
