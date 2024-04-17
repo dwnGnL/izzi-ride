@@ -4,20 +4,26 @@
 	grid-gap: 1em;
 }
 
-.form label {
+.form .label {
+	position: relative;
 	color: rgb(64, 123, 255, 0.7);
 	transition: color 0.3s;
 }
 
-.form label:has(input:focus) {
+.form .label:has(input:focus) {
 	color: var(--secondary);
 }
 
-.placeholder {
+.field_title {
 	margin-bottom: 0.25em;
 }
 
-.form input {
+.form * {
+	font-family: inherit;
+}
+
+.form input,
+.form textarea {
 	font-size: 1em;
 	border: 1px solid rgb(64, 123, 255, 0.7);
 	border-radius: var(--border-radius-small);
@@ -26,21 +32,16 @@
 	transition: border-color 0.3s;
 }
 
-.form input:focus {
+.form input:focus,
+.form textarea:focus {
 	border-color: var(--secondary);
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+	color: inherit;
 }
 
 .submit_btn {
 	padding: 1em 2em;
-}
-
-/* input number */
-.form input::-webkit-outer-spin-button,
-.form input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-
-.form input[type='number'] {
-	-moz-appearance: textfield;
 }

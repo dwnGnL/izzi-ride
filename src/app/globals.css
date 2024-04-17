@@ -83,6 +83,22 @@ h3 {
     line-height: 1.1;
 }
 
+textarea {
+    resize: none;
+    height: 9em;
+    width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
