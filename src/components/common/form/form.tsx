@@ -1,5 +1,8 @@
-import type { FC, FormEvent, MouseEventHandler } from 'react'
+import type { FC, FormEvent } from 'react'
 import type { Form, Input } from '@type/form.type'
+
+import { useAppDispatch } from '@hooks/store'
+import { openAlert } from '@store/alert/slice'
 
 import Select from '@common/select/select'
 import Button from '@common/button/button'
@@ -7,6 +10,8 @@ import Button from '@common/button/button'
 import styles from './form.module.css'
 
 const Form: FC<Form> = ({ endpoint, inputs, buttonText, className, children }) => {
+    const alertDispatch = useAppDispatch()
+
     async function onSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
@@ -23,30 +28,14 @@ const Form: FC<Form> = ({ endpoint, inputs, buttonText, className, children }) =
 
             if (!response.ok) throw new Error('whoops')
 
-            const data = await response.json()
-
-            console.log(data)
+            alertDispatch(openAlert('Successfully sent!'))
         } catch (err: any) {
-            console.log(err)
+            alertDispatch(openAlert('Something went wrong.\n Please try again later!'))
         }
     }
 
     return (
         <form onSubmit={onSubmit} className={`${styles.form} ${className}`}>
-            {/* <div>
-                {inputs.map(input => (
-                    <Input
-                        key={input.name}
-                        type={input.type}
-                        name={input.name}
-                        placeholder={input.placeholder}
-                        required={input.required}
-                    />
-                ))}
-
-                {children && children}
-            </div> */}
-
             <div>
                 {inputs.map(input => (
                     <Field
@@ -85,7 +74,7 @@ const Field: FC<Input> = ({ type, name, title, placeholder, required, options })
     }
 
     return (
-        <label onClick={(e) => labelHandler(e)} className={styles.label}>
+        <label onClick={e => labelHandler(e)} className={styles.label}>
             <div className={styles.field_title}>{fieldTitle}</div>
             {field}
         </label>

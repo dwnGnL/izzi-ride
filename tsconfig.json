@@ -21,6 +21,7 @@
             "@helpers/*": ["./src/helpers/*"],
             "@constants/*": ["./src/constants/*"],
             "@public/*": ["./public/*"],
+            "@store/*": ["./src/store/*"],
             "@/*": ["./src/*"]
         },
         "plugins": [

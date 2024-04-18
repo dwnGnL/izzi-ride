@@ -1,0 +1,84 @@
+body:has(.overlay) {
+    overflow: hidden;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+}
+
+.alert {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr max-content;
+    justify-items: center;
+    align-items: center;
+    gap: 1em;
+    background-color: var(--tertiary);
+    color: var(--darkGrey);
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: pre-wrap;
+    border-radius: var(--border-radius-small);
+    padding: 1em;
+    opacity: 0;
+    max-width: 400px;
+    min-height: 10em;
+    transform: scale(0.9);
+    animation: alertFadeIn 0.25s ease-in forwards;
+}
+
+.close_btn {
+    justify-self: self-end;
+    background-color: #fff;
+    color: var(--primary);
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.close_btn:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+@keyframes alertFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .alert {
+        width: 30vw;
+        font-size: 1.25em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .alert {
+        width: 40vw;
+        font-size: 1.25em;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .alert {
+        width: 70vw;
+        font-size: 1.5em;
+    }
+}

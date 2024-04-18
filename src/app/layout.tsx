@@ -2,13 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
 
-import dynamic from 'next/dynamic'
-
-import Footer from '@components/footer/footer'
-import Scroller from '@common/scroller/scroller'
-import Loader from '@common/loader/loader'
-
-const Header = dynamic(() => import('@components/header/header'), { ssr: false })
+import Content from './content'
 
 const clashDisplayFont = localFont({
     src: [
@@ -60,13 +54,7 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <body className={clashDisplayFont.className}>
-                <Loader />
-
-                <Scroller addOverlayTag={false}>
-                    <Header />
-                    {children}
-                    <Footer />
-                </Scroller>
+                <Content>{children}</Content>
             </body>
         </html>
     )
