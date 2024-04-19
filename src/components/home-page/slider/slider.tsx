@@ -103,13 +103,13 @@ const Slide: FC<SlideProps> = ({ image, name, position, about, slidesRef, index 
 
     return (
         <div className={styles.slide} ref={slide}>
-            <Image src={image} alt={name} className={styles.image} />
+            <div className={styles.image} style={{ backgroundImage: `url(${image.src})` }} />
 
             <div className={styles.slider_copy}>
                 {about ? (
                     <>
                         <div className={styles.quotes}></div>
-                        <Scroller>
+                        <Scroller className={styles.scroller}>
                             <div className={styles.about} dangerouslySetInnerHTML={{ __html: about }} />
                         </Scroller>
                     </>

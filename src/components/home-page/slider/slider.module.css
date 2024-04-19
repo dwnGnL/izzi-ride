@@ -1,38 +1,38 @@
 .owners_section > div {
-	display: grid;
-	grid-template-areas: 'headline arrows' 'slider slider';
-	grid-template-columns: 42em 1fr;
-	grid-gap: 2.5em 0;
-	justify-content: space-between;
-	align-items: center;
-	background-color: rgba(64, 123, 255, 0.35);
+    display: grid;
+    grid-template-areas: 'headline arrows' 'slider slider';
+    grid-template-columns: 42em 1fr;
+    grid-gap: 2.5em 0;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(64, 123, 255, 0.35);
     font-size: 0.9em;
-	border-radius: var(--border-radius-regular);
-	overflow: hidden;
-	padding: 3em 2em 2em;
+    border-radius: var(--border-radius-regular);
+    overflow: hidden;
+    padding: 3em 2em 2em;
 }
 
 .headline {
-	grid-area: headline;
+    grid-area: headline;
 }
 
 .arrows {
-	display: grid;
-	grid-auto-flow: column;
-	grid-gap: 1em;
-	grid-area: arrows;
-	justify-self: end;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1em;
+    grid-area: arrows;
+    justify-self: end;
 }
 
 .slider_arrow {
-	width: 4em;
-	height: 4em;
+    width: 4em;
+    height: 4em;
     background: url(/icons/slider-arrow.svg) center no-repeat #fff;
     background-size: contain;
     background-origin: content-box;
-	border-radius: var(--border-radius-regular);
+    border-radius: var(--border-radius-regular);
     padding: 1em;
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .slider_arrow.prev {
@@ -40,115 +40,102 @@
 }
 
 .slider {
-	position: relative;
-	height: 27em;
-	grid-area: slider;
+    position: relative;
+    height: 27em;
+    grid-area: slider;
 }
 
 .slider_inner {
-	position: absolute;
-	display: grid;
-	height: 100%;
+    position: absolute;
+    display: grid;
+    height: 100%;
     grid-auto-flow: column;
     grid-gap: 2em;
-	transition: transform 0.5s;
+    transition: transform 0.5s;
 }
 
 .slide {
-	display: grid;
-	height: 100%;
-	grid-template-columns: 1fr 1fr;
-	background-color: #fff;
-	border-radius: var(--border-radius-regular);
-	overflow: hidden;
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr;
+    background-color: #fff;
+    border-radius: var(--border-radius-regular);
+    overflow: hidden;
 }
 
 .image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .slider_copy {
-	display: grid;
-	grid-template-areas: 'quotes' 'about' 'name' 'position';
-	grid-template-rows: max-content 1fr max-content max-content;
-	gap: 1em;
-	padding: 2em 2em 1.5em 1em;
+    display: grid;
+    grid-template-areas: 'quotes' 'about' 'name' 'position';
+    grid-template-rows: max-content 1fr max-content max-content;
+    padding: 1em 2em 1em 1em;
 }
 
 .quotes {
-	grid-area: quotes;
     width: 2.5em;
     height: 2.5em;
-	background: url(/icons/quotes.svg) center no-repeat;
+    grid-area: quotes;
+    background: url(/icons/quotes.svg) center no-repeat;
     background-size: contain;
 }
 
+.scroller {
+    margin: 1em 0;
+}
+
 .about {
-	grid-area: about;
-	display: grid;
-	gap: 1em;
-    /* overflow: auto; */
+    display: grid;
+    grid-area: about;
+    gap: 1em;
 }
 
 .name {
-	grid-area: name;
+    grid-area: name;
     font-size: 1.3em;
 }
 
 .position {
-	grid-area: position;
+    grid-area: position;
 }
 
 @media screen and (min-width: 769px) {
-    /* .owners_section > div {
-        grid-template-columns: 42em 1fr;
-    } */
-
     .slider_inner {
         grid-auto-columns: 48em;
     }
-	
-	/* .about {
-		max-height: 17.5em;
-	} */
 }
 
 @media screen and (max-width: 768px) {
-	.owners_section {
-		font-size: 0.75em;
-	}
+    .owners_section {
+        font-size: 0.75em;
+    }
 
-	.slider_inner {
-		grid-auto-columns: calc(90vw - 4em);
-	}
+    .slider_inner {
+        grid-auto-columns: calc(90vw - 4em);
+    }
 
-	.slide {
-		opacity: 0;
-		transition: opacity 0.5s;
-	}
+    .slide {
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
 
-	.slide.active {
-		opacity: 1;
-	}
+    .slide.active {
+        opacity: 1;
+    }
 
-	.slider_copy {
-		font-size: 1.25em;
-	}
-
-	/* .about {
-		max-height: 12em;
-	} */
+    .slider_copy {
+        font-size: 1.25em;
+    }
 }
 
 @media screen and (max-width: 550px) {
-	.slider_copy {
-		font-size: 1.5em;
-	}
-
-	/* .about {
-		max-height: 8.5em;
-	} */
+    .slider_copy {
+        font-size: 1.5em;
+    }
 }

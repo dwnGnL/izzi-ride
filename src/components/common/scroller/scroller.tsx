@@ -7,11 +7,12 @@ import { usePathname } from 'next/navigation'
 import styles from './scroller.module.css'
 
 type Scroller = {
-    addOverlayTag?: boolean
     children: ReactNode
+    className?: string
+    addOverlayTag?: boolean
 }
 
-const Scroller = ({ addOverlayTag = true, children }: Scroller) => {
+const Scroller = ({ addOverlayTag = true, children, className }: Scroller) => {
     const scrollerRef = useRef<HTMLDivElement>(null)
     const scrollerBarLine = useRef<HTMLDivElement>(null)
     const scrollerBarRef = useRef<HTMLDivElement>(null)
@@ -72,7 +73,7 @@ const Scroller = ({ addOverlayTag = true, children }: Scroller) => {
 
     if (addOverlayTag) {
         return (
-            <div className={styles.overlay}>
+            <div className={`${styles.overlay} ${className}`}>
                 <div ref={scrollerRef} className={styles.content_wrapper}>
                     <div className={styles.content}>{children}</div>
                 </div>

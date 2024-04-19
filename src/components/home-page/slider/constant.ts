@@ -12,14 +12,8 @@ export const owners: Slide[] = [
     },
     {
         image: barzu,
-        about: '',
+        about: "<p>As a co-founder and developer of the app, I bring a deep passion for the product and a strong technical background to the team. I am excited to be a part of creating a product that will help people in a meaningful way.</p><p>I have always been interested in technology and its potential to solve problems. I started coding at a young age and have been building software ever since. I am passionate about creating user-friendly and intuitive products that make people's lives easier.</p>",
         name: 'Rustami Barzu',
         position: 'Co-founder',
     },
-    // {
-    //     image: 'image',
-    //     about: '<p>When I was in Europe, I used a similar application that is very comfortable and safe for moving around cities, which inspired me to create one in America</p><p>I want the residents of America to also have such an opportunity as to make their trips comfortable and profitable.</p>',
-    //     name: 'name 3',
-    //     position: 'position',
-    // },
 ]
