@@ -4,14 +4,14 @@ import type { FC } from 'react'
 import { useState, useRef, useEffect } from 'react'
 import Scroller from '@common/scroller/scroller'
 import AnimBlock from '@hoc/animated-block/animated-block'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
 import { FOUNDER } from '@constants/section'
 import { owners } from './constant'
 import styles from './slider.module.css'
 
 export type Slide = {
-    image: string
+    image: StaticImageData
     about: string
     name: string
     position: string
@@ -67,21 +67,13 @@ const Slider: FC = () => {
             <AnimBlock>
                 <h2 className={styles.headline}>Application Creation History</h2>
                 <div className={styles.arrows}>
-                    <div
-                        className={`${styles.slider_arrow} ${styles.prev}`}
-                        onClick={prevSlide}
-                    ></div>
-                    <div
-                        className={`${styles.slider_arrow} ${styles.next}`}
-                        onClick={nextSlide}
-                    ></div>
+                    <div className={`${styles.slider_arrow} ${styles.prev}`} onClick={prevSlide}></div>
+                    <div className={`${styles.slider_arrow} ${styles.next}`} onClick={nextSlide}></div>
                 </div>
                 <div ref={sliderWrapperRef} className={styles.slider}>
                     <div
                         ref={sliderRef}
-                        className={`${styles.slider_inner} ${
-                            currSlide >= 2 ? styles.lastSlide : ''
-                        }`}
+                        className={`${styles.slider_inner} ${currSlide >= 2 ? styles.lastSlide : ''}`}
                         style={{ transform: `translateX(-${slidePosition}px)` }}
                     >
                         {owners.map((owner, index) => (
@@ -111,13 +103,17 @@ const Slide: FC<SlideProps> = ({ image, name, position, about, slidesRef, index 
 
     return (
         <div className={styles.slide} ref={slide}>
-            {/* <Image src={image} alt={name} className={styles.image} /> */}
-            <div className={styles.image} />
+            <div className={styles.image} style={{ backgroundImage: `url(${image.src})` }} />
+
             <div className={styles.slider_copy}>
-                <div className={styles.quotes}></div>
-                <Scroller>
-                    <div className={styles.about} dangerouslySetInnerHTML={{ __html: about }} />
-                </Scroller>
+                {about ? (
+                    <>
+                        <div className={styles.quotes}></div>
+                        <Scroller className={styles.scroller}>
+                            <div className={styles.about} dangerouslySetInnerHTML={{ __html: about }} />
+                        </Scroller>
+                    </>
+                ) : null}
                 <strong className={styles.name}>{name}</strong>
                 <div className={styles.position}>{position}</div>
             </div>

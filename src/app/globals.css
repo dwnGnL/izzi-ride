@@ -9,6 +9,7 @@ body {
     --primary: #407bff;
     --secondary: #314064;
     --tertiary: #dce4f4;
+    --darkGrey: #414141;
 
     --border-radius-small: 0.5em;
     --border-radius-regular: 1em;
@@ -16,13 +17,19 @@ body {
 
     display: grid;
     min-height: 100vh;
+    grid-template-areas: 'header' 'main' 'footer';
     grid-template-rows: max-content 1fr max-content;
+    grid-template-rows: 3.5em 1fr max-content;
     grid-gap: 6em;
     overflow-x: hidden;
+    padding-top: 1em;
+    color: var(--darkGrey);
 }
 
 body:has(main[data-page='home']) {
+    grid-template-areas: 'main' 'footer';
     grid-template-rows: 1fr max-content;
+    padding-top: 0;
 }
 
 body:has(main[data-page='home']) header {
@@ -35,10 +42,19 @@ body:has(main[data-page='home']) header {
     transition: border-radius 0.5s, background-color 0.5s;
 }
 
+header {
+    grid-area: header;
+}
+
 main {
     display: grid;
     grid-gap: 4em;
+    grid-area: main;
     overflow: hidden;
+}
+
+footer {
+    grid-area: footer;
 }
 
 header,
@@ -65,6 +81,22 @@ h3 {
     font-size: 2.5em;
     font-weight: 600;
     line-height: 1.1;
+}
+
+textarea {
+    resize: none;
+    height: 9em;
+    width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
 }
 
 ::-webkit-scrollbar {

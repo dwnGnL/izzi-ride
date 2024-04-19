@@ -2,21 +2,24 @@
 import type { ReactNode } from 'react'
 
 import { useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 import styles from './scroller.module.css'
 
 type Scroller = {
-    addOverlayTag?: boolean
     children: ReactNode
+    className?: string
+    addOverlayTag?: boolean
 }
 
-const Scroller = ({ addOverlayTag = true, children }: Scroller) => {
+const Scroller = ({ addOverlayTag = true, children, className }: Scroller) => {
     const scrollerRef = useRef<HTMLDivElement>(null)
     const scrollerBarLine = useRef<HTMLDivElement>(null)
     const scrollerBarRef = useRef<HTMLDivElement>(null)
     const [scrollYProgress, setScrollYProgress] = useState(0)
     const [currPosition, setCurrPosition] = useState(0)
     const [scrollable, setScrollable] = useState(true)
+    const path = usePathname()
 
     useEffect(() => {
         const scrollerElement = !addOverlayTag ? window : scrollerRef.current
@@ -29,7 +32,10 @@ const Scroller = ({ addOverlayTag = true, children }: Scroller) => {
         const entireHeight = isBodyScroller ? document.body.scrollHeight : scrollerRef.current.children[0].clientHeight
 
         // scrollbar properties
-        const scrollBarHeightCoefficient = entireHeight / visibleHeight
+        const scrollBarHeightCoefficient =
+            path === '/' && isBodyScroller
+                ? (entireHeight - visibleHeight) / visibleHeight
+                : entireHeight / visibleHeight
 
         if (scrollBarHeightCoefficient < 1) setScrollable(false)
 
@@ -41,19 +47,33 @@ const Scroller = ({ addOverlayTag = true, children }: Scroller) => {
         scrollHandler()
 
         function scrollHandler() {
-            const scrollPosition = isBodyScroller ? window.scrollY : scrollerRef.current.scrollTop
+            if (path === '/' && window.scrollY < visibleHeight && isBodyScroller) {
+                scrollerBarLine.current?.classList.add(styles.attached)
+                return
+            } else {
+                scrollerBarLine.current?.classList.remove(styles.attached)
+            }
 
-            setScrollYProgress(Math.abs(scrollPosition / (entireHeight - visibleHeight)))
+            const size = path === '/' && isBodyScroller ? 2 : 1
+
+            const scrollPosition =
+                path === '/' && isBodyScroller
+                    ? window.scrollY - visibleHeight
+                    : isBodyScroller
+                    ? window.scrollY
+                    : scrollerRef.current.scrollTop
+
+            setScrollYProgress(Math.abs(scrollPosition / (entireHeight - visibleHeight * size)))
             setCurrPosition(scrollMovingSize * scrollYProgress)
         }
 
         scrollerElement.addEventListener('scroll', scrollHandler)
         return () => scrollerElement.removeEventListener('scroll', scrollHandler)
-    }, [addOverlayTag, scrollYProgress])
+    }, [addOverlayTag, scrollYProgress, path])
 
     if (addOverlayTag) {
         return (
-            <div className={styles.overlay}>
+            <div className={`${styles.overlay} ${className}`}>
                 <div ref={scrollerRef} className={styles.content_wrapper}>
                     <div className={styles.content}>{children}</div>
                 </div>
@@ -75,7 +95,7 @@ const Scroller = ({ addOverlayTag = true, children }: Scroller) => {
         <>
             {children}
             {scrollable && (
-                <div ref={scrollerBarLine} className={styles.scroller_line}>
+                <div ref={scrollerBarLine} className={`${styles.scroller_line} scroller-line`}>
                     <div
                         ref={scrollerBarRef}
                         className={styles.scroller_bar}

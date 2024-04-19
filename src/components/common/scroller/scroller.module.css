@@ -16,12 +16,19 @@
 
 body > .scroller_line {
     position: fixed;
-    inset: 1vw 1vw 1vw auto;
+    top: 15vh;
+    right: 10px;
     width: 8px;
+    height: 70vh;
     background-color: var(--tertiary);
     opacity: 0;
     transform: translateX(3vw);
     animation: fadeInScroller 1s ease-in 0.5s forwards;
+}
+
+body > .scroller_line.attached {
+    position: absolute;
+    top: 115vh;
 }
 
 .overlay .scroller_line {
@@ -39,7 +46,7 @@ body > .scroller_line {
 
 @media screen and (max-width: 768px) {
     body > .scroller_line {
-        width: 1vw;
+        display: none;
     }
 
     .overlay .scroller_line {

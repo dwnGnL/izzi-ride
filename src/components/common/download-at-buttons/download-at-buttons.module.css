@@ -1,12 +1,14 @@
 .download_app {
     display: grid;
-    grid-template-columns: 13em 14.7em;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    grid-auto-rows: 4.3em;
     grid-gap: 1em;
     justify-content: start;
 }
 
 .download_app a {
-    display: inline-grid;
+    display: block;
     transition: transform 0.3s;
 }
 
