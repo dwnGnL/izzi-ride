@@ -12,7 +12,7 @@ const ContactUs = () => {
 		<section className={styles.contact_section} data-title={CONTACT_US}>
 			<AnimBlock>
 				<Form
-					endpoint='http://ezride.pro/api/v1/client/complaint'
+					endpoint='https://ezride.pro/api/v1/client/complaint'
 					inputs={inputs}
 					buttonText='Send Message'
 					className={styles.form}
