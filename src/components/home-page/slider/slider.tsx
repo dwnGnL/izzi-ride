@@ -1,10 +1,10 @@
 'use client'
 import type { FC } from 'react'
+import type { StaticImageData } from 'next/image'
 
 import { useState, useRef, useEffect } from 'react'
 import Scroller from '@common/scroller/scroller'
 import AnimBlock from '@hoc/animated-block/animated-block'
-import Image, { StaticImageData } from 'next/image'
 
 import { FOUNDER } from '@constants/section'
 import { owners } from './constant'
