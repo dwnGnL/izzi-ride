@@ -9,8 +9,8 @@ import start from '@public/icons/stars-icon.png'
 export const featureList: Feature[] = [
     {
         icon: start,
-        title: 'Ai tehnologies',
-        copy: 'AI technologies will be used for Predicting travel prices and personalizing recommendations Real-time travel optimization and assistance Enhancing travel safety and security',
+        title: '<b>Ai</b> tehnologies',
+        copy: '<p>AI technologies will be used for:</p> <p>Predicting travel prices and personalizing recommendations</p> <p>Real-time travel optimization and assistance</p> <p>Enhancing travel safety and security</p>',
     },
     {
         icon: review,

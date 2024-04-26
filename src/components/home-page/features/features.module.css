@@ -38,8 +38,19 @@
     font-weight: 700;
 }
 
+.title b {
+    color: #9074c6;
+    font-size: 1.4em;
+    line-height: 1;
+}
+
 .copy {
     grid-area: copy;
+}
+
+.copy p {
+    line-height: 1;
+    margin: 0.5em 0;
 }
 
 @media screen and (min-width: 769px) {
@@ -48,7 +59,6 @@
     }
 
     .feature:nth-child(1) {
-        width: 50%;
         grid-column: 1/4;
         margin: auto;
     }

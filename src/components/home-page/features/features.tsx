@@ -40,8 +40,8 @@ const Feature: FC<Feature> = ({ icon, title, copy }) => {
         <li className={styles.feature}>
             <AnimBlock className={styles.feature_inner}>
                 <Image src={icon} alt={title} className={styles.icon} />
-                <div className={styles.title}>{title}</div>
-                <div className={styles.copy}>{copy}</div>
+                <div className={styles.title} dangerouslySetInnerHTML={{ __html: title }} />
+                <div className={styles.copy} dangerouslySetInnerHTML={{ __html: copy }} />
             </AnimBlock>
         </li>
     )
