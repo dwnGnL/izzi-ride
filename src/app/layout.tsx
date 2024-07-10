@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import localFont from 'next/font/local'
 import './globals.css'
 
@@ -55,6 +56,7 @@ export default function RootLayout({
         <html lang='en'>
             <body className={clashDisplayFont.className}>
                 <Content>{children}</Content>
+                <GoogleAnalytics gaId='G-JNQ310MYS6' />
             </body>
         </html>
     )
