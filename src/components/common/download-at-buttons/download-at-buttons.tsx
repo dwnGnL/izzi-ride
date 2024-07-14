@@ -4,8 +4,10 @@ import Image from 'next/image'
 import AppStoreDark from '@public/images/common/app-store-dark.svg'
 import AppStoreLight from '@public/images/common/app-store-light.svg'
 
-// import GooglePlayDark from '@public/images/common/google-play-dark.svg'
-// import GooglePlayLight from '@public/images/common/google-play-light.svg'
+import GooglePlayDark from '@public/images/common/google-play-dark.svg'
+import GooglePlayLight from '@public/images/common/google-play-light.svg'
+
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from '@constants/links'
 
 import styles from './download-at-buttons.module.css'
 
@@ -19,7 +21,7 @@ const DownloadAtButtons = ({
 	return (
 		<div className={`${styles.download_app} ${className}`}>
 			<Link
-				href='https://apps.apple.com/us/app/izzi-ride/id6449208978'
+				href={APP_STORE_URL}
 				target='_blank'
 				title='App Store'
 			>
@@ -28,8 +30,8 @@ const DownloadAtButtons = ({
 					alt='Download iZZi RIDE on the App Store'
 				/>
 			</Link>
-			{/* <Link
-                href='/'
+			<Link
+                href={GOOGLE_PLAY_URL}
                 title='Google Play'
                 target='_blank'
             >
@@ -37,7 +39,7 @@ const DownloadAtButtons = ({
 					src={type === 'light' ? GooglePlayLight : GooglePlayDark}
 					alt='Get iZZi RIDE on Google Play'
 				/>
-			</Link> */}
+			</Link>
 		</div>
 	)
 }
