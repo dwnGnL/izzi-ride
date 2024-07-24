@@ -6,7 +6,7 @@ import Logo from '@common/logo/logo'
 import useSectionsPosition from '@hooks/use-sections-position'
 import scrollTo from '@helpers/scroll-to'
 
-import { PRIVACY_POLICY } from '@constants/links'
+import { PRIVACY_POLICY_PAGE_URL } from '@constants/links'
 import { infoList, navigation, socials } from './constant'
 import styles from './footer.module.css'
 
@@ -91,12 +91,7 @@ const BottomPart = () => {
     return (
         <div className={styles.bottom_part}>
             <div>© 2024 iZZi RIDE</div>
-            <Link
-                href={PRIVACY_POLICY}
-                download={true}
-                target='_blank'
-                title='Privacy Policy'
-            >
+            <Link href={PRIVACY_POLICY_PAGE_URL} title='Privacy Policy'>
                 Privacy Policy
             </Link>
         </div>

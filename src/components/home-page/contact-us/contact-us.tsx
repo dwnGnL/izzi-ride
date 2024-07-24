@@ -4,7 +4,7 @@ import AnimBlock from '@hoc/animated-block/animated-block'
 import Form from '@common/form/form'
 
 import { CONTACT_US } from '@constants/section'
-import { CONTACT_US_ENDPOINT, PRIVACY_POLICY } from '@constants/links'
+import { CONTACT_US_ENDPOINT, PRIVACY_POLICY_PAGE_URL } from '@constants/links'
 import { inputs } from './constant'
 import styles from './contact-us.module.css'
 
@@ -21,7 +21,7 @@ const ContactUs = () => {
 					<div className={styles.form_copy}>
 						By creating an account you agree with our{' '}
 						<Link href='/' target='_blank' title='Terms of Service'>Terms of Service</Link>,{' '}
-						<Link href={PRIVACY_POLICY} target='_blank' title='Privacy Policy'>Privacy Policy</Link>,<br />
+						<Link href={PRIVACY_POLICY_PAGE_URL} title='Privacy Policy'>Privacy Policy</Link>,<br />
 						and our default <Link href='/' target='_blank' title='Notification Settings'>Notification Settings</Link>.
 					</div>
 				</Form>

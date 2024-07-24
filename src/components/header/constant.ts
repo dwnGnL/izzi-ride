@@ -1,7 +1,7 @@
-import type { NavigationItem } from '@type/navigation.type'
+import type { NavigationItem, HeaderNavigation } from '@type/navigation.type'
 import { ABOUT, FEATURES, FOUNDER, CONTACT_US } from '@constants/section'
 
-export const navigation: NavigationItem[] = [
+const homeNavigation: NavigationItem[] = [
     {
         title: ABOUT,
     },
@@ -15,3 +15,15 @@ export const navigation: NavigationItem[] = [
         title: CONTACT_US,
     },
 ]
+
+const defaultNavigation: NavigationItem[] = [
+    {
+        title: 'Home',
+        href: '/',
+    },
+]
+
+export const headerNavigation: HeaderNavigation = {
+    home: homeNavigation,
+    default: defaultNavigation,
+}

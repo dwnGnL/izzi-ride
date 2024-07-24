@@ -16,7 +16,7 @@ import MobileMenu from '@components/mobile-menu/mobile-menu'
 import scrollTo from '@helpers/scroll-to'
 
 import { MAIN, DOWNLOAD_AT } from '@constants/section'
-import { navigation } from './constant'
+import { headerNavigation } from './constant'
 import styles from './header.module.css'
 
 const MobileMenuMotion = motion(MobileMenu)
@@ -64,7 +64,7 @@ const Header = () => {
 
     function borderRadiusHandler(elem: HTMLElement) {
         const defaultRadius = parseInt(window.getComputedStyle(elem).borderBottomRightRadius)
-        const currentPosition = elem.getBoundingClientRect().top
+        const currentPosition = Math.floor(elem.getBoundingClientRect().top)
         const percent = currentPosition / headerDefaultPosition.current
 
         setBorderRadius(defaultRadius * percent)
@@ -87,17 +87,17 @@ const Header = () => {
 
     useEffect(() => {
         if (!header.current) return
+        header.current.classList.remove(styles.show)
 
         headerDefaultPosition.current =
             parseInt(window.getComputedStyle(header.current).marginTop) ||
             parseInt(window.getComputedStyle(header.current).top)
 
-        const headerHandler =
-            pathname === '/'
+        const headerHandler = pathname === '/'
                 ? scrollHandler.bind(null, header.current)
                 : borderRadiusHandler.bind(null, header.current)
 
-        if (pathname == '/') {
+        if (pathname === '/') {
             scrollHandler(header.current)
         } else {
             borderRadiusHandler(header.current)
@@ -111,7 +111,7 @@ const Header = () => {
         <>
             <header
                 ref={header}
-                style={!isNaN(Number(borderRadius)) ? {
+                style={!isNaN(Number(borderRadius)) && pathname !== '/' ? {
                     borderTopLeftRadius: `${borderRadius}px`,
                     borderTopRightRadius: `${borderRadius}px`,
                 } : undefined}
@@ -121,7 +121,7 @@ const Header = () => {
 
                 {deviceType === 'desktop' && (
                     <>
-                        <Navigation navigationList={navigation} />
+                        <Navigation navigationList={ pathname.replace('/', '') ? headerNavigation.default : headerNavigation.home } />
                         <Button title='Get it' className={styles.header_btn} callback={scroll} />
                     </>
                 )}
@@ -133,6 +133,7 @@ const Header = () => {
             <AnimatePresence>
                 {deviceType !== 'desktop' && isMenuOpened && (
                     <MobileMenuMotion
+                        navigationList={ pathname.replace('/', '') ? headerNavigation.default : headerNavigation.home }
                         transition={{ ease: 'linear' }}
                         initial='hidden'
                         animate='visible'

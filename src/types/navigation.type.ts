@@ -8,6 +8,10 @@ export type NavigationProps = {
     callback?: () => void
 }
 
+export type HeaderNavigation = {
+    [key: string]: NavigationItem[]
+}
+
 export type NavigationItem = {
     title: string
     href?: Url

@@ -1,0 +1,30 @@
+.section {
+    display: grid;
+    gap: 1em;
+}
+
+.section a {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.sub_headline {
+    font-style: italic;
+}
+
+.headline,
+.paragraph_item h4 {
+    color: var(--secondary);
+    margin-bottom: 0.25em;
+}
+
+.title {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.paragraph_list {
+    display: grid;
+    gap: 0.5em;
+    margin-top: 0.5em;
+}
