@@ -47,7 +47,7 @@ const Main = () => {
 const Content = () => {
     return (
         <div className={styles.content}>
-            <h1 className={styles.headline} dangerouslySetInnerHTML={{ __html: MAIN_HEADLINE }}></h1>
+            <h3 className={styles.headline} dangerouslySetInnerHTML={{ __html: MAIN_HEADLINE }}></h3>
 
             <DownloadAtButtons type='light' />
         </div>

@@ -1,1 +1,1 @@
-export const MAIN_HEADLINE = `Do you often drive,<br/> or take a trip to other<br/> cities in ither states?<br/> Then save on it, with iZZi Ride`
+export const MAIN_HEADLINE = `Do you often drive, or take a trip<br/> to other cities in other states?<br/><br/> THEN SAVE ON IT, WITH IZZI RIDE`
