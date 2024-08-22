@@ -15,7 +15,7 @@ export function middleware(request: NextRequest) {
         
 
         if (userAgent && /android/i.test(userAgent)) return 'android'
-        if (userAgent && /iPad|iPhone/.test(userAgent) && !window.MSStream) return 'iphone'
+        if (userAgent && /iPad|iPhone/.test(userAgent)) return 'iphone'
 
         return 'default'
     }
