@@ -3,8 +3,6 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import localFont from 'next/font/local'
 import './globals.css'
 
-import Content from './content'
-
 const clashDisplayFont = localFont({
     src: [
         {
@@ -55,7 +53,7 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <body className={clashDisplayFont.className}>
-                <Content>{children}</Content>
+                {children}
                 <GoogleAnalytics gaId='G-JNQ310MYS6' />
             </body>
         </html>

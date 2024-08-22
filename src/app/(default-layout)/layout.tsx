@@ -13,7 +13,7 @@ import Alert from '@common/alert/alert'
 
 const Header = dynamic(() => import('@components/header/header'), { ssr: false })
 
-const Content = ({ children }: { children: ReactNode }) => {
+const DefaultLayout = ({ children }: { children: ReactNode }) => {
     return (
         <Provider store={store}>
             <Loader />
@@ -28,4 +28,4 @@ const Content = ({ children }: { children: ReactNode }) => {
     )
 }
 
-export default Content
+export default DefaultLayout
