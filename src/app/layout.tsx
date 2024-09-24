@@ -55,6 +55,7 @@ export default function RootLayout({
             <body className={clashDisplayFont.className}>
                 {children}
                 <GoogleAnalytics gaId='G-JNQ310MYS6' />
+                <GoogleAnalytics gaId='AW-16684332110' />
             </body>
         </html>
     )
