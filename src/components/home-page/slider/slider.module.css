@@ -91,9 +91,7 @@
 }
 
 .about {
-    display: grid;
     grid-area: about;
-    gap: 1em;
 }
 
 .name {

@@ -1,23 +1,16 @@
 'use client'
 import type { FC } from 'react'
-import type { StaticImageData } from 'next/image'
+import type { Worker } from '@type/team.type'
 
 import { useState, useRef, useEffect } from 'react'
 import Scroller from '@common/scroller/scroller'
 import AnimBlock from '@hoc/animated-block/animated-block'
 
 import { FOUNDER } from '@constants/section'
-import { owners } from './constant'
+import { workers } from '@constants/team'
 import styles from './slider.module.css'
 
-export type Slide = {
-    image: StaticImageData
-    about: string
-    name: string
-    position: string
-}
-
-type SlideProps = Slide & {
+type SlideProps = Worker & {
     slidesRef: HTMLDivElement[]
     index: number
 }
@@ -76,7 +69,7 @@ const Slider: FC = () => {
                         className={`${styles.slider_inner} ${currSlide >= 2 ? styles.lastSlide : ''}`}
                         style={{ transform: `translateX(-${slidePosition}px)` }}
                     >
-                        {owners.map((owner, index) => (
+                        {workers.map((owner, index) => (
                             <Slide
                                 key={owner.name}
                                 image={owner.image}
