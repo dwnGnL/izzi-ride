@@ -4,3 +4,4 @@ export const CONTACT_US_ENDPOINT = 'https://ezride.pro/api/v1/client/complaint'
 
 // pages
 export const PRIVACY_POLICY_PAGE_URL = '/privacy-policy'
+export const TEAM_PAGE_URL = '/team'

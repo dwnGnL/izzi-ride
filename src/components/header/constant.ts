@@ -1,5 +1,6 @@
 import type { NavigationItem, HeaderNavigation } from '@type/navigation.type'
-import { ABOUT, FEATURES, FOUNDER, CONTACT_US } from '@constants/section'
+import { ABOUT, FEATURES, FOUNDER, CONTACT_US, TEAM } from '@constants/section'
+import { TEAM_PAGE_URL } from '@constants/links'
 
 const homeNavigation: NavigationItem[] = [
     {
@@ -13,6 +14,10 @@ const homeNavigation: NavigationItem[] = [
     },
     {
         title: CONTACT_US,
+    },
+    {
+        title: TEAM,
+        href: TEAM_PAGE_URL,
     },
 ]
 
