@@ -1,10 +1,21 @@
 import { StaticImageData } from 'next/image';
 
-export type Worker = {
+type BaseWorker = {
   image: StaticImageData;
   about: string;
   name: string;
   position: string;
   location?: string;
-  isFounder?: boolean;
 };
+
+export type Worker =
+  | BaseWorker
+  | {
+      image: StaticImageData;
+      about: string;
+      name: string;
+      position: string;
+      location?: string;
+      founderText: string;
+      isFounder: boolean;
+    };

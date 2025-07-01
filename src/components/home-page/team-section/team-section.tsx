@@ -19,11 +19,9 @@ const TeamSection = () => {
         <h3>{TEAM}</h3>
 
         <div className={styles.worker_list}>
-          {workers
-            .filter(worker => !worker.isFounder)
-            .map(worker => (
-              <WorkerCard worker={worker} key={worker.name} setWorker={setOpenedWorker} />
-            ))}
+          {workers.map(worker => (
+            <WorkerCard worker={worker} key={worker.name} setWorker={setOpenedWorker} />
+          ))}
         </div>
       </AnimBlock>
 

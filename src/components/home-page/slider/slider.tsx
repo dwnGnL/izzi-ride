@@ -70,13 +70,13 @@ const Slider: FC = () => {
                         style={{ transform: `translateX(-${slidePosition}px)` }}
                     >
                         {workers
-                            .filter(worker => worker.isFounder)
+                            .filter(worker => 'isFounder' in worker)
                             .map((owner, index) => (
                                 <Slide
                                     key={owner.name}
                                     image={owner.image}
                                     name={owner.name}
-                                    position={owner.position}
+                                    position={owner.founderText}
                                     about={owner.about}
                                     slidesRef={slidesRef.current}
                                     index={index}
