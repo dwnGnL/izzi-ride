@@ -69,17 +69,19 @@ const Slider: FC = () => {
                         className={`${styles.slider_inner} ${currSlide >= 2 ? styles.lastSlide : ''}`}
                         style={{ transform: `translateX(-${slidePosition}px)` }}
                     >
-                        {workers.map((owner, index) => (
-                            <Slide
-                                key={owner.name}
-                                image={owner.image}
-                                name={owner.name}
-                                position={owner.position}
-                                about={owner.about}
-                                slidesRef={slidesRef.current}
-                                index={index}
-                            />
-                        ))}
+                        {workers
+                            .filter(worker => worker.isFounder)
+                            .map((owner, index) => (
+                                <Slide
+                                    key={owner.name}
+                                    image={owner.image}
+                                    name={owner.name}
+                                    position={owner.position}
+                                    about={owner.about}
+                                    slidesRef={slidesRef.current}
+                                    index={index}
+                                />
+                            ))}
                     </div>
                 </div>
             </AnimBlock>
