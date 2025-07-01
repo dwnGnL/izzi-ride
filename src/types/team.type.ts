@@ -6,4 +6,5 @@ export type Worker = {
   name: string;
   position: string;
   location?: string;
+  isFounder?: boolean;
 };
