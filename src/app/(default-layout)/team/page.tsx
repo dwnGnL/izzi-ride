@@ -9,7 +9,7 @@ import { workers } from '@constants/team';
 import { TEAM } from '@constants/section';
 import styles from './team.module.css';
 
-const PrivatePolicy = () => {
+const TeamPage = () => {
   const [openedWorker, setOpenedWorker] = useState<Worker | null>(null);
 
   return (
@@ -65,4 +65,4 @@ const ModalContent: FC<{ worker: Worker }> = ({ worker }) => {
   );
 };
 
-export default PrivatePolicy;
+export default TeamPage;
