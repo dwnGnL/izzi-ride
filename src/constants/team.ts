@@ -28,7 +28,7 @@ export const workers: Worker[] = [
     about: '<p>- Advisor, Local Growth – (New York area)</p> <p>Seasoned QA engineer with experience at IEEE and Citizens Bank. Advises iZZi Ride on local user acquisition, community growth and early-stage brand development in NYC.</p>',
     name: 'Farrukh Zaripov',
     position: 'iZZi Ride City Lead – New York',
-    location: 'Somerset, NJ (remote)',
+    location: 'Somerset, NJ',
   },
   {
     image: vladimir,
@@ -42,6 +42,6 @@ export const workers: Worker[] = [
     about: '<p>- Student Ambassador & Growth Advisor (Boston area, Remote)</p> <p>Parvona is currently completing an internship at Harvard University. With strong ties to the student community and firsthand experience of campus life in the U.S., she plays a key role in promoting iZZi Ride among university students in the Boston area. Her focus is on organic user acquisition, especially among young and mobile audiences, by leveraging peer networks and student platforms at top schools like Harvard and MIT.</p>',
     name: 'Parvona Abdurakhmanova ',
     position: 'iZZi Ride City Lead – Boston',
-    location: 'Boston, MA (remote)',
+    location: 'Boston, MA',
   },
 ];
