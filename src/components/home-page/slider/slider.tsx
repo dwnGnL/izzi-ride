@@ -70,18 +70,18 @@ const Slider: FC = () => {
                         style={{ transform: `translateX(-${slidePosition}px)` }}
                     >
                         {workers
-                            .filter(worker => 'isFounder' in worker)
+                            .filter(worker => worker.isFounder && worker.founderText)
                             .map((owner, index) => (
-                                <Slide
-                                    key={owner.name}
-                                    image={owner.image}
-                                    name={owner.name}
-                                    position={owner.founderText}
-                                    about={owner.about}
-                                    slidesRef={slidesRef.current}
-                                    index={index}
-                                />
-                            ))}
+                            <Slide
+                                key={owner.name}
+                                image={owner.image}
+                                name={owner.name}
+                                position={owner.founderText!}
+                                about={owner.about}
+                                slidesRef={slidesRef.current}
+                                index={index}
+                            />
+                        ))}
                     </div>
                 </div>
             </AnimBlock>
