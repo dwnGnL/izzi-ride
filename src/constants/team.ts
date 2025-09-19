@@ -5,6 +5,7 @@ import barzu from '@public/images/owners/barzu.jpg';
 import farrukh from '@public/images/owners/farrukh.jpg';
 import parvona from '@public/images/owners/parvona.jpg';
 import vladimir from '@public/images/owners/vladimir.jpg';
+import shahron from '@public/images/owners/shahron.jpg';
 
 export const workers: Worker[] = [
   {
@@ -40,8 +41,15 @@ export const workers: Worker[] = [
   {
     image: parvona,
     about: '<p>- Student Ambassador & Growth Advisor (Boston area, Remote)</p> <p>Parvona is currently completing an internship at Harvard University. With strong ties to the student community and firsthand experience of campus life in the U.S., she plays a key role in promoting iZZi Ride among university students in the Boston area. Her focus is on organic user acquisition, especially among young and mobile audiences, by leveraging peer networks and student platforms at top schools like Harvard and MIT.</p>',
-    name: 'Parvona Abdurakhmanova ',
+    name: 'Parvona Abdurakhmanova',
     position: 'iZZi Ride City Lead – Boston',
     location: 'Boston, MA',
+  },
+  {
+    image: shahron,
+    about: '<p>He is an 11th-grade student from Dushanbe who actively participates in international IT Olympiads and was selected to represent Tajikistan at IOI 2025 in Bolivia. A prizewinner of city and regional competitions, he is passionate about algorithms and programming, contributing his skills to strengthen the technical direction of iZZi Ride.</p>',
+    name: 'Shahron Azizmurodzoda',
+    position: 'Assistant to the CTO',
+    location: 'Dushanbe, Tajikistan',
   },
 ];
