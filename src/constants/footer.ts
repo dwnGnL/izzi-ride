@@ -1,4 +1,4 @@
-export const EMAIL = 'support@izziride.com'
+export const EMAIL = 'izzirideapp@qmail.com'
 export const PHONE = '267-487-5150'
 export const ADDRESS = '807 Durham pl., Bensalem, PA 19020'
 
