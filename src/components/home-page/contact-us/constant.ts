@@ -12,7 +12,7 @@ export const inputs: Input[] = [
         type: 'email',
         name: 'email',
         title: 'Email',
-        placeholder: 'youtemail@gmail.com',
+        placeholder: 'youremail@gmail.com',
         required: true,
     },
     {
