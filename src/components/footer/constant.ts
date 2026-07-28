@@ -29,7 +29,6 @@ export const navigation: NavigationItem[] = [
     {
         title: ABOUT,
     },
-    // NOTE: why empty href?
     {
         title: 'Services',
         href: '',
