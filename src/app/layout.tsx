@@ -44,6 +44,9 @@ export const metadata: Metadata = {
     description:
         'Do you often drive to another cities and states by own car or public transportation? Then save on it with iZZi RIDE',
     keywords: 'ride, city, cities, state, states, country, countries, izzi ride, easy ride',
+    other: {
+        'google-adsense-account': 'ca-pub-3449828704137447',
+    },
 }
 
 export default function RootLayout({
