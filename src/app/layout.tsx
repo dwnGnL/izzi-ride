@@ -44,9 +44,6 @@ export const metadata: Metadata = {
     description:
         'Do you often drive to another cities and states by own car or public transportation? Then save on it with iZZi RIDE',
     keywords: 'ride, city, cities, state, states, country, countries, izzi ride, easy ride',
-    other: {
-        'google-adsense-account': 'ca-pub-3449828704137447',
-    },
 }
 
 export default function RootLayout({
@@ -57,6 +54,7 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <head>
+                <meta name='google-adsense-account' content='ca-pub-3449828704137447' />
                 <Script
                     async
                     src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3449828704137447'
