@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/barzurustami/projects/izzi-ride/logs/.961a0a2ed0f6fef8efcdce4913923588000c6243-audit.json",
+    "files": [
+        {
+            "date": 1787071274136,
+            "name": "/Users/barzurustami/projects/izzi-ride/logs/mcp-puppeteer-2026-08-18.log",
+            "hash": "1faa0b65dfaf25bfd81930482a22ad9986fd45308e7f5908eafe4ae0348b761a"
+        }
+    ],
+    "hashType": "sha256"
+}
