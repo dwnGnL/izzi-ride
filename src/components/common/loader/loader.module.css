@@ -1,29 +1,33 @@
 body:has(div.loader_wrapper) {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .loader_wrapper {
-	position: fixed;
-	top: 0;
-	left: 0;
-	display: grid;
-	width: 100vw;
-	height: 100vh;
-	justify-content: center;
-	align-content: center;
-	background-color: #fff;
-	z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-content: center;
+    background-color: #fff;
+    z-index: 99;
 }
 
 .loader {
-	display: grid;
     width: 9em;
+    height: 9em;
+    background: url(/images/common/logo-blue-v2.png) center no-repeat;
+    background-size: contain;
+	animation: loading 1s infinite alternate linear;
+    /* display: grid;
 	aspect-ratio: 3.15/1;
 	grid-template-columns: 0.8em 3.33em 3.33em 0.8em;
-    grid-gap: 0.5em;
+    grid-gap: 0.5em; */
 }
 
-.loader .logo_letter {
+/* .loader .logo_letter {
 	animation: puls 2s calc(0.1s * var(--index)) infinite;
 }
 
@@ -54,5 +58,15 @@ body:has(div.loader_wrapper) {
 	}
 	10% {
 		transform: scale(1.1);
+	}
+} */
+
+@keyframes loading {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0.75;
 	}
 }

@@ -3,7 +3,7 @@
     top: 0px;
     display: grid;
     height: 3.5em;
-    grid-template-columns: 6em 1fr max-content;
+    grid-template-columns: 3.3em 1fr max-content;
     grid-gap: 2em;
     align-items: center;
     background-color: var(--primary);
@@ -52,7 +52,7 @@
 
 @media screen and (max-width: 768px) {
     .header {
-        grid-template-columns: 6em max-content;
+        grid-template-columns: 3em max-content;
         justify-content: space-between;
     }
 }

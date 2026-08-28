@@ -24,7 +24,7 @@
 
 @media screen and (min-width: 769px) {
     .betta {
-        grid-template-columns: 6em 1fr max-content;
+        grid-template-columns: 4em 1fr max-content;
         justify-items: center;
         align-items: center;
         padding: 1em 2em;

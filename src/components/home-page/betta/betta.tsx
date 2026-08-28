@@ -8,7 +8,7 @@ import Logo from '@common/logo/logo'
 import scrollTo from '@helpers/scroll-to'
 import { CONTACT_US } from '@constants/section'
 
-import logo from '@public/images/common/logo-grey.png'
+import logo from '@public/images/common/logo-grey-v2.png'
 import styles from './betta.module.css'
 
 const Betta = () => {
