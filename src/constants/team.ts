@@ -49,7 +49,7 @@ export const workers: Worker[] = [
     image: shahron,
     about: '<p>He is an 11th-grade student from Dushanbe who actively participates in international IT Olympiads and was selected to represent Tajikistan at IOI 2025 in Bolivia. A prizewinner of city and regional competitions, he is passionate about algorithms and programming, contributing his skills to strengthen the technical direction of iZZi Ride.</p>',
     name: 'Shahron Azizmurodzoda',
-    position: 'Technical Contributor или Technical Support Contributor',
+    position: 'Technical Support Contributor',
     location: 'Dushanbe, Tajikistan',
   },
 ];
