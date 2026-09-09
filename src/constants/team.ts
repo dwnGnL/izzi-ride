@@ -6,6 +6,8 @@ import farrukh from '@public/images/owners/farrukh.jpg';
 import parvona from '@public/images/owners/parvona.jpg';
 import vladimir from '@public/images/owners/vladimir.jpg';
 import shahron from '@public/images/owners/shahron.jpg';
+import khabibulloh from '@public/images/owners/khabibulloh.jpg';
+import abduqahhor from '@public/images/owners/abduqahhor.jpg';
 
 export const workers: Worker[] = [
   {
@@ -50,6 +52,20 @@ export const workers: Worker[] = [
     about: '<p>He is an 11th-grade student from Dushanbe who actively participates in international IT Olympiads and was selected to represent Tajikistan at IOI 2025 in Bolivia. A prizewinner of city and regional competitions, he is passionate about algorithms and programming, contributing his skills to strengthen the technical direction of iZZi Ride.</p>',
     name: 'Shahron Azizmurodzoda',
     position: 'Technical Support Contributor',
+    location: 'Dushanbe, Tajikistan',
+  },
+  {
+    image: khabibulloh,
+    about: '<p>I work with the iZZi RIDE team on product development and growth, helping shape product ideas, understand user needs, gather feedback, and identify opportunities for user acquisition and market expansion.</p>',
+    name: 'Kholboev Khabibulloh',
+    position: 'Product & Growth Advisor',
+    location: 'Dushanbe, Tajikistan',
+  },
+  {
+    image: abduqahhor,
+    about: '<p>I lead mobile development at iZZi Ride, building the iOS and Android apps from architecture to release. My work covers the parts riders and drivers touch every day — real-time location and trip sharing, maps, payments, push notifications and driver verification — as well as the release process itself, from store submissions to keeping the apps stable across devices.</p>',
+    name: 'Yaqubi Abduqahhor',
+    position: 'Head of Mobile Development',
     location: 'Dushanbe, Tajikistan',
   },
 ];
