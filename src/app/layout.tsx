@@ -64,6 +64,12 @@ export default function RootLayout({
             </head>
             <body className={clashDisplayFont.className}>
                 {children}
+                <Script
+                    async
+                    src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3449828704137447'
+                    crossOrigin='anonymous'
+                    strategy='afterInteractive'
+                />
                 <GoogleAnalytics gaId='G-JNQ310MYS6' />
                 <GoogleAnalytics gaId='AW-16684332110' />
             </body>
