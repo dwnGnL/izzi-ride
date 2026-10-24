@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import styles from './select.module.css'
 
+type SelectProps = Input & { id: string }
+
 const optionsAnimation = {
     hidden: {
         opacity: 0,
@@ -16,7 +18,7 @@ const optionsAnimation = {
     },
 }
 
-const Select: FC<Input> = ({ type, name, required, options = [] }) => {
+const Select: FC<SelectProps> = ({ id, type, name, required, options = [] }) => {
     const [opened, setOpened] = useState(false)
     const [value, setValue] = useState(options[0] || '')
 
@@ -36,6 +38,7 @@ const Select: FC<Input> = ({ type, name, required, options = [] }) => {
         <>
             <div className={styles.select_wrapper}>
                 <input
+                    id={id}
                     type={type}
                     name={name}
                     required={required}

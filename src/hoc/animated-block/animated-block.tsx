@@ -18,7 +18,7 @@ const AnimBlock = ({ children, className, inViewExtraClass }: InViewComponent) =
     const inView = useInView(animationRef, { once: true, margin: margin })
 
     const classNames = `${styles.anim_block} ${inView ? styles.in_view : ''} ${
-        className ? className : ''
+        className || ''
     } ${inViewExtraClass && inView ? inViewExtraClass : ''}`
 
     return (

@@ -51,29 +51,31 @@ const Navigation: FC<NavigationProps> = ({ navigationList, className, activeClas
 
     return (
         <nav className={`${styles.header_nav} ${className}`}>
-            {navigationList.map(navItem =>
-                navItem.href ? (
-                    <Link
-                        href={navItem.href}
-                        target={navItem.target}
-                        title={navItem.title}
-                        className={`${styles.navigation_button} ${isActive(navItem)}`}
-                        key={`nav-${navItem.href}`}
-                        onClick={NavBtnHandler}
-                    >
-                        {navItem.title}
-                    </Link>
-                ) : (
-                    <div
-                        key={navItem.title}
-                        title={navItem.title}
-                        className={`${styles.navigation_button} ${isActive(navItem)}`}
-                        onClick={NavBtnHandler}
-                    >
-                        {navItem.title}
-                    </div>
-                ),
-            )}
+            {navigationList.map(navItem => {
+                return (
+                    navItem.href ? (
+                        <Link
+                            href={navItem.href}
+                            target={navItem.target}
+                            title={navItem.title}
+                            className={`${styles.navigation_button} ${isActive(navItem)}`}
+                            key={`nav-${navItem.title}`}
+                            onClick={NavBtnHandler}
+                        >
+                            {navItem.title}
+                        </Link>
+                    ) : (
+                        <div
+                            key={navItem.title}
+                            title={navItem.title}
+                            className={`${styles.navigation_button} ${isActive(navItem)}`}
+                            onClick={NavBtnHandler}
+                        >
+                            {navItem.title}
+                        </div>
+                    )
+                )
+            })}
         </nav>
     )
 }

@@ -10,9 +10,7 @@ export function middleware(request: NextRequest) {
     }
 
     function getDevice() {
-        var userAgent = request.headers.get('user-agent')
-        console.log('userAgent', userAgent)
-        
+        const userAgent = request.headers.get('user-agent')
 
         if (userAgent && /android/i.test(userAgent)) return 'android'
         if (userAgent && /iPad|iPhone/.test(userAgent)) return 'iphone'

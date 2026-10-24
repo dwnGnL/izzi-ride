@@ -16,60 +16,68 @@ const Scroller = ({ addOverlayTag = true, children, className }: Scroller) => {
     const scrollerRef = useRef<HTMLDivElement>(null)
     const scrollerBarLine = useRef<HTMLDivElement>(null)
     const scrollerBarRef = useRef<HTMLDivElement>(null)
-    const [scrollYProgress, setScrollYProgress] = useState(0)
     const [currPosition, setCurrPosition] = useState(0)
     const [scrollable, setScrollable] = useState(true)
     const path = usePathname()
 
     useEffect(() => {
-        const scrollerElement = !addOverlayTag ? window : scrollerRef.current
-        const isAllLoaded = !scrollerElement || !scrollerBarRef.current || !scrollerBarLine.current
-        const isBodyScroller = !addOverlayTag || !scrollerRef.current
+        const scrollerLine = scrollerBarLine.current
+        const scrollerBar = scrollerBarRef.current
+        if (!scrollerLine) return
+        if (!scrollerBar) return
 
-        if (isAllLoaded) return
-        // content properties
-        const visibleHeight = isBodyScroller ? window.innerHeight : scrollerRef.current.offsetHeight
-        const entireHeight = isBodyScroller ? document.body.scrollHeight : scrollerRef.current.children[0].clientHeight
+        const line = scrollerLine
+        const scroller = addOverlayTag ? scrollerRef.current : null
+        if (addOverlayTag && !scroller) return
 
-        // scrollbar properties
+        const isBodyScroller = !scroller
+        const scrollerElement = scroller ?? window
+        const visibleHeight = scroller?.clientHeight ?? window.innerHeight
+        const entireHeight = scroller?.scrollHeight ?? document.body.scrollHeight
+
         const scrollBarHeightCoefficient =
             path === '/' && isBodyScroller
                 ? (entireHeight - visibleHeight) / visibleHeight
                 : entireHeight / visibleHeight
 
-        if (scrollBarHeightCoefficient < 1) setScrollable(false)
+        if (scrollBarHeightCoefficient < 1) {
+            setScrollable(false)
+            return
+        }
 
-        const scrollBarHeight = scrollerBarLine.current.clientHeight / scrollBarHeightCoefficient
-        scrollerBarRef.current.style.height = `${scrollBarHeight}px`
+        setScrollable(true)
+        const scrollBarHeight = line.clientHeight / scrollBarHeightCoefficient
+        scrollerBar.style.height = `${scrollBarHeight}px`
 
-        const scrollMovingSize = scrollerBarLine.current.clientHeight - scrollerBarRef.current.clientHeight
+        const scrollMovingSize = line.clientHeight - scrollerBar.clientHeight
 
         scrollHandler()
 
         function scrollHandler() {
             if (path === '/' && window.scrollY < visibleHeight && isBodyScroller) {
-                scrollerBarLine.current?.classList.add(styles.attached)
+                line.classList.add(styles.attached)
                 return
             } else {
-                scrollerBarLine.current?.classList.remove(styles.attached)
+                line.classList.remove(styles.attached)
             }
 
             const size = path === '/' && isBodyScroller ? 2 : 1
+            let scrollPosition: number
+            if (isBodyScroller) {
+                scrollPosition = window.scrollY
+                if (path === '/') scrollPosition -= visibleHeight
+            } else {
+                scrollPosition = scroller?.scrollTop ?? 0
+            }
+            const scrollRange = entireHeight - visibleHeight * size
+            const progress = scrollRange > 0 ? Math.min(Math.max(scrollPosition / scrollRange, 0), 1) : 0
 
-            const scrollPosition =
-                path === '/' && isBodyScroller
-                    ? window.scrollY - visibleHeight
-                    : isBodyScroller
-                    ? window.scrollY
-                    : scrollerRef.current.scrollTop
-
-            setScrollYProgress(Math.abs(scrollPosition / (entireHeight - visibleHeight * size)))
-            setCurrPosition(scrollMovingSize * scrollYProgress)
+            setCurrPosition(scrollMovingSize * progress)
         }
 
         scrollerElement.addEventListener('scroll', scrollHandler)
         return () => scrollerElement.removeEventListener('scroll', scrollHandler)
-    }, [addOverlayTag, scrollYProgress, path])
+    }, [addOverlayTag, path])
 
     if (addOverlayTag) {
         return (
@@ -84,7 +92,7 @@ const Scroller = ({ addOverlayTag = true, children, className }: Scroller) => {
                             ref={scrollerBarRef}
                             className={styles.scroller_bar}
                             style={{ top: `${currPosition}px` }}
-                        ></div>
+                        />
                     </div>
                 )}
             </div>
@@ -100,7 +108,7 @@ const Scroller = ({ addOverlayTag = true, children, className }: Scroller) => {
                         ref={scrollerBarRef}
                         className={styles.scroller_bar}
                         style={{ top: `${currPosition}px` }}
-                    ></div>
+                    />
                 </div>
             )}
         </>

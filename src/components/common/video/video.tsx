@@ -48,17 +48,6 @@ const Video = ({ src, showControls }: { src: string; showControls?: boolean }) =
         }
     }
 
-    function timeConverter(time: number): string {
-        const minutes = Math.floor(time / 60)
-        const seconds = Math.floor(time - minutes * 60)
-
-        return `${minutes}:${addZero(seconds)}`
-    }
-
-    function addZero(number: number): string {
-        return number < 10 ? `0${number}` : String(number)
-    }
-
     return (
         <div className={`${styles.video_placement} ${isPaused ? styles.paused : styles.playing}`}>
             <div className={styles.video_inner}>
@@ -80,6 +69,13 @@ const Video = ({ src, showControls }: { src: string; showControls?: boolean }) =
             <div ref={playBtn} className={styles.play_btn}></div>
         </div>
     )
+}
+
+function timeConverter(time: number): string {
+    const minutes = Math.floor(time / 60)
+    const seconds = Math.floor(time - minutes * 60)
+
+    return `${minutes}:${String(seconds).padStart(2, '0')}`
 }
 
 export default Video

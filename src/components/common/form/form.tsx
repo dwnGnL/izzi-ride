@@ -1,5 +1,5 @@
-import type { FC, FormEvent } from 'react'
-import type { Form, Input } from '@type/form.type'
+import type { FC, SyntheticEvent } from 'react'
+import type { Form as TForm, Input } from '@type/form.type'
 
 import { useAppDispatch } from '@hooks/store'
 import { openAlert } from '@store/alert/slice'
@@ -9,10 +9,10 @@ import Button from '@common/button/button'
 
 import styles from './form.module.css'
 
-const Form: FC<Form> = ({ endpoint, inputs, buttonText, className, children }) => {
+const Form: FC<TForm> = ({ endpoint, inputs, buttonText, className, children }) => {
     const alertDispatch = useAppDispatch()
 
-    async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    async function onSubmit(e: SyntheticEvent<HTMLFormElement>) {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
         const body = Object.fromEntries(formData)
@@ -29,7 +29,7 @@ const Form: FC<Form> = ({ endpoint, inputs, buttonText, className, children }) =
             if (!response.ok) throw new Error('whoops')
 
             alertDispatch(openAlert('Successfully sent!'))
-        } catch (err: any) {
+        } catch {
             alertDispatch(openAlert('Something went wrong.\n Please try again later!'))
         }
     }
@@ -49,7 +49,7 @@ const Form: FC<Form> = ({ endpoint, inputs, buttonText, className, children }) =
                     />
                 ))}
 
-                {children && children}
+                {children ?? children}
             </div>
 
             <Button title={buttonText} type='submit' className={styles.submit_btn} />
@@ -62,22 +62,20 @@ const Field: FC<Input> = ({ type, name, title, placeholder, required, options })
     let field = null
 
     if (type === 'select' && options) {
-        field = <Select type={type} name={name} title={title} options={options} />
+        field = <Select type={type} id={name} name={name} title={title} options={options} />
     } else if (type === 'textarea') {
-        field = <textarea name={name} required={required} placeholder={placeholder}></textarea>
+        field = <textarea id={name} name={name} required={required} placeholder={placeholder}></textarea>
     } else {
-        field = <input type={type} name={name} required={required} placeholder={placeholder} />
-    }
-
-    function labelHandler(e: any) {
-        if (type === 'select') e.preventDefault()
+        field = <input id={name} type={type} name={name} required={required} placeholder={placeholder} />
     }
 
     return (
-        <label onClick={e => labelHandler(e)} className={styles.label}>
-            <div className={styles.field_title}>{fieldTitle}</div>
+        <div className={styles.label}>
+            <div className={styles.field_title}>
+                <label htmlFor={name}>{fieldTitle}</label>
+            </div>
             {field}
-        </label>
+        </div>
     )
 }
 

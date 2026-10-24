@@ -11,11 +11,11 @@ export default function useSectionsPosition() {
     const pathname = usePathname()
 
     useEffect(() => {
-        const sections = document.querySelectorAll('section[data-title]')
+        const sections: NodeListOf<HTMLElement> = document.querySelectorAll('section[data-title]')
         const data: SectionPosition = {}
 
         sections.forEach(section => {
-            const sectionName = section.getAttribute('data-title')
+            const sectionName = section.dataset.title
 
             if (!sectionName) return
 

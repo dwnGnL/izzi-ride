@@ -1,5 +1,5 @@
 import type { Url } from 'next/dist/shared/lib/router/router'
-import type { HTMLAttributeAnchorTarget, MutableRefObject } from 'react'
+import type { HTMLAttributeAnchorTarget } from 'react'
 
 export type NavigationProps = {
     navigationList: Array<NavigationItem>

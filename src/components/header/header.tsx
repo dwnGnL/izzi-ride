@@ -19,7 +19,7 @@ import { MAIN, DOWNLOAD_AT } from '@constants/section'
 import { headerNavigation } from './constant'
 import styles from './header.module.css'
 
-const MobileMenuMotion = motion(MobileMenu)
+const MobileMenuMotion = motion.create(MobileMenu)
 
 const mobileMenuAnimation = {
     hidden: {
@@ -63,7 +63,7 @@ const Header = () => {
     }
 
     function borderRadiusHandler(elem: HTMLElement) {
-        const defaultRadius = parseInt(window.getComputedStyle(elem).borderBottomRightRadius)
+        const defaultRadius = Number.parseInt(window.getComputedStyle(elem).borderBottomRightRadius)
         const currentPosition = Math.floor(elem.getBoundingClientRect().top)
         const percent = currentPosition / headerDefaultPosition.current
 
@@ -90,8 +90,8 @@ const Header = () => {
         header.current.classList.remove(styles.show)
 
         headerDefaultPosition.current =
-            parseInt(window.getComputedStyle(header.current).marginTop) ||
-            parseInt(window.getComputedStyle(header.current).top)
+            Number.parseInt(window.getComputedStyle(header.current).marginTop) ||
+            Number.parseInt(window.getComputedStyle(header.current).top)
 
         const headerHandler = pathname === '/'
                 ? scrollHandler.bind(null, header.current)
@@ -111,7 +111,7 @@ const Header = () => {
         <>
             <header
                 ref={header}
-                style={!isNaN(Number(borderRadius)) && pathname !== '/' ? {
+                style={!Number.isNaN(Number(borderRadius)) && pathname !== '/' ? {
                     borderTopLeftRadius: `${borderRadius}px`,
                     borderTopRightRadius: `${borderRadius}px`,
                 } : undefined}
