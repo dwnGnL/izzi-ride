@@ -192,7 +192,13 @@ const PartnerSection = () => {
                     }}
                 >
                     {partners.map(partner => (
-                        <span key={partner.link} title={partner.name}>
+                        <span
+                            key={partner.link}
+                            title={partner.name}
+                            onClick={() => {
+                                globalThis.open(partner.link, '_blank')}
+                            }
+                        >
                             <div className={styles.image}>
                                 <div
                                     className={styles.image_inner}
