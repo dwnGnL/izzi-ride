@@ -1,0 +1,158 @@
+'use client';
+import { useEffect, useRef, type PointerEvent } from 'react';
+import AnimBlock from '@hoc/animated-block/animated-block';
+
+import { partners } from '@constants/partner';
+import { PARTNERS } from '@constants/section';
+import styles from './partner.module.css';
+import Link from 'next/link';
+
+const PartnerSection = () => {
+    const partnerListRef = useRef<HTMLDivElement>(null);
+    const pointerStartRef = useRef<{ pointerId: number; x: number; scrollLeft: number } | null>(null);
+    const activePointerIdRef = useRef<number | null>(null);
+    const autoScrollTimeoutRef = useRef<number | null>(null);
+    const scheduleAutoScrollRef = useRef<() => void>(() => {});
+    const isDraggingRef = useRef(false);
+    const wasDraggedRef = useRef(false);
+    const isPausedRef = useRef(false);
+
+    const resetAutoScrollTimer = () => {
+        if (autoScrollTimeoutRef.current !== null) {
+            window.clearTimeout(autoScrollTimeoutRef.current);
+            autoScrollTimeoutRef.current = null;
+        }
+        scheduleAutoScrollRef.current();
+    };
+
+    useEffect(() => {
+        const partnerList = partnerListRef.current;
+        if (!partnerList || partners.length < 2) return;
+
+        const scheduleAutoScroll = () => {
+            if (isPausedRef.current) return;
+
+            autoScrollTimeoutRef.current = window.setTimeout(() => {
+                if (partnerList.scrollWidth > partnerList.clientWidth) {
+                    const firstPartner = partnerList.querySelector('a');
+                    if (firstPartner) {
+                        const gap = Number.parseFloat(window.getComputedStyle(partnerList).columnGap) || 0;
+                        const step = firstPartner.getBoundingClientRect().width + gap;
+                        const maxScrollLeft = partnerList.scrollWidth - partnerList.clientWidth;
+                        const nextScrollLeft = partnerList.scrollLeft >= maxScrollLeft - 1
+                            ? 0
+                            : Math.min(partnerList.scrollLeft + step, maxScrollLeft);
+
+                        partnerList.scrollTo({ left: nextScrollLeft, behavior: 'smooth' });
+                    }
+                }
+
+                scheduleAutoScroll();
+            }, 3500);
+        };
+
+        scheduleAutoScrollRef.current = scheduleAutoScroll;
+        scheduleAutoScroll();
+
+        return () => {
+            if (autoScrollTimeoutRef.current !== null) {
+                window.clearTimeout(autoScrollTimeoutRef.current);
+            }
+            scheduleAutoScrollRef.current = () => {};
+        };
+    }, []);
+
+    const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+
+        activePointerIdRef.current = event.pointerId;
+        isPausedRef.current = true;
+        resetAutoScrollTimer();
+
+        if (event.pointerType === 'mouse') {
+            pointerStartRef.current = {
+                pointerId: event.pointerId,
+                x: event.clientX,
+                scrollLeft: event.currentTarget.scrollLeft,
+            };
+            isDraggingRef.current = true;
+            wasDraggedRef.current = false;
+            event.currentTarget.setPointerCapture(event.pointerId);
+        }
+    };
+
+    const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+        const pointerStart = pointerStartRef.current;
+        if (!pointerStart || pointerStart.pointerId !== event.pointerId) return;
+
+        const distance = event.clientX - pointerStart.x;
+        if (Math.abs(distance) > 5) wasDraggedRef.current = true;
+        event.currentTarget.scrollLeft = pointerStart.scrollLeft - distance;
+    };
+
+    const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+        if (activePointerIdRef.current !== event.pointerId) return;
+
+        activePointerIdRef.current = null;
+        pointerStartRef.current = null;
+        isDraggingRef.current = false;
+        isPausedRef.current = false;
+        if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+            event.currentTarget.releasePointerCapture(event.pointerId);
+        }
+        resetAutoScrollTimer();
+    };
+
+    return (
+        <section data-title={PARTNERS} className={styles.section}>
+            <AnimBlock>
+                <h3>{PARTNERS}</h3>
+
+                <div
+                    ref={partnerListRef}
+                    className={styles.partner_list}
+                    role="region"
+                    aria-label={PARTNERS}
+                    tabIndex={0}
+                    onPointerDown={handlePointerDown}
+                    onPointerMove={handlePointerMove}
+                    onPointerUp={handlePointerUp}
+                    onPointerCancel={handlePointerUp}
+                    onWheel={resetAutoScrollTimer}
+                    onKeyDown={resetAutoScrollTimer}
+                    onPointerEnter={event => {
+                        if (event.pointerType === 'mouse') {
+                            isPausedRef.current = true;
+                            resetAutoScrollTimer();
+                        }
+                    }}
+                    onPointerLeave={event => {
+                        if (event.pointerType === 'mouse' && !isDraggingRef.current) {
+                            isPausedRef.current = false;
+                            resetAutoScrollTimer();
+                        }
+                    }}
+                    onClickCapture={event => {
+                        if (!wasDraggedRef.current) return;
+                        event.preventDefault();
+                        event.stopPropagation();
+                        wasDraggedRef.current = false;
+                    }}
+                >
+                    {partners.map(partner => (
+                        <Link key={partner.link} href={partner.link} title={partner.name}>
+                            <div className={styles.image}>
+                                <div
+                                    className={styles.image_inner}
+                                    style={{ backgroundImage: `url(${partner.image.src})` }}
+                                />
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </AnimBlock>
+        </section>
+    );
+};
+
+export default PartnerSection;

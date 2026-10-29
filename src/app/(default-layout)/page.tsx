@@ -6,6 +6,7 @@ import Slider from '@components/home-page/slider/slider'
 import DownloadAt from '@components/home-page/download-at/download-at'
 import ContactUs from '@components/home-page/contact-us/contact-us'
 import TeamSection from '@components/home-page/team-section/team-section'
+import PartnerSection from '@components/home-page/partner-section/partner-section'
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <Slider />
             <DownloadAt />
             <TeamSection />
+            <PartnerSection/>
             <ContactUs />
         </main>
     )
