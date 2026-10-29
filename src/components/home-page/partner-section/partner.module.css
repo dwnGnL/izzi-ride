@@ -5,6 +5,7 @@
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    scroll-snap-type: none;
     overscroll-behavior-x: contain;
     cursor: grab;
     user-select: none;
@@ -19,6 +20,7 @@
 }
 
 .partner_list.dragging {
+    scroll-snap-type: none;
     scroll-behavior: auto;
 }
 
@@ -44,13 +46,23 @@
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .partner_list {
+        scroll-snap-type: x mandatory;
+    }
+
     .partner_list > a {
         flex-basis: calc((100% - 2em) / 3);
+        scroll-snap-align: start;
     }
 }
 
 @media screen and (max-width: 768px) {
+    .partner_list {
+        scroll-snap-type: x mandatory;
+    }
+
     .partner_list > a {
         flex-basis: calc((100% - 1em) / 2);
+        scroll-snap-align: start;
     }
 }
