@@ -12,6 +12,8 @@ const PartnerSection = () => {
     const pointerStartRef = useRef<{ pointerId: number; x: number; scrollLeft: number } | null>(null);
     const activePointerIdRef = useRef<number | null>(null);
     const autoScrollTimeoutRef = useRef<number | null>(null);
+    const dragAnimationFrameRef = useRef<number | null>(null);
+    const dragTargetScrollLeftRef = useRef(0);
     const scheduleAutoScrollRef = useRef<() => void>(() => {});
     const isDraggingRef = useRef(false);
     const wasDraggedRef = useRef(false);
@@ -58,6 +60,9 @@ const PartnerSection = () => {
             if (autoScrollTimeoutRef.current !== null) {
                 window.clearTimeout(autoScrollTimeoutRef.current);
             }
+            if (dragAnimationFrameRef.current !== null) {
+                window.cancelAnimationFrame(dragAnimationFrameRef.current);
+            }
             scheduleAutoScrollRef.current = () => {};
         };
     }, []);
@@ -70,33 +75,101 @@ const PartnerSection = () => {
         resetAutoScrollTimer();
 
         if (event.pointerType === 'mouse') {
+            event.currentTarget.scrollTo({
+                left: event.currentTarget.scrollLeft,
+                behavior: 'instant',
+            });
+            if (dragAnimationFrameRef.current !== null) {
+                window.cancelAnimationFrame(dragAnimationFrameRef.current);
+                dragAnimationFrameRef.current = null;
+            }
             pointerStartRef.current = {
                 pointerId: event.pointerId,
                 x: event.clientX,
                 scrollLeft: event.currentTarget.scrollLeft,
             };
+            dragTargetScrollLeftRef.current = event.currentTarget.scrollLeft;
             isDraggingRef.current = true;
             wasDraggedRef.current = false;
+            event.currentTarget.classList.add(styles.dragging);
             event.currentTarget.setPointerCapture(event.pointerId);
         }
     };
 
     const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
         const pointerStart = pointerStartRef.current;
-        if (!pointerStart || pointerStart.pointerId !== event.pointerId) return;
+        if (pointerStart?.pointerId !== event.pointerId) return;
 
         const distance = event.clientX - pointerStart.x;
         if (Math.abs(distance) > 5) wasDraggedRef.current = true;
-        event.currentTarget.scrollLeft = pointerStart.scrollLeft - distance;
+        const maxScrollLeft = event.currentTarget.scrollWidth - event.currentTarget.clientWidth;
+        dragTargetScrollLeftRef.current = Math.max(
+            0,
+            Math.min(pointerStart.scrollLeft - distance, maxScrollLeft),
+        );
+
+        if (dragAnimationFrameRef.current === null) {
+            const animateDrag = () => {
+                const partnerList = partnerListRef.current;
+                if (!partnerList || !isDraggingRef.current) {
+                    dragAnimationFrameRef.current = null;
+                    return;
+                }
+
+                const remainingDistance = dragTargetScrollLeftRef.current - partnerList.scrollLeft;
+                if (Math.abs(remainingDistance) < 0.5) {
+                    partnerList.scrollLeft = dragTargetScrollLeftRef.current;
+                    dragAnimationFrameRef.current = null;
+                    return;
+                }
+
+                partnerList.scrollLeft += remainingDistance * 0.25;
+                dragAnimationFrameRef.current = window.requestAnimationFrame(animateDrag);
+            };
+
+            dragAnimationFrameRef.current = window.requestAnimationFrame(animateDrag);
+        }
     };
 
     const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
         if (activePointerIdRef.current !== event.pointerId) return;
 
+        const wasMouseDrag = pointerStartRef.current?.pointerId === event.pointerId;
+        const shouldSnap = wasMouseDrag && wasDraggedRef.current;
         activePointerIdRef.current = null;
         pointerStartRef.current = null;
         isDraggingRef.current = false;
         isPausedRef.current = false;
+        if (wasMouseDrag) {
+            if (dragAnimationFrameRef.current !== null) {
+                window.cancelAnimationFrame(dragAnimationFrameRef.current);
+                dragAnimationFrameRef.current = null;
+            }
+            event.currentTarget.classList.remove(styles.dragging);
+            if (shouldSnap) {
+                const partnerList = event.currentTarget;
+                const cards = Array.from(partnerList.querySelectorAll<HTMLAnchorElement>(':scope > a'));
+                if (cards.length > 0) {
+                    const containerLeft = partnerList.getBoundingClientRect().left + partnerList.clientLeft;
+                    const nearestCard = cards.reduce((nearest, card) => {
+                        const nearestLeft =
+                            partnerList.scrollLeft + nearest.getBoundingClientRect().left - containerLeft;
+                        const cardLeft =
+                            partnerList.scrollLeft + card.getBoundingClientRect().left - containerLeft;
+                        return Math.abs(cardLeft - dragTargetScrollLeftRef.current) <
+                            Math.abs(nearestLeft - dragTargetScrollLeftRef.current)
+                            ? card
+                            : nearest;
+                    });
+                    const cardLeft =
+                        partnerList.scrollLeft + nearestCard.getBoundingClientRect().left - containerLeft;
+                    partnerList.scrollTo({
+                        left: Math.max(0, Math.min(cardLeft, partnerList.scrollWidth - partnerList.clientWidth)),
+                        behavior: 'smooth',
+                    });
+                }
+            }
+        }
         if (event.currentTarget.hasPointerCapture(event.pointerId)) {
             event.currentTarget.releasePointerCapture(event.pointerId);
         }
@@ -111,27 +184,10 @@ const PartnerSection = () => {
                 <div
                     ref={partnerListRef}
                     className={styles.partner_list}
-                    role="region"
-                    aria-label={PARTNERS}
-                    tabIndex={0}
                     onPointerDown={handlePointerDown}
                     onPointerMove={handlePointerMove}
                     onPointerUp={handlePointerUp}
                     onPointerCancel={handlePointerUp}
-                    onWheel={resetAutoScrollTimer}
-                    onKeyDown={resetAutoScrollTimer}
-                    onPointerEnter={event => {
-                        if (event.pointerType === 'mouse') {
-                            isPausedRef.current = true;
-                            resetAutoScrollTimer();
-                        }
-                    }}
-                    onPointerLeave={event => {
-                        if (event.pointerType === 'mouse' && !isDraggingRef.current) {
-                            isPausedRef.current = false;
-                            resetAutoScrollTimer();
-                        }
-                    }}
                     onClickCapture={event => {
                         if (!wasDraggedRef.current) return;
                         event.preventDefault();

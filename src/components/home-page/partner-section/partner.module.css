@@ -5,7 +5,6 @@
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    scroll-snap-type: x mandatory;
     overscroll-behavior-x: contain;
     cursor: grab;
     user-select: none;
@@ -19,9 +18,12 @@
     cursor: grabbing;
 }
 
+.partner_list.dragging {
+    scroll-behavior: auto;
+}
+
 .partner_list > a {
     flex: 0 0 calc((100% - 3em) / 4);
-    scroll-snap-align: start;
 }
 
 .image {
