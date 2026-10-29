@@ -24,7 +24,7 @@
     scroll-behavior: auto;
 }
 
-.partner_list > a {
+.partner_list > * {
     flex: 0 0 calc((100% - 3em) / 4);
 }
 
@@ -50,7 +50,7 @@
         scroll-snap-type: x mandatory;
     }
 
-    .partner_list > a {
+    .partner_list > * {
         flex-basis: calc((100% - 2em) / 3);
         scroll-snap-align: start;
     }
@@ -61,7 +61,7 @@
         scroll-snap-type: x mandatory;
     }
 
-    .partner_list > a {
+    .partner_list > * {
         flex-basis: calc((100% - 1em) / 2);
         scroll-snap-align: start;
     }

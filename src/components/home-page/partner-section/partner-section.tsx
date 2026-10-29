@@ -92,7 +92,6 @@ const PartnerSection = () => {
             isDraggingRef.current = true;
             wasDraggedRef.current = false;
             event.currentTarget.classList.add(styles.dragging);
-            event.currentTarget.setPointerCapture(event.pointerId);
         }
     };
 
@@ -148,7 +147,7 @@ const PartnerSection = () => {
             event.currentTarget.classList.remove(styles.dragging);
             if (shouldSnap) {
                 const partnerList = event.currentTarget;
-                const cards = Array.from(partnerList.querySelectorAll<HTMLAnchorElement>(':scope > a'));
+                const cards = Array.from(partnerList.querySelectorAll<HTMLAnchorElement>(':scope > *'));
                 if (cards.length > 0) {
                     const containerLeft = partnerList.getBoundingClientRect().left + partnerList.clientLeft;
                     const nearestCard = cards.reduce((nearest, card) => {
@@ -169,9 +168,6 @@ const PartnerSection = () => {
                     });
                 }
             }
-        }
-        if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-            event.currentTarget.releasePointerCapture(event.pointerId);
         }
         resetAutoScrollTimer();
     };
@@ -196,14 +192,14 @@ const PartnerSection = () => {
                     }}
                 >
                     {partners.map(partner => (
-                        <Link key={partner.link} href={partner.link} title={partner.name}>
+                        <span key={partner.link} title={partner.name}>
                             <div className={styles.image}>
                                 <div
                                     className={styles.image_inner}
                                     style={{ backgroundImage: `url(${partner.image.src})` }}
                                 />
                             </div>
-                        </Link>
+                        </span>
                     ))}
                 </div>
             </AnimBlock>
